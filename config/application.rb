@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module RailsDevisePundit
   class Application < Rails::Application
+    config.config = config_for(:config).deep_symbolize_keys!
 
     config.generators do |g|
       g.test_framework :rspec,
