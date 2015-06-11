@@ -21,6 +21,8 @@ default: &default
     email_provider_username: <%= ENV["GMAIL_USERNAME"] %>
     email_provider_password: <%= ENV["GMAIL_PASSWORD"] %>
     domain_name: example.com
+  pricels:
+    api_key: '32 bit key'
 
 development:
   <<: *default
