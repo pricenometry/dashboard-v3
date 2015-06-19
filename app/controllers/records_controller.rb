@@ -1,5 +1,5 @@
-class RecordsController < ApplicationController
-  def index
+# class RecordsController < ApplicationController
+#   def index
 
-  end
-end
+#   end
+# end

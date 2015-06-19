@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   after_initialize :set_default_role, :if => :new_record?
 
   def name
-    first_name + ' ' + last_name
+    "#{first_name} #{last_name}"
   end
 
   def set_default_role
@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
          :rememberable,
          :trackable,
          :validatable,
-         :confirmable,
+         # :confirmable,
          :lockable,
          :timeoutable
          # :omniauthable

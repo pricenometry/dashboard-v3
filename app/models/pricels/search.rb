@@ -1,14 +1,17 @@
 class Pricels::Search
   def initialize query
+    return nil if query.nil?
     @url = 'http://api.pricels.com/v1/search/' + query + '?' + params
   end
 
   def search
-    json
+    json[:results]
+  rescue
+    []
   end
 
   def json
-    JSON.parse(response[:body])
+    JSON.parse(response[:body]).deep_symbolize_keys!
   end
 
   def response
