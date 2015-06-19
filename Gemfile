@@ -1,39 +1,59 @@
 source 'https://rubygems.org'
 ruby '2.2.0'
 gem 'rails', '4.2.0'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
-group :development, :test do
-  gem 'byebug'
-  gem 'web-console', '~> 2.0'
-  gem 'spring'
-end
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'pundit'
-group :development do
-  gem 'better_errors'
-  gem 'quiet_assets'
-  gem 'rails_layout'
-  gem 'spring-commands-rspec'
+gem 'awesome_print'
+
+group :assets do
+  gem 'sass-rails', '~> 5.0'
+  gem 'uglifier', '>= 1.3.0'
+  gem 'coffee-rails', '~> 4.1.0'
 end
+
 group :development, :test do
-  gem 'factory_girl_rails'
-  gem 'faker'
+  gem 'thin'
   gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'teaspoon'
+  gem 'byebug'
+  gem 'web-console', '~> 2.0'
+  gem 'faker'
   gem 'sqlite3'
 end
-group :production do
-  gem 'pg'
-  gem 'rails_12factor'
+
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
+  gem 'quiet_assets'
+  gem 'rails_layout'
+  gem 'rubocop', require: false
+  gem 'spring-commands-rspec'
 end
+
 group :test do
-  gem 'capybara'
-  gem 'database_cleaner'
-  gem 'launchy'
+  gem "database_cleaner"
+  gem "email_spec"
+  gem "cucumber-rails", :require => false
   gem 'selenium-webdriver'
+  gem "launchy"
+  gem "capybara"
+  gem 'headless'
+  gem 'guard'
+  gem "guard-rspec"
+  gem "guard-livereload"
+  gem "guard-rails"
+  gem 'simplecov', :require => false
+end
+
+group :production do
+  gem 'unicorn'
+  gem 'pg'
+  # gem 'pg_search'
+  gem "activerecord-postgres-hstore"
+  gem 'rails_12factor'
 end
