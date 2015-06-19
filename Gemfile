@@ -5,9 +5,25 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'bootstrap-sass'
+
 gem 'devise'
 gem 'pundit'
+
 gem 'awesome_print'
+gem 'progress'
+
+gem 'memcached'
+gem 'libmemcached_store', git: 'https://github.com/mojopages/libmemcached_store', ref: 'b5dce08'
+gem 'haml'
+
+gem 'google-analytics-rails'
+gem 'sitemap_generator'
+gem 'browser'
+
+gem 'capistrano'
+gem 'capistrano-bundler'
+gem 'capistrano-rails'
+gem 'capistrano3-unicorn'
 
 group :assets do
   gem 'sass-rails', '~> 5.0'
