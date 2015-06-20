@@ -2,14 +2,20 @@
 %html
   %head
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
-      %title= content_for?(:title) ? yield(:title) : "Rails Devise Pundit"
-      %meta{:content => content_for?(:description) ? yield(:description) : "Rails Devise Pundit", :name => "description"}
+      %title= content_for?(:title) ? yield(:title) : Rails.configuration.config[:site][:name]
+      %meta{:content => content_for?(:description) ? yield(:description) : Rails.configuration.config[:site][:description], :name => "description"}
         = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
         = javascript_include_tag 'application', 'data-turbolinks-track' => true
         = csrf_meta_tags
-  %body
+        = yield(:head)
+  %body{:class => "#{controller_name} #{action_name}"}
     %header
       = render 'layouts/navigation'
-    %main{:role => "main"}
+    .container
       = render 'layouts/messages'
       = yield
+      .row
+        %br
+          %p{:align => "center"}
+            %small
+              Copyright &copy; #{Rails.configuration.config[:site][:name]}

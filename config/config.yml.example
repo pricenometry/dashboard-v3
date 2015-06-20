@@ -21,6 +21,9 @@ default: &default
     email_provider_username: <%= ENV["GMAIL_USERNAME"] %>
     email_provider_password: <%= ENV["GMAIL_PASSWORD"] %>
     domain_name: example.com
+  site:
+    name: Rails Devise Pundit
+    description: Build something cool
 
 development:
   <<: *default
