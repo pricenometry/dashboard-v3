@@ -1,13 +1,11 @@
 class Pricels::Search
   def initialize query
     return nil if query.nil?
-    @url = 'http://api.pricels.com/v1/search/' + query + '?' + params
+    @url = URI.escape('http://api.pricels.com/v1/search/' + query + '?' + params)
   end
 
   def search
     json[:results]
-  rescue
-    []
   end
 
   def json

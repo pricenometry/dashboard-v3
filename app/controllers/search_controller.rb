@@ -1,5 +1,5 @@
 class SearchController < ApplicationController
   def index
-    @results = Pricels::Search.new(params[:query]).search
+    @results ||= params[:query] ? Pricels::Search.new(params[:query].gsub('+',' ')).search : []
   end
 end
