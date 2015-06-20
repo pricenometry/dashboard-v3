@@ -1,0 +1,12 @@
+.container
+  .row
+    %h3 Search
+    / - form_tag search_path, :method => 'get' do
+    /   = text_field_tag :search, params[:query]
+    /   = submit_tag "Search", :name => nil
+    - @results.each do |result|
+      .panel.panel-default
+        - result.each do |key, value|
+          %strong>= key
+          \: #{value}
+          %br
