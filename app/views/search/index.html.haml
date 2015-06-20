@@ -2,8 +2,29 @@
   .row
     = render 'layouts/search'
     - @results.each do |result|
-      .panel.panel-default
-        - result.each do |key, value|
-          %strong>= key
-          \: #{value}
-          %br
+      .well
+        .row
+          .col-xs-6.col-sm-3.col-md-3.col-lg-2
+            - if result[:image]
+              .thumbnail
+                %a{:href => "#{result[:url]}", :target => '_blank'}
+                  %img.img-responsive{:alt => '#', :src => "#{result[:image]}"}
+          .col-xs-6.col-sm-9.col-md-9.col-lg-5
+            %a{:href => "#{result[:url]}", :target => '_blank'}
+              %h3= result[:name]
+            %p= result[:description]
+            %strong
+              Last updated on: #{result[:date].to_date}
+          .col-xs-6.col-sm-9.col-md-9.col-lg-3
+            %ul.list-group
+              %li.list-group-item
+                %span.badge Store
+                = result[:container]
+              - if result[:price]
+                %li.list-group-item
+                  %span.badge Sale Price
+                  = result[:price]
+              - if result[:original_price]
+                %li.list-group-item
+                  %span.badge Original Price
+                  = result[:original_price]
