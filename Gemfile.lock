@@ -133,8 +133,8 @@ GEM
       launchy (~> 2.1)
       mail (~> 2.2)
     erubis (2.7.0)
-    excon (0.45.3)
     eventmachine (1.0.7)
+    excon (0.45.3)
     execjs (2.2.2)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
@@ -389,8 +389,8 @@ DEPENDENCIES
   cucumber-rails
   database_cleaner
   devise
-  excon
   email_spec
+  excon
   factory_girl_rails
   faker
   google-analytics-rails
