@@ -5,7 +5,7 @@ class Pricels::Search
   end
 
   def search
-    json[:results].sort_by {|h| h[:original_price] || h[:price] }.sort_by {|h| h[:date] }.reverse
+    json[:results]
   end
 
   def json
