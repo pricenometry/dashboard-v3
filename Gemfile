@@ -55,7 +55,6 @@ end
 group :test do
   gem "database_cleaner"
   gem "email_spec"
-  gem "cucumber-rails", :require => false
   gem 'selenium-webdriver'
   gem "launchy"
   gem "capybara"
@@ -69,8 +68,8 @@ end
 
 group :production do
   gem 'unicorn'
-  gem 'pg'
+  # gem 'pg'
   # gem 'pg_search'
-  gem "activerecord-postgres-hstore"
+  # gem "activerecord-postgres-hstore"
   gem 'rails_12factor'
 end
