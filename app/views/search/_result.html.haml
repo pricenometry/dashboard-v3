@@ -4,13 +4,15 @@
       .caption
         %h4
           #{result[:name]}
-          %strong
-            @#{result[:container].split('-').try(:first).try(:capitalize)}
         %h3
           - if result[:price]
-            $#{result[:price]}
+            %strong
+              $#{result[:price]}
+            @#{result[:container].split('-').try(:first).try(:capitalize)}
           - elsif result[:original_price]
-            $#{result[:original_price]}
+            %strong
+              $#{result[:original_price]}
+            @#{result[:container].split('-').try(:first).try(:capitalize)}
         %p
           %a.btn.btn-primary{:href => "#"} Buy Now
           %a.btn.btn-danger{:href => "#"} Follow
