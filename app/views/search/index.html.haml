@@ -1,36 +1,8 @@
-.container
+.container.text-center
+  = render 'layouts/search'
   .row
-    = render 'layouts/search'
-    - @results.each do |result|
-      .well
+    - @results.each_with_index do |result, index|
+      - if index % 4 == 0
         .row
-          .col-xs-6.col-sm-3.col-md-3.col-lg-2
-            - if result[:image]
-              .thumbnail
-                %img.img-responsive{:alt => '#', :src => "#{result[:image]}"}
-                / %a{:href => "#{result[:url]}", :target => '_blank'}
+      = render 'search/result', result: result
 
-          .col-xs-6.col-sm-9.col-md-9.col-lg-7
-            %a
-              %h3= result[:name]
-            / %a{:href => "#{result[:url]}", :target => '_blank'}
-            %p= result[:description]
-            %button.btn.btn-danger Buy Now
-            %button.btn.btn-primary Follow
-            %button.btn.btn-large History
-          .col-xs-6.col-sm-9.col-md-9.col-lg-3
-            %ul.list-group
-              %li.list-group-item
-                %span.badge= result[:date]
-                Last Updated
-              %li.list-group-item
-                %span.badge= result[:id]
-                = result[:container]
-              - if result[:price]
-                %li.list-group-item
-                  %span.badge Sale Price
-                  %strong= result[:price]
-              - if result[:original_price]
-                %li.list-group-item
-                  %span.badge Original Price
-                  %strong= result[:original_price]

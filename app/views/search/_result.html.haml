@@ -1,0 +1,14 @@
+.col-md-3.col-sm-6.hero-feature
+  .thumbnail
+    %img.img-responsive{:alt => "", :src => "#{result[:image]}"}
+      .caption
+        %h4= result[:name]
+        %h3
+          - if result[:price]
+            $#{result[:price]}
+          - elsif result[:original_price]
+            $#{result[:original_price]}
+        %p
+          %a.btn.btn-primary{:href => "#"} Buy Now
+          %a.btn.btn-danger{:href => "#"} Follow
+          %a.btn.btn-default{:href => "#"} History
