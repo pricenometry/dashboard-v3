@@ -1,20 +1,20 @@
 .col-md-3.col-sm-6.hero-feature
   .thumbnail
     %img.img-responsive{:alt => "", :src => "#{result[:image]}"}
+      = image_tag "#{result[:container]}.png"
       .caption
-        %h4
-          #{result[:name]}
+        %a{href: '#'}
+          %h4
+            #{result[:name].truncate(45)}
         %h3
           - if result[:price]
             %strong
               $#{result[:price]}
-            @#{result[:container].split('-').try(:first).try(:capitalize)}
           - elsif result[:original_price]
             %strong
               $#{result[:original_price]}
-            @#{result[:container].split('-').try(:first).try(:capitalize)}
         %p
-          %a.btn.btn-primary{:href => "#"} Buy Now
+          %a.btn.btn-primary{:href => result[:url], target: '_blank'} Buy Now
           %a.btn.btn-danger{:href => "#"} Follow
           %a.btn.btn-default{:href => "#"} History
         - if user_signed_in? && current_user.admin?
