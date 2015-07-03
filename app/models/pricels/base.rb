@@ -14,6 +14,6 @@ class Pricels::Base
   end
 
   def params
-    { access_token: api_key }.to_query
+    { access_token: api_key }
   end
 end

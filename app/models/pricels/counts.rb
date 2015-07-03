@@ -1,6 +1,6 @@
 class Pricels::Counts < Pricels::Base
   def initialize
-    @url = URI.escape('http://api.pricels.com/v1?' + params)
+    @url = URI.escape('http://api.pricels.com/v1?' + params.to_query)
   end
 
   def available
