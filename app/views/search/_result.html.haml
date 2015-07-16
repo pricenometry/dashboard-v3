@@ -1,25 +1,26 @@
 .col-md-3.col-sm-6.hero-feature
+
   .thumbnail
     %img.img-responsive{:alt => "", :src => "#{result[:image]}"}
-      / = image_tag "#{result[:container]}.png"
-      .caption
-        %a{href: '#'}
-          %h4
-            #{result[:name].truncate(45)}
-        %h3
-          - if result[:price]
-            %strong
-              $#{result[:price]}
-          - elsif result[:original_price]
-            %strong
-              $#{result[:original_price]}
-        %p
-          %a.btn.btn-primary{:href => result[:url], target: '_blank'} Buy Now
-          %a.btn.btn-danger{:href => "#"} Follow
-          %a.btn.btn-default{:href => "#"} History
-        - if user_signed_in? && current_user.admin?
-          %ul.list-group
-            - result.each do |key, value|
-              %li.list-group-item
-                %span.badge= key.upcase
-                = value
+    = image_tag "#{result[:container]}.png"
+    .caption
+      %a{href: '#'}
+        %h4
+          #{result[:name].truncate(45)}
+      %h3
+        - if result[:price]
+          %strong
+            $#{result[:price]}
+        - elsif result[:original_price]
+          %strong
+            $#{result[:original_price]}
+      %p
+        %a.btn.btn-primary{:href => result[:url], target: '_blank'} Buy Now
+        %a.btn.btn-danger{:href => "#"} Follow
+        %a.btn.btn-default{:href => "#"} History
+      - if user_signed_in? && current_user.admin?
+        %ul.list-group
+          - result.each do |key, value|
+            %li.list-group-item
+              %span.badge= key.upcase
+              = value
