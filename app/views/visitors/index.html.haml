@@ -13,13 +13,13 @@
     - @available.each do |name, count|
       %ul.list-group
         %li.list-group-item
-          %span.badge= count
-          = name.to_s.gsub('-',' ').capitalize
+          %span.badge= name.to_s.split('-').first.capitalize
+          = count
     %ul.list-group
       %li.list-group-item
-        %span.badge= @processing
-        Processing
+        %span.badge Processing
+        = @processing
     %ul.list-group
       %li.list-group-item
-        %span.badge= @pending
-        Pending
+        %span.badge Pending
+        = @pending
