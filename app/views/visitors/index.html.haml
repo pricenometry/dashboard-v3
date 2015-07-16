@@ -1,1 +1,7 @@
+#welcome.page-header
+  %h1
+    = content_for?(:h1) ? yield(:h1) : Rails.configuration.config[:site][:slogan]
+    %small
+      = content_for?(:h3) ? yield(:h3) : Rails.configuration.config[:site][:description]
+
 = render 'layouts/search'

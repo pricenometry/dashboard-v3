@@ -25,7 +25,8 @@ default: &default
     api_key: '32 bit key'
   site:
     name: Braniac
-    description: Build something cool
+    slogan: Welcome to Ruby Software As A Service
+    description: 30 day free trial
 
 development:
   <<: *default
