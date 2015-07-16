@@ -1,8 +1,11 @@
 .col-md-3.col-sm-6.hero-feature
 
   .thumbnail
-    %img.img-responsive{:alt => "", :src => "#{result[:image]}"}
-    = image_tag "#{result[:container]}.png"
+    - if result[:image]
+      %img.img-responsive{:alt => "", :src => result[:image]}
+    - else
+      = image_tag "thumbnail.jpg", :class => 'img-responsive'
+    = image_tag "#{result[:container]}.png", :class => 'logo'
     .caption
       %a{href: '#'}
         %h4
