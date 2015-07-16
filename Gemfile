@@ -45,7 +45,7 @@ end
 
 group :development do
   gem 'better_errors'
-  gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
+  gem 'binding_of_caller', platforms: [:mri_19, :mri_20, :rbx]
   gem 'quiet_assets'
   gem 'rails_layout'
   gem 'rubocop', require: false
@@ -56,14 +56,14 @@ group :test do
   gem "database_cleaner"
   gem "email_spec"
   gem 'selenium-webdriver'
-  gem "launchy"
-  gem "capybara"
+  gem 'launchy'
+  gem 'capybara'
   gem 'headless'
   gem 'guard'
-  gem "guard-rspec"
-  gem "guard-livereload"
-  gem "guard-rails"
-  gem 'simplecov', :require => false
+  gem 'guard-rspec'
+  gem 'guard-livereload'
+  gem 'guard-rails'
+  gem 'simplecov', require: false
 end
 
 group :production do
