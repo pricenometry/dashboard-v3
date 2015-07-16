@@ -53,8 +53,8 @@ group :development do
 end
 
 group :test do
-  gem "database_cleaner"
-  gem "email_spec"
+  gem 'database_cleaner'
+  gem 'email_spec'
   gem 'selenium-webdriver'
   gem 'launchy'
   gem 'capybara'
