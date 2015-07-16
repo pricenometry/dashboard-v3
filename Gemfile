@@ -44,7 +44,7 @@ end
 
 group :development do
   gem 'better_errors'
-  gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
+  gem 'binding_of_caller', platforms: [:mri_19, :mri_20, :rbx]
   gem 'quiet_assets'
   gem 'rails_layout'
   gem 'rubocop', require: false
@@ -52,24 +52,24 @@ group :development do
 end
 
 group :test do
-  gem "database_cleaner"
-  gem "email_spec"
-  gem "cucumber-rails", :require => false
+  gem 'database_cleaner'
+  gem 'email_spec'
+  gem 'cucumber-rails', require: false
   gem 'selenium-webdriver'
-  gem "launchy"
-  gem "capybara"
+  gem 'launchy'
+  gem 'capybara'
   gem 'headless'
   gem 'guard'
-  gem "guard-rspec"
-  gem "guard-livereload"
-  gem "guard-rails"
-  gem 'simplecov', :require => false
+  gem 'guard-rspec'
+  gem 'guard-livereload'
+  gem 'guard-rails'
+  gem 'simplecov', require: false
 end
 
 group :production do
   gem 'unicorn'
   gem 'pg'
   # gem 'pg_search'
-  gem "activerecord-postgres-hstore"
+  gem 'activerecord-postgres-hstore'
   gem 'rails_12factor'
 end
