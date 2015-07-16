@@ -5,3 +5,21 @@
       = content_for?(:h3) ? yield(:h3) : Rails.configuration.config[:site][:description]
 
 = render 'layouts/search'
+
+/ %h3{:align => "right"} Top 5 Most Followed
+.row
+  .col-sm-6.col-md-2
+    %h3{:align => "right"} Searchable
+    - @available.each do |name, count|
+      %ul.list-group
+        %li.list-group-item
+          %span.badge= count
+          = name.to_s.gsub('-',' ').capitalize
+    %ul.list-group
+      %li.list-group-item
+        %span.badge= @processing
+        Processing
+    %ul.list-group
+      %li.list-group-item
+        %span.badge= @pending
+        Pending

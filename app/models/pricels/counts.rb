@@ -12,10 +12,10 @@ class Pricels::Counts < Pricels::Base
   end
 
   def processing
-    json[:indexing]
+    json[:processing]
   end
 
   def pending
-    json[:indexing]
+    json[:pending]
   end
 end
