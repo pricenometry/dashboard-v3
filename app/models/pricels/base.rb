@@ -1,5 +1,6 @@
 class Pricels::Base
   ENDPOINT = 'http://api.pricels.com'
+
   def json
     @json ||= JSON.parse(response[:body]).deep_symbolize_keys!
   end
