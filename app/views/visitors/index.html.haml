@@ -10,16 +10,14 @@
 .row
   .col-sm-6.col-md-2
     %h3{:align => "right"} Searchable
+    %ul.list-group
     - @available.each do |name, count|
-      %ul.list-group
-        %li.list-group-item
-          %span.badge= name.to_s.split('-').first.capitalize
-          = count
-    %ul.list-group
       %li.list-group-item
-        %span.badge Processing
-        = @processing
-    %ul.list-group
-      %li.list-group-item
-        %span.badge Pending
-        = @pending
+        %span.badge= name.to_s.split('-').first.capitalize
+        = count
+    %li.list-group-item
+      %span.badge Processing
+      = @processing
+    %li.list-group-item
+      %span.badge Pending
+      = @pending
