@@ -6,18 +6,12 @@
 
 = render 'layouts/search'
 
-/ %h3{:align => "right"} Top 5 Most Followed
 .row
-  .col-sm-6.col-md-2
-    %h3{:align => "right"} Searchable
-    %ul.list-group
-    - @available.each do |name, count|
-      %li.list-group-item
-        %span.badge= name.to_s.split('-').first.capitalize
-        = count
-    %li.list-group-item
-      %span.badge Processing
-      = @processing
-    %li.list-group-item
-      %span.badge Pending
-      = @pending
+  - @available.each do |name, count|
+    .col-sm-6.col-md-2{align: 'center'}
+      = image_tag "#{name}.png", :class => 'logo'
+      = count
+  .col-sm-6.col-md-2{align: 'center'}
+    .p Processing
+    .p
+    = @processing
