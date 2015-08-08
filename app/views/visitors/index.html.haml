@@ -4,14 +4,13 @@
     %small
       = content_for?(:h3) ? yield(:h3) : Rails.configuration.config[:site][:description]
 
-= render 'layouts/search'
-
 .row
   - @available.each do |name, count|
-    .col-sm-6.col-md-2{align: 'center'}
+    .col-md-2{align: 'center'}
       = image_tag "#{name}.png", :class => 'logo'
-      = count
-  .col-sm-6.col-md-2{align: 'center'}
-    .p Processing
-    .p
-    = @processing
+      #{count} Prices
+  .col-md-2{align: 'center'}
+    %strong Processing
+    %p #{@processing} Prices
+
+= render 'layouts/search'
