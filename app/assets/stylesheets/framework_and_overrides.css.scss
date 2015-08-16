@@ -151,3 +151,15 @@ section {
   @extend .btn-primary;
   @extend .btn-xs;
 }
+
+.footer a:visited {
+    color: #ac4142 !important;
+}
+
+.footer a:active {
+    color: #ac4142 !important;
+}
+
+.footer a {
+    color: #ac4142 !important;
+}
