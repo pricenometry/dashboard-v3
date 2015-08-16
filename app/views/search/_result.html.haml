@@ -7,7 +7,7 @@
       = image_tag "thumbnail.jpg", :class => 'img-responsive'
     = image_tag "#{result[:container]}.png", :class => 'logo'
     .caption
-      %a{:href => result[:url], target: '_blank'}
+      %a{:href => result[:url], target: '_blank', style: 'color:#ac4142;'}
         %h4
           #{result[:name].truncate(45)}
       %h3
@@ -18,8 +18,8 @@
           %strong
             $#{result[:original_price]}
       %p
-        %a.btn.btn-primary{:href => result[:url], target: '_blank'} Buy Now
-        / %a.btn.btn-danger{:href => "#"} Follow
+        %a.btn.btn-danger{:href => result[:url], target: '_blank'} Buy Now
+        / %a.btn.btn-primary{:href => "#"} Follow
         / %a.btn.btn-default{:href => "#"} History
       - if user_signed_in? && current_user.admin?
         %ul.list-group
