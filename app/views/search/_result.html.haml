@@ -18,8 +18,8 @@
           %strong
             $#{result[:original_price]}
       %p
-        %a.btn.btn-danger{:href => result[:url], target: '_blank'} Buy Now
-        / %a.btn.btn-primary{:href => "#"} Follow
+        %a.btn.btn-primary{:href => result[:url], target: '_blank'} Buy Now
+        / %a.btn.btn-danger{:href => "#"} Follow
         / %a.btn.btn-default{:href => "#"} History
       - if user_signed_in? && current_user.admin?
         %ul.list-group
