@@ -1,0 +1,6 @@
+%form{:action => "http://www.amazon.com/gp/aws/cart/add.html", :method => "GET"}
+  %input{:name => "AssociateTag", :type => "hidden", :value => "pricelscom-20"}/
+  %input{:name => "SubscriptionId", :type => "hidden", :value => "[AWSAccessKeyId]"}/
+  %input{:name => "ASIN.1", :type => "hidden", :value => "#{result[:id]}"}/
+  %input{:name => "Quantity.1", :type => "hidden", :value => "1"}/
+  %button.btn.btn-primary Buy Now

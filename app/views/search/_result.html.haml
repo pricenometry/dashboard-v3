@@ -18,7 +18,10 @@
           %strong
             $#{result[:original_price]}
       %p
-        %a.btn.btn-primary{:href => result[:url], target: '_blank'} Buy Now
+        - if result[:container] == 'amazon-offers'
+          = render 'search/amazon_button', result: result
+        - else
+          %a.btn.btn-primary{:href => result[:url], target: '_blank'} Buy Now
         - if user_signed_in?
 
           / %a.btn.btn-danger{:href => "/users/sign_up"} Follow
