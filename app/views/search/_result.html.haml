@@ -18,12 +18,16 @@
           %strong
             $#{result[:original_price]}
       %p
-        %a.btn.btn-primary{:href => result[:url], target: '_blank'} Buy Now
-        / %a.btn.btn-danger{:href => "#"} Follow
-        / %a.btn.btn-default{:href => "#"} History
-      - if user_signed_in? && current_user.admin?
-        %ul.list-group
-          - result.each do |key, value|
-            %li.list-group-item
-              %span.badge= key.upcase
-              = value
+        - if user_signed_in?
+          %a.btn.btn-primary{:href => result[:url], target: '_blank'} Buy Now
+          / %a.btn.btn-danger{:href => "/users/sign_up"} Follow
+          / %a.btn.btn-default{:href => "#"} History
+          - if current_user.admin?
+            %ul.list-group
+              - result.each do |key, value|
+                %li.list-group-item
+                  %span.badge= key.upcase
+                  = value
+        - else
+          %a.btn.btn-primary{:href => result[:url], target: '_blank'} Buy Now
+          %a.btn.btn-danger{:href => "/users/sign_in"} Follow
