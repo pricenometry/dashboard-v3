@@ -18,8 +18,9 @@
           %strong
             $#{result[:original_price]}
       %p
+        %a.btn.btn-primary{:href => result[:url], target: '_blank'} Buy Now
         - if user_signed_in?
-          %a.btn.btn-primary{:href => result[:url], target: '_blank'} Buy Now
+
           / %a.btn.btn-danger{:href => "/users/sign_up"} Follow
           / %a.btn.btn-default{:href => "#"} History
           - if current_user.admin?
@@ -29,5 +30,4 @@
                   %span.badge= key.upcase
                   = value
         - else
-          %a.btn.btn-primary{:href => result[:url], target: '_blank'} Buy Now
-          %a.btn.btn-danger{:href => "/users/sign_in"} Follow
+          / %a.btn.btn-danger{:href => "/users/sign_in"} Follow
