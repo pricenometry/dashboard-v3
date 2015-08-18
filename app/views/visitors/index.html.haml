@@ -10,9 +10,9 @@
 
 .row
   - @available.each do |name, count|
-    .col-md-2{align: 'center'}
+    .col-md-1{align: 'center'}
       = image_tag "#{name}.png", :class => 'logo'
       #{count} Prices
-  .col-md-2{align: 'center'}
+  .col-md-1{align: 'center'}
     %strong Processing
     %p #{@processing} Prices
