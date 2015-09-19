@@ -79,3 +79,4 @@ pickle-email-*.html
 .powenv
 /config/sidekiq.yml
 /config/config.yml
+production
