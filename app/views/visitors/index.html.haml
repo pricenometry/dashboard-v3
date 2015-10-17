@@ -14,5 +14,11 @@
       = image_tag "#{name}.png", :class => 'logo'
       #{count}
   .col-md-1{align: 'center'}
+    %strong Indexing
+    %p #{@indexing}
+  .col-md-1{align: 'center'}
     %strong Processing
     %p #{@processing}
+  .col-md-1{align: 'center'}
+    %strong Pending
+    %p #{@pending}
