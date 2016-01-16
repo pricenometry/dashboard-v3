@@ -1,18 +1,4 @@
 default: &default
-  redis:
-    host: 127.0.0.1
-    port: 6379
-    database: 0
-  elasticsearch:
-    host: 127.0.0.1
-    port: 9200
-    protocol: http
-  fog:
-    provider: 'Local'
-    local_root: 'tmp/fog'
-    # provider: 'AWS'
-    # aws_access_key_id: '32 bit key'
-    # aws_secret_access_key: '32 bit key'
   admin:
     first_name: First
     last_name: User
