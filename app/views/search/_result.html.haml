@@ -11,12 +11,12 @@
         %h4
           #{result[:name].truncate(45)}
       %h3
-        - if result[:price]
+        - if result[:price][:price]
           %strong
-            $#{result[:price]}
-        - elsif result[:original_price]
+            $#{result[:price][:price]}
+        - elsif result[:price][:original_price]
           %strong
-            $#{result[:original_price]}
+            $#{result[:price][:original_price]}
       %p
         - if result[:container] == 'amazon-offers'
           = render 'search/amazon_button', result: result
@@ -24,8 +24,8 @@
           %a.btn.btn-primary{:href => result[:url], target: '_blank'} Buy Now
         - if user_signed_in?
 
-          / %a.btn.btn-danger{:href => "/users/sign_up"} Follow
-          / %a.btn.btn-default{:href => "#"} History
+          %a.btn.btn-danger{:href => "/users/sign_up"} Follow
+          %a.btn.btn-default{:href => "#"} History
           - if current_user.admin?
             %ul.list-group
               - result.each do |key, value|
