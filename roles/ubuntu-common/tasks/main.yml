@@ -23,3 +23,5 @@
   with_items:
     - build-essential
     - git
+    - sqlite
+    - libsqlite3-dev
