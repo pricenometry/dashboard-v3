@@ -13,8 +13,8 @@ gem 'pundit'
 gem 'awesome_print'
 gem 'progress'
 
-gem 'memcached'
-gem 'libmemcached_store', git: 'https://github.com/mojopages/libmemcached_store', ref: 'b5dce08'
+# gem 'memcached'
+# gem 'libmemcached_store', git: 'https://github.com/mojopages/libmemcached_store', ref: 'b5dce08'
 gem 'haml'
 
 gem 'google-analytics-rails'

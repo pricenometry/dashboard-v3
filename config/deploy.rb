@@ -2,7 +2,7 @@ require 'mina/bundler'
 require 'mina/rails'
 require 'mina/git'
 require 'mina/chruby'
-require 'mina_sidekiq/tasks'
+# require 'mina_sidekiq/tasks'
 require 'mina/unicorn'
 
 set :user, 'ubuntu'
