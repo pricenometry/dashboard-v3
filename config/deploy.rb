@@ -18,10 +18,10 @@ set :keep_releases, 5
 # set :sidekiq_pid, "#{deploy_to}/#{shared_path}/tmp/pids/sidekiq.pid"
 
 set :shared_paths, ['public/static',
-                    # 'config/sidekiq.yml',
+                    'config/database.yml',
                     'config/config.yml',
                     'config/secrets.yml',
-                    'db/production.sqlite3',
+                    # 'db/production.sqlite3',
                     # 'app/sites',
                     'tmp/sockets',
                     'tmp/pids',
@@ -35,22 +35,22 @@ task :setup => :environment do
   queue! %[mkdir -p "#{deploy_to}/#{shared_path}/public"]
   queue! %[mkdir -p "#{deploy_to}/#{shared_path}/public/static"]
   queue! %[mkdir -p "#{deploy_to}/#{shared_path}/log"]
-  queue! %[mkdir -p "#{deploy_to}/#{shared_path}/db"]
+  # queue! %[mkdir -p "#{deploy_to}/#{shared_path}/db"]
   queue! %[mkdir -p "#{deploy_to}/#{shared_path}/config"]
   queue! %[mkdir -p "#{deploy_to}/#{shared_path}/tmp"]
   queue! %[mkdir -p "#{deploy_to}/#{shared_path}/tmp/sockets"]
   queue! %[mkdir -p "#{deploy_to}/#{shared_path}/tmp/pids"]
   queue! %[mkdir -p "#{deploy_to}/#{shared_path}/app/sites"]
 
-  # queue! %[touch "#{deploy_to}/#{shared_path}/config/sidekiq.yml"]
+  queue! %[touch "#{deploy_to}/#{shared_path}/config/database.yml"]
   queue! %[touch "#{deploy_to}/#{shared_path}/config/config.yml"]
   queue! %[touch "#{deploy_to}/#{shared_path}/config/secrets.yml"]
-  queue! %[touch "#{deploy_to}/#{shared_path}/db/production.sqlite3"]
+  # queue! %[touch "#{deploy_to}/#{shared_path}/db/production.sqlite3"]
 
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/public"]
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/public/static"]
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/log"]
-  queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/db"]
+  # queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/db"]
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/config"]
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/tmp"]
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/tmp/sockets"]
