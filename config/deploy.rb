@@ -21,6 +21,7 @@ set :shared_paths, ['public/static',
                     # 'config/sidekiq.yml',
                     'config/config.yml',
                     'config/secrets.yml',
+                    'db/production.sqlite3'
                     # 'app/sites',
                     'tmp/sockets',
                     'tmp/pids',
