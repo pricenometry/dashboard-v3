@@ -1,11 +1,3 @@
-GIT
-  remote: https://github.com/mojopages/libmemcached_store
-  revision: b5dce08dac205ffd15fbc4534f7fbc87696879b8
-  ref: b5dce08
-  specs:
-    libmemcached_store (0.7.1)
-      memcached
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -164,7 +156,6 @@ GEM
     lumberjack (1.0.10)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
-    memcached (1.8.0)
     method_source (0.8.2)
     mime-types (2.99)
     mina (0.3.8)
@@ -356,8 +347,6 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   launchy
-  libmemcached_store!
-  memcached
   mina
   mina-unicorn
   progress
