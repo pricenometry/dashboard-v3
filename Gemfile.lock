@@ -64,18 +64,6 @@ GEM
     browser (1.1.0)
     builder (3.2.2)
     byebug (8.2.2)
-    capistrano (3.4.0)
-      i18n
-      rake (>= 10.0.0)
-      sshkit (~> 1.3)
-    capistrano-bundler (1.1.4)
-      capistrano (~> 3.1)
-      sshkit (~> 1.2)
-    capistrano-rails (1.1.6)
-      capistrano (~> 3.1)
-      capistrano-bundler (~> 1.1)
-    capistrano3-unicorn (0.2.1)
-      capistrano (~> 3.1, >= 3.1.0)
     capybara (2.6.2)
       addressable
       mime-types (>= 1.16)
@@ -179,18 +167,20 @@ GEM
     memcached (1.8.0)
     method_source (0.8.2)
     mime-types (2.99)
+    mina (0.3.8)
+      open4 (~> 1.3.4)
+      rake
+    mina-unicorn (0.4.0)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
     multi_json (1.11.2)
     nenv (0.2.0)
-    net-scp (1.2.1)
-      net-ssh (>= 2.6.5)
-    net-ssh (3.0.2)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     notiffany (0.0.8)
       nenv (~> 0.1)
       shellany (~> 0.0)
+    open4 (1.3.4)
     orm_adapter (0.5.0)
     parser (2.3.0.2)
       ast (~> 2.2)
@@ -306,9 +296,6 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     sqlite3 (1.3.11)
-    sshkit (1.8.1)
-      net-scp (>= 1.1.2)
-      net-ssh (>= 2.8.0)
     teaspoon (1.1.4)
       railties (>= 3.2.5, < 5)
     thin (1.6.4)
@@ -351,10 +338,6 @@ DEPENDENCIES
   bootstrap-sass
   browser
   byebug
-  capistrano
-  capistrano-bundler
-  capistrano-rails
-  capistrano3-unicorn
   capybara
   coffee-rails (~> 4.1.0)
   database_cleaner
@@ -375,6 +358,8 @@ DEPENDENCIES
   launchy
   libmemcached_store!
   memcached
+  mina
+  mina-unicorn
   progress
   pundit
   quiet_assets

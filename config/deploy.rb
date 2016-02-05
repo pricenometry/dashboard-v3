@@ -1,46 +1,88 @@
-# config valid only for current version of Capistrano
-lock '3.4.0'
+require 'mina/bundler'
+require 'mina/rails'
+require 'mina/git'
+require 'mina/chruby'
+require 'mina_sidekiq/tasks'
+require 'mina/unicorn'
 
-set :application, 'my_app_name'
-set :repo_url, 'git@example.com:me/my_repo.git'
+set :user, 'ubuntu'
+set :domain, ENV['DOMAIN']
+set :deploy_to, '/home/ubuntu/dashboard-v3'
+set :app_path, lambda { "#{deploy_to}/#{current_path}" }
+set :repository, 'https://github.com/pricenometry/dashboard-v3.git'
+set :branch, 'master'
+set :forward_agent, true
+set :rails_env, 'production'
+set :keep_releases, 5
+# set :sidekiq_log, "#{deploy_to}/#{shared_path}/log/sidekiq.log"
+# set :sidekiq_pid, "#{deploy_to}/#{shared_path}/tmp/pids/sidekiq.pid"
 
-# Default branch is :master
-# ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
+set :shared_paths, ['public/static',
+                    # 'config/sidekiq.yml',
+                    'config/config.yml',
+                    'config/secrets.yml',
+                    # 'app/sites',
+                    'tmp/sockets',
+                    'tmp/pids',
+                    'log']
 
-# Default deploy_to directory is /var/www/my_app_name
-# set :deploy_to, '/var/www/my_app_name'
+task :environment do
+  invoke :'chruby[ruby-2.3.0]'
+end
 
-# Default value for :scm is :git
-# set :scm, :git
+task :setup => :environment do
+  queue! %[mkdir -p "#{deploy_to}/#{shared_path}/public"]
+  queue! %[mkdir -p "#{deploy_to}/#{shared_path}/public/static"]
+  queue! %[mkdir -p "#{deploy_to}/#{shared_path}/log"]
+  queue! %[mkdir -p "#{deploy_to}/#{shared_path}/config"]
+  queue! %[mkdir -p "#{deploy_to}/#{shared_path}/tmp"]
+  queue! %[mkdir -p "#{deploy_to}/#{shared_path}/tmp/sockets"]
+  queue! %[mkdir -p "#{deploy_to}/#{shared_path}/tmp/pids"]
+  queue! %[mkdir -p "#{deploy_to}/#{shared_path}/app/sites"]
 
-# Default value for :format is :pretty
-# set :format, :pretty
+  # queue! %[touch "#{deploy_to}/#{shared_path}/config/sidekiq.yml"]
+  queue! %[touch "#{deploy_to}/#{shared_path}/config/config.yml"]
+  queue! %[touch "#{deploy_to}/#{shared_path}/config/secrets.yml"]
 
-# Default value for :log_level is :debug
-# set :log_level, :debug
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/public"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/public/static"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/log"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/config"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/tmp"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/tmp/sockets"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/tmp/pids"]
+  # queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/app/sites"]
+end
 
-# Default value for :pty is false
-# set :pty, true
+desc "Deploys the current version to the server."
+task :deploy => :environment do
+  to :before_hook do
+    # Put things to run locally before ssh
+  end
 
-# Default value for :linked_files is []
-# set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')
+  deploy do
+    # Put things that will set up an empty directory into a fully set-up
+    # instance of your project.
+    # invoke :'sidekiq:quiet'
+    invoke :'git:clone'
+    invoke :'deploy:link_shared_paths'
+    invoke :'bundle:install'
+    invoke :'rails:assets_precompile'
+    invoke :'deploy:cleanup'
 
-# Default value for linked_dirs is []
-# set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
-
-# Default value for default_env is {}
-# set :default_env, { path: "/opt/ruby/bin:$PATH" }
-
-# Default value for keep_releases is 5
-# set :keep_releases, 5
-
-namespace :deploy do
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
+    to :launch do
+      # queue "touch #{deploy_to}/#{shared_path}/pids/sidekiq.pid"
+      # invoke :'sidekiq:restart'
+      # queue "mkdir -p #{deploy_to}/#{current_path}/tmp/"
+      invoke :'unicorn:restart'
+      # queue "touch #{deploy_to}/#{current_path}/tmp/restart.txt"
     end
   end
 end
+
+# For help in making your deploy script, see the Mina documentation:
+#
+#  - http://nadarei.co/mina
+#  - http://nadarei.co/mina/tasks
+#  - http://nadarei.co/mina/settings
+#  - http://nadarei.co/mina/helpers

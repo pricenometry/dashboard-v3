@@ -21,10 +21,8 @@ gem 'google-analytics-rails'
 gem 'sitemap_generator'
 gem 'browser'
 
-gem 'capistrano'
-gem 'capistrano-bundler'
-gem 'capistrano-rails'
-gem 'capistrano3-unicorn'
+gem 'mina', :require => false
+gem 'mina-unicorn', :require => false
 
 group :assets do
   gem 'sass-rails', '~> 5.0'
