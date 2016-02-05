@@ -175,6 +175,7 @@ GEM
     orm_adapter (0.5.0)
     parser (2.3.0.2)
       ast (~> 2.2)
+    pg (0.18.4)
     powerpack (0.1.1)
     progress (3.1.1)
     pry (0.10.3)
@@ -349,6 +350,7 @@ DEPENDENCIES
   launchy
   mina
   mina-unicorn
+  pg
   progress
   pundit
   quiet_assets
