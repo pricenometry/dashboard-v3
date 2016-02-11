@@ -1,0 +1,13 @@
+%ul.pager
+  -if pagination[:prev_page]
+    %li.previous
+      %a{:href => pagination[:prev_page]} &larr; Previous
+  -else
+    %li.previous.disabled
+      %a{:href => '#'} &larr; Previous
+  -if pagination[:next_page]
+    %li.next
+      %a{:href => pagination[:next_page]} Next &rarr;
+  -else
+    %li.next.disabled
+      %a{:href => '#'} Next &rarr;
