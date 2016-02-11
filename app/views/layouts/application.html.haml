@@ -16,47 +16,4 @@
         = render 'layouts/messages'
         = yield
 
-.footer.text-center
-  %hr/
-  .row
-    .col-lg-12
-      .col-md-3
-        %ul.nav.nav-pills.nav-stacked
-          %li
-            %a{:href => 'http://about.pricenometry.com/what-we-do/'} What we do?
-      .col-md-3
-        %ul.nav.nav-pills.nav-stacked
-          %li
-            %a{:href => 'https://www.facebook.com/Pricenometry'} Facebook
-          %li
-            %a{:href => 'https://twitter.com/Pricenometry'} Twitter
-      .col-md-3
-        %ul.nav.nav-pills.nav-stacked
-          %li
-            %a{:href => 'http://developers.pricenometry.com'} Developer API
-          %li
-            %a{:href => 'http://about.pricenometry.com/get-access/'} Get Access
-      .col-md-3
-        %ul.nav.nav-pills.nav-stacked
-          %li
-            %a{:href => 'http://about.pricenometry.com/'} Blog
-  %hr
-    .row
-      .col-lg-12
-        %ul.nav.nav-pills.nav-justified
-          %li
-            %a{:href => "/"} &copy; #{Rails.configuration.config[:site][:name]}
-          %li
-            %a{:href => "#"} Terms of Service
-          %li
-            %a{:href => "#"} Privacy
-
-      / .row
-      /   %br
-      /     %p{:align => "center"}
-      /       %a.btn.btn-default{:href => 'http://about.pricels.com/what-we-do/', target: '_blank'} What we do?
-      /       %a.btn.btn-default{:href => 'http://developers.pricels.com', target: '_blank'} API Docs
-      /       %a.btn.btn-default{:href => 'http://about.pricels.com', target: '_blank'} Blog
-      /     %p{:align => "center"}
-      /       %small
-      /         Copyright &copy; #{Rails.configuration.config[:site][:name]}
+= render 'layouts/footer'
