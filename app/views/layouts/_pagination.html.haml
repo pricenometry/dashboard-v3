@@ -8,11 +8,11 @@
         %a{:href => '#'} &larr; Previous
     -if pagination[:next_page]
       %li
-        %a{:href => pagination[:next_page]} Next &rarr;
-      %li.next
         %a{:href => pagination[:total_pages]} Last &rarr;
+      %li.next
+        %a{:href => pagination[:next_page]} Next &rarr;
     -else
       %li.disabled
-        %a{:href => '#'} Next &rarr;
-      %li.next.disabled
         %a{:href => '#'} Last &rarr;
+      %li.next.disabled
+        %a{:href => '#'} Next &rarr;
