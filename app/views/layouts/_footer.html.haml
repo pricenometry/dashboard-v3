@@ -1,46 +1,38 @@
 .footer.text-center
   %hr/
   .row
-    .col-lg-12
-      .col-md-2
+    .col-lg-8
+      .col-md-3
         %ul.nav.nav-pills.nav-stacked
           %li
             %a{href: 'http://about.pricenometry.com/what-we-do/', target: '_blank'} What we do?
           %li
             %a{href: 'http://about.pricenometry.com/', target: '_blank'} Blog
-      .col-md-2
-        %ul.nav.nav-pills.nav-stacked
-          %li
-            %a{href: 'http://about.pricenometry.com/2016/02/02/pricels-is-now-rebranded-pricenometry/', target: '_blank'} What's Pricels?
-          %li
-            %a{href: 'http://about.pricenometry.com/2015/02/25/pricels-realtime-api-launches-today/', target: '_blank'} Realtime Data
-      .col-md-2
+      .col-md-3
         %ul.nav.nav-pills.nav-stacked
           %li
             %a{href: 'https://facebook.com/Pricenometry', target: '_blank'} Facebook
           %li
             %a{href: 'https://twitter.com/Pricenometry', target: '_blank'} Twitter
-      .col-md-2
+      .col-md-3
         %ul.nav.nav-pills.nav-stacked
           %li
             %a{href: 'https://instagram.com/Pricenometry', target: '_blank'} Instagram
           %li
             %a{href: 'https://github.com/Pricenometry', target: '_blank'} Github
-      .col-md-2
+      .col-md-3
         %ul.nav.nav-pills.nav-stacked
           %li
             %a{href: 'http://developers.pricenometry.com', target: '_blank'} Developer API
           %li
             %a{href: 'http://about.pricenometry.com/get-access/', target: '_blank'} Get Access
-      .col-md-2
-        %ul.nav.nav-pills.nav-stacked
-          %li
-            %a{href: "#"} Terms of Service
-          %li
-            %a{href: "#"} Privacy
   %hr
     .row
       .col-lg-12
         %ul.nav.nav-pills.nav-justified
           %li
-            Copyright &copy; #{Rails.configuration.config[:site][:name]}. All Rights Reserved.
+            &copy; #{Rails.configuration.config[:site][:name]}. All Rights Reserved.
+          %li
+            %a{href: "#"} Terms of Service
+          %li
+            %a{href: "#"} Privacy
