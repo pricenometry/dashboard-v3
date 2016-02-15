@@ -1,35 +1,44 @@
 .col-md-2.col-sm-4.hero-feature
 
   .thumbnail
-    - if result[:image]
-      %img.img-responsive{:alt => "", :src => result[:image]}
+    - if result[:container] == 'google'
+      :javascript
+        google_ad_client = "ca-pub-4228490019228264";
+        google_ad_slot = "7023758185";
+        google_ad_width = 120;
+        google_ad_height = 280;
+      / Pricenometry Search
+      %script{:src => "//pagead2.googlesyndication.com/pagead/show_ads.js", :type => "text/javascript"}
     - else
-      = image_tag "thumbnail.jpg", :class => 'img-responsive'
-    = image_tag "#{result[:container]}.png", :class => 'logo'
-    .caption
-      %a{:href => result[:url], target: '_blank', style: 'color:#ac4142;'}
-        #{result[:name].truncate(45)}
-      %h3
-        - if result[:price][:price]
-          %strong
-            $#{result[:price][:price]}
-        - elsif result[:price][:original_price]
-          %strong
-            $#{result[:price][:original_price]}
-      %p
-        - if result[:container] == 'amazon-offers'
-          = render 'search/amazon_button', result: result
-        - else
-          %a.btn.btn-primary{:href => result[:url], target: '_blank'} Buy Now
-        - if user_signed_in?
+      - if result[:image]
+        %img.img-responsive{:alt => "", :src => result[:image]}
+      - else
+        = image_tag "thumbnail.jpg", :class => 'img-responsive'
+      = image_tag "#{result[:container]}.png", :class => 'logo'
+      .caption
+        %a{:href => result[:url], target: '_blank', style: 'color:#ac4142;'}
+          #{result[:name].truncate(45)}
+        %h3
+          - if result[:price][:price]
+            %strong
+              $#{result[:price][:price]}
+          - elsif result[:price][:original_price]
+            %strong
+              $#{result[:price][:original_price]}
+        %p
+          - if result[:container] == 'amazon-offers'
+            = render 'search/amazon_button', result: result
+          - else
+            %a.btn.btn-primary{:href => result[:url], target: '_blank'} Buy Now
+          - if user_signed_in?
 
-          %a.btn.btn-danger{:href => "/users/sign_up"} Follow
-          %a.btn.btn-default{:href => "#"} History
-          - if current_user.admin?
-            %ul.list-group
-              - result.each do |key, value|
-                %li.list-group-item
-                  %span.badge= key.upcase
-                  = value
-        - else
-          / %a.btn.btn-danger{:href => "/users/sign_in"} Follow
+            %a.btn.btn-danger{:href => "/users/sign_up"} Follow
+            %a.btn.btn-default{:href => "#"} History
+            - if current_user.admin?
+              %ul.list-group
+                - result.each do |key, value|
+                  %li.list-group-item
+                    %span.badge= key.upcase
+                    = value
+          - else
+            / %a.btn.btn-danger{:href => "/users/sign_in"} Follow
