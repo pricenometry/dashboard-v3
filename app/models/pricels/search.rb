@@ -5,9 +5,7 @@ class Pricels::Search < Pricels::Base
   end
 
   def search
-    ad = [{container: 'google'}]
-    search = json[:results]
-    ad + search + ad
+    json[:results]
   end
 
   def pagination
