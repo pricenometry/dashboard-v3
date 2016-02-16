@@ -2,7 +2,7 @@ class SearchController < ApplicationController
   def index
     if params[:query].presence
       search = object.search
-      @results = [google_ad] + search.insert(5, google_ad)
+      @results = search.insert(5, google_ad) + [google_ad]
     else
       results = []
     end
