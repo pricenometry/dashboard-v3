@@ -3,8 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
 
-  # resources :search
-  # get '/:container/:record_id', to: 'records#index'
   get '/search/:query', to: 'search#index'
   get '/search', to: 'search#index'
+  get '/:container/:record_id', to: 'record#index'
 end
