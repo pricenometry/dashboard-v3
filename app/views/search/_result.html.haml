@@ -1,14 +1,14 @@
 .col-md-2.col-sm-4.hero-feature
-  .thumbnail
-    - if result[:container] == 'google'
-      .caption.strong
-        Sponsored
-      %script{:async => "", :src => "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"}
-      / Pricenometry Search
-      %ins.adsbygoogle{"data-ad-client" => "ca-pub-4228490019228264", "data-ad-slot" => "7023758185", "data-ad-query" => "#{params[:query]}", 'data-ad-images' => true, :style => "display:inline-block;width:120px;height:260px"}
-      :javascript
-        (adsbygoogle = window.adsbygoogle || []).push({});
-    - else
+  - if result[:container] == 'google'
+    .caption.strong
+      Sponsored
+    %script{:async => "", :src => "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"}
+    / Pricenometry Search
+    %ins.adsbygoogle{"data-ad-client" => "ca-pub-4228490019228264", "data-ad-slot" => "7023758185", "data-ad-query" => "#{params[:query]}", 'data-ad-images' => true, :style => "display:inline-block;width:120px;height:240px"}
+    :javascript
+      (adsbygoogle = window.adsbygoogle || []).push({});
+  - else
+    .thumbnail
       - if result[:image]
         %img.img-responsive{:alt => "", :src => result[:image]}
       - else
