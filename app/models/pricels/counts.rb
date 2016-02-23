@@ -4,18 +4,18 @@ class Pricels::Counts < Pricels::Base
   end
 
   def available
-    json[:available]
+    json[:status][:available]
   end
 
   def indexing
-    json[:indexing]
+    json[:status][:indexing]
   end
 
   def processing
-    json[:processing]
+    json[:status][:processing]
   end
 
   def pending
-    json[:pending]
+    json[:status][:pending]
   end
 end
