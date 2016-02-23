@@ -1,13 +1,14 @@
 class SearchController < ApplicationController
   def index
     if params[:query].presence
-      search = object.search
-      if search.count <= 15
-        @results = search.insert(5, google_ad).insert(11, google_ad) + [google_ad]
+      search = object.search.compact
+
+      if search.count <= 5
+        @results = search + [google_ad]
       elsif search.count <= 10
         @results = search.insert(5, google_ad) + [google_ad]
-      elsif search.count <= 5
-        @results = search + [google_ad]
+      elsif search.count <= 15
+        @results = search.insert(5, google_ad).insert(11, google_ad) + [google_ad]
       end
     else
       results = []
