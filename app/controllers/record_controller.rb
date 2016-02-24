@@ -1,11 +1,11 @@
 class RecordController < ApplicationController
   def index
     if params[:container].presence && params[:record_id].presence
-      @record = object.record
-      if @record[:error]
+      @result = object.record
+      if @result[:error]
         render_404
       else
-        @query = @record[:name]
+        @query = @result[:name]
       end
     end
   end

@@ -1,15 +1,14 @@
-.container
-  .row.search-container
-    = form_tag(search_path, :method => "get", class: "col-lg-6 col-lg-offset-3") do
-      .input-group.custom-search-form
-        %input.form-control{:type => "text", :name => 'query', :value => @query, :placeholder => 'What product are you looking for?'}
-          %span.input-group-btn
-            %button.btn.btn-default{:type => "submit", :name => 'commit'}
-              %span.glyphicon.glyphicon-search
-      .input-group
-        %strong trending:
-        %a{href: '/search?query=selfie stick'} selfie stick,
-        %a{href: '/search?query=fitbit charge hr'} fitbit charge hr,
-        %a{href: '/search?query=cards against humanity'} cards against humanity,
-        %a{href: '/search?query=chromecast'} chromecast,
-        %a{href: '/search?query=chromebook'} chromebook
+.row.search-container
+  = form_tag(search_path, :method => "get") do
+    .input-group.custom-search-form
+      %input.form-control{:type => "text", :name => 'query', :value => @query, :placeholder => 'What product are you looking for?'}
+        %span.input-group-btn
+          %button.btn.btn-default{:type => "submit", :name => 'commit'}
+            %span.glyphicon.glyphicon-search
+    .input-group
+      %strong trending:
+      %a{href: '/search?query=selfie stick'} selfie stick,
+      %a{href: '/search?query=fitbit charge hr'} fitbit charge hr,
+      %a{href: '/search?query=cards against humanity'} cards against humanity,
+      %a{href: '/search?query=chromecast'} chromecast,
+      %a{href: '/search?query=chromebook'} chromebook
