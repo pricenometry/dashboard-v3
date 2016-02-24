@@ -1,6 +1,6 @@
 class SearchController < ApplicationController
   def index
-    if params[:query].presence
+    if @query = params[:query].presence
       search = object.search.compact
 
       if search.count <= 5
@@ -25,6 +25,6 @@ class SearchController < ApplicationController
   end
 
   def object
-    @object ||= Pricels::Search.new(params[:query].gsub('+', ' '), {page: current_page})
+    @object ||= Pricels::Search.new(@query.gsub('+', ' '), {page: current_page})
   end
 end

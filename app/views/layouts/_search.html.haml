@@ -2,7 +2,7 @@
   .row.search-container
     = form_tag(search_path, :method => "get", class: "col-lg-6 col-lg-offset-3") do
       .input-group.custom-search-form
-        %input.form-control{:type => "text", :name => 'query', :value => "#{params[:query]}", :placeholder => 'What product are you looking for?'}
+        %input.form-control{:type => "text", :name => 'query', :value => @query, :placeholder => 'What product are you looking for?'}
           %span.input-group-btn
             %button.btn.btn-default{:type => "submit", :name => 'commit'}
               %span.glyphicon.glyphicon-search
