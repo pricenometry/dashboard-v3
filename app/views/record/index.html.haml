@@ -1,4 +1,4 @@
-.container.text-center
+.container
   .padding
   .full.col-sm-12
     / content
@@ -14,23 +14,22 @@
           .caption
             %a{:href => @result[:url], target: '_blank', style: 'color:#ac4142;'}
               #{@result[:name].truncate(45)}
-              %h3
-                - if @result[:price][:price]
-                  %strong
-                    $#{@result[:price][:price]}
-                - elsif @result[:price][:original_price]
-                  %strong
-                    $#{@result[:price][:original_price]}
-              %p
-                - if @result[:container] == 'amazon-offers'
-                  = render 'search/amazon_button', result: @result
-                - else
-                  %a.btn.btn-primary{:href => @result[:url], target: '_blank'} Buy Now
-                - if user_signed_in?
-
-                  %a.btn.btn-danger{:href => "/users/sign_up"} Follow
-                - else
-                  %a.btn.btn-danger{:href => "#"} Follow
+            %h3
+              - if @result[:price][:price]
+                %strong
+                  $#{@result[:price][:price]}
+              - elsif @result[:price][:original_price]
+                %strong
+                  $#{@result[:price][:original_price]}
+            %p
+              - if @result[:container] == 'amazon-offers'
+                = render 'search/amazon_button', result: @result
+              - else
+                %a.btn.btn-primary{:href => @result[:url], target: '_blank'} Buy Now
+              - if user_signed_in?
+                %a.btn.btn-danger{:href => "/users/sign_up"} Follow
+              - else
+                %a.btn.btn-danger{:href => "#"} Follow
         .panel.panel-default
           .panel-heading
             %a.pull-right{:href => "#"} View all
