@@ -7,29 +7,45 @@
       .col-sm-4
         .panel.panel-default
           - if @result[:image]
-            %img.img-responsive{:alt => "", :src => @result[:image]}
+            %img.img-responsive-record{:alt => "", :src => @result[:image]}
           - else
             = image_tag "thumbnail.jpg", :class => 'img-responsive'
-          = image_tag "#{@result[:container]}.png", :class => 'logo'
           .caption
             %a{:href => @result[:url], target: '_blank', style: 'color:#ac4142;'}
-              #{@result[:name].truncate(45)}
-            %h3
-              - if @result[:price][:price]
+              %strong
+                #{@result[:name].truncate(75)}
+              = image_tag "#{@result[:container]}.png", :class => 'logo'
+            - if @result[:price][:price] && @result[:price][:original_price]
+              %h3
+                %strike
+                  $#{@result[:price][:original_price]}
+              %h1
                 %strong
                   $#{@result[:price][:price]}
-              - elsif @result[:price][:original_price]
+            - elsif @result[:price][:price]
+              %h1
+                %strong
+                  $#{@result[:price][:price]}
+            - elsif @result[:price][:original_price]
+              %h1
                 %strong
                   $#{@result[:price][:original_price]}
             %p
               - if @result[:container] == 'amazon-offers'
                 = render 'search/amazon_button', result: @result
+                %br
               - else
                 %a.btn.btn-primary{:href => @result[:url], target: '_blank'} Buy Now
               - if user_signed_in?
                 %a.btn.btn-danger{:href => "/users/sign_up"} Follow
               - else
                 %a.btn.btn-danger{:href => "#"} Follow
+        .well
+          %script{:async => "", :src => "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"}
+          / Pricenometry Page Responsive
+          %ins.adsbygoogle{"data-ad-client" => "ca-pub-4228490019228264", "data-ad-format" => "auto", "data-ad-slot" => "4134546982", :style => "display:block"}
+          :javascript
+            (adsbygoogle = window.adsbygoogle || []).push({});
         .panel.panel-default
           .panel-heading
             %a.pull-right{:href => "#"} View all
@@ -79,8 +95,13 @@
             Bootstrap is front end frameworkto build custom web applications that are fast, responsive &amp; intuitive. It consist of CSS and HTML for typography, forms, buttons, tables, grids, and navigation along with custom-built jQuery plug-ins and support for responsive layouts. With dozens of reusable components for navigation, pagination, labels, alerts etc..
       / main col right
       .col-sm-8
+        = render 'layouts/search'
         .well
-          = render 'layouts/search'
+          %script{:async => "", :src => "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"}
+          / Pricenometry Page Responsive
+          %ins.adsbygoogle{"data-ad-client" => "ca-pub-4228490019228264", "data-ad-format" => "auto", "data-ad-slot" => "4134546982", :style => "display:block"}
+          :javascript
+            (adsbygoogle = window.adsbygoogle || []).push({});
         .panel.panel-default
           .panel-heading
             %a.pull-right{:href => "#"} View all
