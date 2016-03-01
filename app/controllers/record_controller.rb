@@ -1,17 +1,22 @@
 class RecordController < ApplicationController
   def index
     if params[:container].presence && params[:record_id].presence
-      @result = record.record
-      if @result[:error]
+
+      if result[:error]
         render_404
       else
-        @query = @result[:name]
-      end
+        @query = result[:name]
+        threads = [ :news,
+                    :videos,
+                    :references,
+                    :links ].map do |thread|
+          Thread.new(thread) do |thread|
+            send(thread)
+          end
+        end
 
-      @news = record.news
-      @videos = record.videos
-      @references = record.references
-      @links = record.links
+        threads.each(&:join)
+      end
 
       if user_signed_in?
         @history = record.history
@@ -27,5 +32,25 @@ class RecordController < ApplicationController
 
   def record
     @record ||= Pricels::Record.new(params[:container], params[:record_id])
+  end
+
+  def result
+    @result ||= record.record
+  end
+
+  def news
+    @news ||= record.news
+  end
+
+  def videos
+    @videos ||= record.videos
+  end
+
+  def references
+    @references ||= record.references
+  end
+
+  def links
+    @links ||= record.links
   end
 end
