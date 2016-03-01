@@ -52,17 +52,27 @@
                     %img.img-responsive{:alt => video[:description], :src => video[:image], target: '_blank'}
                     %strong
                       #{video[:length]}
-                    #{video[:description]}
+                    #{video[:title]}
                     %strong
                       #{video[:published]}
-        / .panel.panel-default
-        /   .panel-heading
-        /     %h4 What Is Bootstrap?
-        /   .panel-body
-        /     Bootstrap is front end frameworkto build custom web applications that are fast, responsive &amp; intuitive. It consist of CSS and HTML for typography, forms, buttons, tables, grids, and navigation along with custom-built jQuery plug-ins and support for responsive layouts. With dozens of reusable components for navigation, pagination, labels, alerts etc..
-      / main col right
+        = render 'record/responsive_ad'
+        .panel.panel-default
+          .panel-heading
+            %h4 References
+          .panel-body
+            %ul.list-group
+              - if @references.any?
+                - @references.each do |reference|
+                  %a.list-group-item{:href => reference[:url]}
+                    - if reference[:image]
+                      %img.img-responsive{:alt => reference[:description], :src => reference[:image], target: '_blank'}
+                    %strong
+                      #{reference[:length]}
+                    #{reference[:title]}
+                    %strong
+                      #{reference[:published]}
       .col-sm-9
-        / = render 'layouts/search'
+        = render 'layouts/search'
         = render 'record/responsive_ad'
         .panel.panel-default
           .panel-heading
@@ -73,14 +83,13 @@
                 - @result[:description].split('. ').shuffle.each do |sentence|
                   %p{align: 'left'}
                     #{sentence}.
-            / %hr
-            /   %ul.list-unstyled
-            /     %li
-            /       %a{:href => "http://www.bootply.com/templates"} Dashboard
-            /     %li
-            /       %a{:href => "http://www.bootply.com/templates"} Darkside
-            /     %li
-            /       %a{:href => "http://www.bootply.com/templates"} Greenfield
+            %hr
+              %ul.list-unstyled
+                - if @links.any?
+                  - @links.each do |link|
+                    %li
+                      %a{:href => link[:url], target: '_blank'} #{link[:title]}
+                      \- #{link[:description]}
         = render 'record/responsive_ad'
         / .panel.panel-default
         /   .panel-heading
