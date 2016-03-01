@@ -1,14 +1,20 @@
 class RecordController < ApplicationController
   def index
     if params[:container].presence && params[:record_id].presence
-      @result = record_object.record
+      @result = record.record
       if @result[:error]
         render_404
       else
         @query = @result[:name]
       end
+
+      @news = record.news
+      @videos = record.videos
+      @references = record.references
+      @links = record.links
+
       if user_signed_in?
-        @history = @history_object.history
+        @history = record.history
       end
     end
   end
@@ -19,11 +25,7 @@ class RecordController < ApplicationController
     render(file: "#{Rails.root}/public/404.html", layout: false, status: 404)
   end
 
-  def record_object
+  def record
     @record ||= Pricels::Record.new(params[:container], params[:record_id])
-  end
-
-  def history_object
-    @history ||= Pricels::History.new(params[:container], params[:record_id])
   end
 end
