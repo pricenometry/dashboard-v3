@@ -59,14 +59,7 @@
       / main col right
       .col-sm-9
         = render 'layouts/search'
-        .well
-          %script{:async => "", :src => "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"}
-          / Pricenometry Page Responsive
-          %ins.adsbygoogle{"data-ad-client" => "ca-pub-4228490019228264", "data-ad-format" => "auto", "data-ad-slot" => "4134546982", :style => "display:block"}
-          :javascript
-            (adsbygoogle = window.adsbygoogle || []).push({});
-          - if user_signed_in?
-            .well
+        = render 'record/responsive_ad'
         .panel.panel-default
           .panel-heading
             %h4 More Info
@@ -75,6 +68,7 @@
               - @result[:description].split('. ').shuffle.each do |sentence|
                 %p{align: 'left'}
                   #{sentence}.
+        = render 'record/responsive_ad'
             / %hr
             /   %ul.list-unstyled
             /     %li
