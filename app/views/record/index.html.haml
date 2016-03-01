@@ -50,7 +50,11 @@
                 - @videos.each do |video|
                   %a.list-group-item{:href => video[:url]}
                     %img.img-responsive{:alt => video[:description], :src => video[:image], target: '_blank'}
-                    #{video[:length]} - #{video[:description]} #{video[:published]}
+                    %strong
+                      #{video[:length]}
+                    #{video[:description]}
+                    %strong
+                      #{video[:published]}
         / .panel.panel-default
         /   .panel-heading
         /     %h4 What Is Bootstrap?
