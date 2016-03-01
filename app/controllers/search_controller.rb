@@ -1,7 +1,7 @@
 class SearchController < ApplicationController
   def index
     if @query = params[:query].presence
-      search = object.search.compact
+      search = object.record.compact
 
       if search.count <= 5
         @results = search + [google_ad]

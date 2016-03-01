@@ -3,19 +3,23 @@ class Pricels::Counts < Pricels::Base
     @url = URI.escape(Pricels::Base::ENDPOINT + '/v1?' + params.to_query)
   end
 
+  def counts
+    @counts ||= json[:status]
+  end
+
   def available
-    json[:status][:available]
+    counts[:available]
   end
 
   def indexing
-    json[:status][:indexing]
+    counts[:indexing]
   end
 
   def processing
-    json[:status][:processing]
+    counts[:processing]
   end
 
   def pending
-    json[:status][:pending]
+    counts[:pending]
   end
 end

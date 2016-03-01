@@ -2,7 +2,7 @@ class Pricels::Base
   ENDPOINT = 'http://api.pricenometry.com'
 
   def json
-    @json ||= JSON.parse(response[:body]).deep_symbolize_keys!
+    JSON.parse(response[:body]).deep_symbolize_keys!
   end
 
   def response

@@ -7,7 +7,9 @@ class RecordController < ApplicationController
       else
         @query = @result[:name]
       end
-      @history = @history_object.history if user_signed_in?
+      if user_signed_in?
+        @history = @history_object.history
+      end
     end
   end
 

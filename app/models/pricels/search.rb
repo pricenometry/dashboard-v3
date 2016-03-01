@@ -5,10 +5,14 @@ class Pricels::Search < Pricels::Base
   end
 
   def search
-    json[:results]
+    @search ||= json
+  end
+
+  def results
+    search[:results]
   end
 
   def pagination
-    json[:pagination]
+    search[:pagination]
   end
 end
