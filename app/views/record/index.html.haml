@@ -40,54 +40,17 @@
                 %a.btn.btn-danger{:href => "/users/sign_up"} Follow
               - else
                 %a.btn.btn-danger{:href => "#"} Follow
-        .well
-          %script{:async => "", :src => "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"}
-          / Pricenometry Page Responsive
-          %ins.adsbygoogle{"data-ad-client" => "ca-pub-4228490019228264", "data-ad-format" => "auto", "data-ad-slot" => "4134546982", :style => "display:block"}
-          :javascript
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        / .panel.panel-default
-        /   .panel-heading
-        /     %a.pull-right{:href => "#"} View all
-        /     %h4 Bootstrap Examples
-        /   .panel-body
-        /     .list-group
-        /       %a.list-group-item{:href => "http://bootply.com/tagged/modal"} Modal / Dialog
-        /       %a.list-group-item{:href => "http://bootply.com/tagged/datetime"} Datetime Examples
-        /       %a.list-group-item{:href => "http://bootply.com/tagged/datatable"} Data Grids
-        / .well
-        /   %form.form-horizontal{:role => "form"}
-        /     %h4 What's New
-        /     .form-group{:style => "padding:14px;"}
-        /       %textarea.form-control{:placeholder => "Update your status"}
-        /     %button.btn.btn-primary.pull-right{:type => "button"} Post
-        /     %ul.list-inline
-        /       %li
-        /         %a{:href => ""}
-        /           %i.glyphicon.glyphicon-upload
-        /       %li
-        /         %a{:href => ""}
-        /           %i.glyphicon.glyphicon-camera
-        /       %li
-        /         %a{:href => ""}
-        /           %i.glyphicon.glyphicon-map-marker
-        / .panel.panel-default
-        /   .panel-heading
-        /     %a.pull-right{:href => "#"} View all
-        /     %h4 More Templates
-        /   .panel-body
-        /     %img.img-circle.pull-right{:src => "//placehold.it/150x150"}
-        /       %a{:href => "#"} Free @Bootply
-        /       .clearfix
-        /       There a load of new free Bootstrap 3 ready templates at Bootply. All of these templates are free and don't require extensive customization to the Bootstrap baseline.
-        /       %hr
-        /         %ul.list-unstyled
-        /           %li
-        /             %a{:href => "http://www.bootply.com/templates"} Dashboard
-        /           %li
-        /             %a{:href => "http://www.bootply.com/templates"} Darkside
-        /           %li
-        /             %a{:href => "http://www.bootply.com/templates"} Greenfield
+        = render 'record/responsive_ad'
+        .panel.panel-default
+          .panel-heading
+            %h4 Videos
+          .panel-body
+            .list-group
+              - if @videos.any?
+                - @videos.each do |video|
+                  %a.list-group-item{:href => video[:url]}
+                    %img.img-responsive{:alt => video[:description], :src => video[:image], target: '_blank'}
+                    #{video[:length]} - #{video[:description]} #{video[:published]}
         / .panel.panel-default
         /   .panel-heading
         /     %h4 What Is Bootstrap?
@@ -104,6 +67,22 @@
             (adsbygoogle = window.adsbygoogle || []).push({});
           - if user_signed_in?
             .well
+        .panel.panel-default
+          .panel-heading
+            %h4 More Info
+          .panel-body
+            .clearfix
+              - @result[:description].split('. ').shuffle.each do |sentence|
+                %p{align: 'left'}
+                  #{sentence}.
+            / %hr
+            /   %ul.list-unstyled
+            /     %li
+            /       %a{:href => "http://www.bootply.com/templates"} Dashboard
+            /     %li
+            /       %a{:href => "http://www.bootply.com/templates"} Darkside
+            /     %li
+            /       %a{:href => "http://www.bootply.com/templates"} Greenfield
         / .panel.panel-default
         /   .panel-heading
         /     %a.pull-right{:href => "#"} View all

@@ -16,26 +16,26 @@ class Pricels::Record < Pricels::Base
 
   def history
     url 'history'
-    json[:result]
+    json[:result][:history]
   end
 
   def videos
     url 'videos'
-    json[:result]
+    json[:result][:videos]
   end
 
   def news
     url 'news'
-    json[:result]
+    json[:result][:news]
   end
 
   def references
     url 'references'
-    json[:result]
+    json[:result][:references]
   end
 
   def links
     url 'links'
-    json[:result]
+    json[:result][:links]
   end
 end
