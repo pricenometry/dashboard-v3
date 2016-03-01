@@ -58,7 +58,7 @@
         /     Bootstrap is front end frameworkto build custom web applications that are fast, responsive &amp; intuitive. It consist of CSS and HTML for typography, forms, buttons, tables, grids, and navigation along with custom-built jQuery plug-ins and support for responsive layouts. With dozens of reusable components for navigation, pagination, labels, alerts etc..
       / main col right
       .col-sm-9
-        = render 'layouts/search'
+        / = render 'layouts/search'
         = render 'record/responsive_ad'
         .panel.panel-default
           .panel-heading
@@ -68,7 +68,6 @@
               - @result[:description].split('. ').shuffle.each do |sentence|
                 %p{align: 'left'}
                   #{sentence}.
-        = render 'record/responsive_ad'
             / %hr
             /   %ul.list-unstyled
             /     %li
@@ -77,6 +76,7 @@
             /       %a{:href => "http://www.bootply.com/templates"} Darkside
             /     %li
             /       %a{:href => "http://www.bootply.com/templates"} Greenfield
+        = render 'record/responsive_ad'
         / .panel.panel-default
         /   .panel-heading
         /     %a.pull-right{:href => "#"} View all
