@@ -2,7 +2,7 @@
   = render 'layouts/search'
   .row
     - @results.each_with_index do |result, index|
-      - if index % 6 == 0
+      - if index % 4 == 0
         .row
       = render 'search/result', result: result
 = render 'layouts/pagination', pagination: @pagination
