@@ -4,7 +4,7 @@
     / content
     .row
       / main col left
-      .col-sm-3
+      .col-sm-3.text-center
         .panel.panel-default
           - if @result[:image]
             %img.img-responsive-record{:alt => "", :src => @result[:image]}
@@ -55,7 +55,7 @@
                     #{video[:title]}
                     %strong
                       #{video[:published]}
-        = render 'record/responsive_ad'
+        / = render 'record/responsive_ad'
         .panel.panel-default
           .panel-heading
             %h4 References
@@ -76,6 +76,34 @@
         = render 'record/responsive_ad'
         .panel.panel-default
           .panel-heading
+            %h4 News
+          %ul.list-group
+            - if @news.any?
+              - @news.each do |article|
+                .list-group-item
+                  - if article[:image]
+                    %a{:href => article[:url], target: '_blank'}
+                      %img.img-responsive.pull-left{:alt => article[:title], :src => article[:image], style: "PADDING-RIGHT: 10px"}
+                  %a{:href => article[:url], target: '_blank'}
+                    %strong
+                      #{article[:title]}
+                  \- #{article[:description]}
+                  #{article[:published]}
+                  %strong
+                    #{article[:publisher]}
+                  - if article[:related].any?
+                    %ul.list-group
+                      - article[:related].each do |related|
+                        %li.list-group-item
+                          %a{:href => related[:url], target: '_blank'}
+                            %strong
+                              #{related[:title]}
+                          #{related[:published]}
+                          %strong
+                            #{related[:publisher]}
+        = render 'record/responsive_ad'
+        .panel.panel-default
+          .panel-heading
             %h4 More Info
           .panel-body
             .clearfix
@@ -91,56 +119,3 @@
                       %a{:href => link[:url], target: '_blank'} #{link[:title]}
                       \- #{link[:description]}
         = render 'record/responsive_ad'
-        / .panel.panel-default
-        /   .panel-heading
-        /     %a.pull-right{:href => "#"} View all
-        /     %h4 Bootply Editor &amp; Code Library
-        /   .panel-body
-        /     %p
-        /       %img.img-circle.pull-right{:src => "//placehold.it/150x150"}
-        /         %a{:href => "#"} The Bootstrap Playground
-        /     .clearfix
-        /     %hr
-        /       Design, build, test, and prototype using Bootstrap in real-time from your Web browser. Bootply combines the power of hand-coded HTML, CSS and JavaScript with the benefits of responsive design using Bootstrap. Find and showcase Bootstrap-ready snippets in the 100% free Bootply.com code repository.
-        / .panel.panel-default
-        /   .panel-heading
-        /     %a.pull-right{:href => "#"} View all
-        /     %h4 Stackoverflow
-        /   .panel-body
-        /     %img.img-circle.pull-right{:src => "//placehold.it/150x150"}
-        /       %a{:href => "#"} Keyword: Bootstrap
-        /       .clearfix
-        /       %hr
-        /         %p
-        /           If you're looking for help with Bootstrap code, the
-        /           %code twitter-bootstrap
-        /           tag at
-        /           %a{:href => "http://stackoverflow.com/questions/tagged/twitter-bootstrap"} Stackoverflow
-        /           is a good place to find answers.
-        /         %hr
-        /           %form
-        /             .input-group
-        /               .input-group-btn
-        /                 %button.btn.btn-default +1
-        /                 %button.btn.btn-default
-        /                   %i.glyphicon.glyphicon-share
-        /               %input.form-control{:placeholder => "Add a comment..", :type => "text"}
-        / .panel.panel-default
-        /   .panel-heading
-        /     %a.pull-right{:href => "#"} View all
-        /     %h4 Portlet Heading
-        /   .panel-body
-        /     %ul.list-group
-        /       %li.list-group-item Modals
-        /       %li.list-group-item Sliders / Carousel
-        /       %li.list-group-item Thumbnails
-        / .panel.panel-default
-        /   .panel-thumbnail
-        /     %img.img-responsive{:src => "/assets/example/bg_4.jpg"}/
-        /   .panel-body
-        /     %p.lead Social Good
-        /     %p 1,200 Followers, 83 Posts
-        /     %p
-        /       %img{:height => "28px", :src => "https://lh6.googleusercontent.com/-5cTTMHjjnzs/AAAAAAAAAAI/AAAAAAAAAFk/vgza68M4p2s/s28-c-k-no/photo.jpg", :width => "28px"}
-        /         %img{:height => "28px", :src => "https://lh4.googleusercontent.com/-6aFMDiaLg5M/AAAAAAAAAAI/AAAAAAAABdM/XjnG8z60Ug0/s28-c-k-no/photo.jpg", :width => "28px"}
-        /           %img{:height => "28px", :src => "https://lh4.googleusercontent.com/-9Yw2jNffJlE/AAAAAAAAAAI/AAAAAAAAAAA/u3WcFXvK-g8/s28-c-k-no/photo.jpg", :width => "28px"}
