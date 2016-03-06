@@ -37,9 +37,9 @@
               - else
                 %a.btn.btn-primary{:href => @result[:url], target: '_blank'} Buy Now
               - if user_signed_in?
-                %a.btn.btn-danger{:href => "/users/sign_up"} Follow
+                / %a.btn.btn-danger{:href => "/users/sign_up"} Follow
               - else
-                %a.btn.btn-danger{:href => "#"} Follow
+                / %a.btn.btn-danger{:href => "#"} Follow
         = render 'layouts/responsive_ad'
         .panel.panel-default
           .panel-heading
