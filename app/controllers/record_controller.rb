@@ -8,7 +8,7 @@ class RecordController < ApplicationController
         @query = result[:name]
         threads = [ :news,
                     :videos,
-                    :references,
+                    # :references,
                     :links ].map do |thread|
           Thread.new(thread) do |thread|
             send(thread)

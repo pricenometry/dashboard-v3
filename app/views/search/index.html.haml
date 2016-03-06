@@ -1,10 +1,16 @@
 .container.text-center
   = render 'layouts/search'
-  .row
-    - @results.each_with_index do |result, index|
-      - if index % 4 == 0
-        .row
-      = render 'search/result', result: result
+  .full.col-sm-12
+    / content
+    .row
+      / main col left
+      .col-sm-3.text-center
+        = render 'layouts/responsive_ad'
+      .col-sm-9
+        - @results.each_with_index do |result, index|
+          - if index % 3 == 0
+            .row
+          = render 'search/result', result: result
 = render 'layouts/pagination', pagination: @pagination
 = render 'layouts/amazon_ads_search'
 

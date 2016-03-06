@@ -1,5 +1,5 @@
 .container
-  .padding
+  = render 'layouts/search'
   .full.col-sm-12
     / content
     .row
@@ -40,7 +40,7 @@
                 %a.btn.btn-danger{:href => "/users/sign_up"} Follow
               - else
                 %a.btn.btn-danger{:href => "#"} Follow
-        = render 'record/responsive_ad'
+        = render 'layouts/responsive_ad'
         .panel.panel-default
           .panel-heading
             %h4 Videos
@@ -55,25 +55,26 @@
                     #{video[:title]}
                     %strong
                       #{video[:published]}
-        / = render 'record/responsive_ad'
+      .col-sm-9
+        = render 'layouts/responsive_ad'
         .panel.panel-default
           .panel-heading
-            %h4 References
+            %h4 More Info
           .panel-body
-            %ul.list-group
-              - if @references.any?
-                - @references.each do |reference|
-                  %a.list-group-item{:href => reference[:url]}
-                    - if reference[:image]
-                      %img.img-responsive{:alt => reference[:description], :src => reference[:image], target: '_blank'}
-                    %strong
-                      #{reference[:length]}
-                    #{reference[:title]}
-                    %strong
-                      #{reference[:published]}
-      .col-sm-9
-        = render 'layouts/search'
-        = render 'record/responsive_ad'
+            .clearfix
+              - if @result[:description]
+                - @result[:description].split('. ').shuffle.each do |sentence|
+                  %p{align: 'left'}
+                    #{sentence}.
+            %hr
+              %ul.list-unstyled
+                - if @links.any?
+                  - @links.each do |link|
+                    %li
+                      %a{:href => link[:url], target: '_blank'} #{link[:title]}
+                      \- #{link[:description]}
+                    %br
+        = render 'layouts/responsive_ad'
         .panel.panel-default
           .panel-heading
             %h4 News
@@ -101,21 +102,20 @@
                           #{related[:published]}
                           %strong
                             #{related[:publisher]}
-        = render 'record/responsive_ad'
-        .panel.panel-default
-          .panel-heading
-            %h4 More Info
-          .panel-body
-            .clearfix
-              - if @result[:description]
-                - @result[:description].split('. ').shuffle.each do |sentence|
-                  %p{align: 'left'}
-                    #{sentence}.
-            %hr
-              %ul.list-unstyled
-                - if @links.any?
-                  - @links.each do |link|
-                    %li
-                      %a{:href => link[:url], target: '_blank'} #{link[:title]}
-                      \- #{link[:description]}
-        = render 'record/responsive_ad'
+        = render 'layouts/responsive_ad'
+        / .panel.panel-default
+        /   .panel-heading
+        /     %h4 References
+        /   .panel-body
+        /     %ul.list-group
+        /       - if @references.any?
+        /         - @references.each do |reference|
+        /           %a.list-group-item{:href => reference[:url], target: '_blank'}
+        /             - if reference[:image]
+        /               %img.img-responsive{:alt => reference[:description], :src => reference[:image], style: "PADDING-RIGHT: 10px"}
+        /             %strong
+        /               #{reference[:length]}
+        /             #{reference[:title]}
+        /             %strong
+        /               #{reference[:published]}
+        / = render 'layouts/responsive_ad'

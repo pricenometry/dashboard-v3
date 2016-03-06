@@ -1,4 +1,4 @@
-.row.search-container
+.row.search-container.text-center
   = form_tag(search_path, :method => "get") do
     .input-group.custom-search-form
       %input.form-control{:type => "text", :name => 'query', :value => @query, :placeholder => 'What product are you looking for?'}
