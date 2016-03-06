@@ -1,4 +1,4 @@
-.col-md-4.col-sm-4.hero-feature
+.col-md-3.col-sm-4.hero-feature
   - if result
     - if result[:container] == 'google'
       %script{:async => "", :src => "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"}
@@ -28,11 +28,11 @@
           %p
             - if result[:container] == 'amazon-offers'
               = render 'search/amazon_button', result: result
-              %br
             - else
               %a.btn.btn-primary{:href => result[:url], target: '_blank'} Buy Now
+              %br
             - if user_signed_in?
-
+              %br
               / %a.btn.btn-danger{:href => "/users/sign_up"} Follow
               %a.btn.btn-default{:href => "/#{result[:container]}/#{result[:id]}", rel: "nofollow"} Analyze
               - if current_user.admin?
@@ -42,5 +42,6 @@
                       %span.badge= key.upcase
                       = value
             - else
+              %br
               / %a.btn.btn-danger{:href => "/users/sign_in"} Follow
               %a.btn.btn-default{:href => "/#{result[:container]}/#{result[:id]}", rel: "nofollow"} Analyze

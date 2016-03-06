@@ -8,7 +8,7 @@
         = render 'layouts/responsive_ad'
       .col-sm-9
         - @results.each_with_index do |result, index|
-          - if index % 3 == 0
+          - if index % 4 == 0
             .row
           = render 'search/result', result: result
 = render 'layouts/pagination', pagination: @pagination
