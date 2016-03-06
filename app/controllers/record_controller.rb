@@ -6,7 +6,8 @@ class RecordController < ApplicationController
         render_404
       else
         @query = result[:name]
-        threads = [ :news,
+        threads = [ :history,
+                    :news,
                     :videos,
                     # :references,
                     :links ].map do |thread|
@@ -16,10 +17,6 @@ class RecordController < ApplicationController
         end
 
         threads.each(&:join)
-      end
-
-      if user_signed_in?
-        @history = record.history
       end
     end
   end
@@ -32,6 +29,10 @@ class RecordController < ApplicationController
 
   def record
     @record ||= Pricels::Record.new(params[:container], params[:record_id])
+  end
+
+  def history
+    @history ||= record.history
   end
 
   def result
