@@ -30,7 +30,7 @@
               = render 'search/amazon_button', result: result
               %br
             - else
-              %a.btn.btn-primary{:href => result[:url], target: '_blank'} Buy Now
+              / %a.btn.btn-primary{:href => result[:url], target: '_blank'} Buy Now
             - if user_signed_in?
 
               / %a.btn.btn-danger{:href => "/users/sign_up"} Follow
