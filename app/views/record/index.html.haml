@@ -40,83 +40,11 @@
                 / %a.btn.btn-danger{:href => "/users/sign_up"} Follow
               - else
                 / %a.btn.btn-danger{:href => "#"} Follow
-        = render 'layouts/responsive_ad'
-        .panel.panel-default
-          .panel-heading
-            %h4 Videos
-          .panel-body
-            .list-group
-              - if @videos.any?
-                - @videos.each do |video|
-                  %a.list-group-item{:href => video[:url]}
-                    %img.img-responsive{:alt => video[:description], :src => video[:image], target: '_blank'}
-                    %strong
-                      #{video[:length]}
-                    #{video[:title]}
-                    %strong
-                      #{video[:published]}
+        = render 'record/videos'
+        = render 'record/references'
       .col-md-9.col-sm-8
-
-        = render 'layouts/responsive_ad'
-        .panel.panel-default
-          .panel-heading
-            %h4 More Info
-          .panel-body
-            .clearfix
-              - if @result[:description]
-                - @result[:description].split('. ').shuffle.each do |sentence|
-                  %p{align: 'left'}
-                    #{sentence}.
-            %hr
-              %ul.list-unstyled
-                - if @links.any?
-                  - @links.each do |link|
-                    %li
-                      %a{:href => link[:url], target: '_blank'} #{link[:title]}
-                      \- #{link[:description]}
-                    %br
-        = render 'layouts/responsive_ad'
-        .panel.panel-default
-          .panel-heading
-            %h4 News
-          %ul.list-group
-            - if @news.any?
-              - @news.each do |article|
-                .list-group-item
-                  - if article[:image]
-                    %a{:href => article[:url], target: '_blank'}
-                      %img.img-responsive.pull-left{:alt => article[:title], :src => article[:image], style: "PADDING-RIGHT: 10px"}
-                  %a{:href => article[:url], target: '_blank'}
-                    %strong
-                      #{article[:title]}
-                  \- #{article[:description]}
-                  #{article[:published]}
-                  %strong
-                    #{article[:publisher]}
-                  - if article[:related].any?
-                    %ul.list-group
-                      - article[:related].each do |related|
-                        %li.list-group-item
-                          %a{:href => related[:url], target: '_blank'}
-                            %strong
-                              #{related[:title]}
-                          #{related[:published]}
-                          %strong
-                            #{related[:publisher]}
-        = render 'layouts/responsive_ad'
-        / .panel.panel-default
-        /   .panel-heading
-        /     %h4 References
-        /   .panel-body
-        /     %ul.list-group
-        /       - if @references.any?
-        /         - @references.each do |reference|
-        /           %a.list-group-item{:href => reference[:url], target: '_blank'}
-        /             - if reference[:image]
-        /               %img.img-responsive{:alt => reference[:description], :src => reference[:image], style: "PADDING-RIGHT: 10px"}
-        /             %strong
-        /               #{reference[:length]}
-        /             #{reference[:title]}
-        /             %strong
-        /               #{reference[:published]}
-        / = render 'layouts/responsive_ad'
+        = render 'record/history'
+        = render 'record/social'
+        = render 'record/details'
+        = render 'record/news'
+        = render 'record/links'

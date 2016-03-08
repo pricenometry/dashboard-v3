@@ -1,0 +1,17 @@
+.panel.panel-default
+  .panel-heading
+    %h4 Details
+  .panel-body
+    - if user_signed_in?
+      - if current_user.admin?
+        %ul.list-group
+          - @result.each do |key, value|
+            %li.list-group-item
+              %span.badge= key.upcase
+              = value
+        .clearfix
+          - if @result[:description]
+            - @result[:description].split('. ').shuffle.each do |sentence|
+              %p{align: 'left'}
+                #{sentence}.
+= render 'layouts/responsive_ad'

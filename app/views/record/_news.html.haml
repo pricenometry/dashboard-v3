@@ -1,0 +1,28 @@
+- if @news.any?
+  .panel.panel-default
+    .panel-heading
+      %h4 News
+    %ul.list-group
+      - @news.each do |article|
+        .list-group-item
+          - if article[:image]
+            %a{:href => article[:url], target: '_blank'}
+              %img.img-responsive.pull-left{:alt => article[:title], :src => article[:image], style: "PADDING-RIGHT: 10px"}
+          %a{:href => article[:url], target: '_blank'}
+            %strong
+              #{article[:title]}
+          \- #{article[:description]}
+          #{article[:published]}
+          %strong
+            #{article[:publisher]}
+          - if article[:related].any?
+            %ul.list-group
+              - article[:related].each do |related|
+                %li.list-group-item
+                  %a{:href => related[:url], target: '_blank'}
+                    %strong
+                      #{related[:title]}
+                  #{related[:published]}
+                  %strong
+                    #{related[:publisher]}
+  = render 'layouts/responsive_ad'

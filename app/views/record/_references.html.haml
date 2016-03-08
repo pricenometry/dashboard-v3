@@ -1,0 +1,16 @@
+- if @references.any?
+  = render 'layouts/responsive_ad'
+  .panel.panel-default
+    .panel-heading
+      %h4 References
+    .panel-body
+      %ul.list-group
+        - @references.each do |reference|
+          %a.list-group-item{:href => reference[:url], target: '_blank'}
+            - if reference[:image]
+              %img.img-responsive{:alt => reference[:description], :src => reference[:image], style: "PADDING-RIGHT: 10px"}
+            %strong
+              #{reference[:length]}
+            #{reference[:title]}
+            %strong
+              #{reference[:published]}

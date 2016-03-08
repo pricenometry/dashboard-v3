@@ -1,0 +1,15 @@
+- if @videos.any?
+  = render 'layouts/responsive_ad'
+  .panel.panel-default
+    .panel-heading
+      %h4 Videos
+    .panel-body
+      .list-group
+        - @videos.each do |video|
+          %a.list-group-item{:href => video[:url]}
+            %img.img-responsive{:alt => video[:description], :src => video[:image], target: '_blank'}
+            %strong
+              #{video[:length]}
+            #{video[:title]}
+            %strong
+              #{video[:published]}

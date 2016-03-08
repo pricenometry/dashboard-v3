@@ -1,0 +1,7 @@
+- if @history[:price]
+  .panel.panel-default
+    .panel-heading
+      %h4 Price History
+    .panel-body
+      = line_chart @history[:price], min: @min_price
+  = render 'layouts/responsive_ad'

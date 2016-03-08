@@ -7,9 +7,10 @@ class RecordController < ApplicationController
       else
         @query = result[:name]
         threads = [ :history,
+                    :min_price,
                     :news,
                     :videos,
-                    # :references,
+                    :references,
                     :links ].map do |thread|
           Thread.new(thread) do |thread|
             send(thread)
@@ -32,7 +33,11 @@ class RecordController < ApplicationController
   end
 
   def history
-    @history ||= record.history
+    @history ||= record.history || {}
+  end
+
+  def min_price
+    @min_price ||= history[:price].try(:values).try(:min_by).try(:min)
   end
 
   def result

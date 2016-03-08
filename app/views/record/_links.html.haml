@@ -1,0 +1,12 @@
+- if @links.any?
+  .panel.panel-default
+    .panel-heading
+      %h4 More Info
+    .panel-body
+      %ul.list-unstyled
+        - @links.each do |link|
+          %li
+            %a{:href => link[:url], target: '_blank'} #{link[:title]}
+            \- #{link[:description]}
+          %br
+  = render 'layouts/responsive_ad'
