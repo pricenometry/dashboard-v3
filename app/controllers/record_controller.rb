@@ -10,7 +10,7 @@ class RecordController < ApplicationController
                     :min_price,
                     :news,
                     :videos,
-                    :references,
+                    # :references,
                     :links ].map do |thread|
           Thread.new(thread) do |thread|
             send(thread)
