@@ -4,7 +4,7 @@
     / content
     .row
       / main col left
-      .col-sm-3.text-center
+      .col-md-3.col-sm-4.text-center
         .panel.panel-default
           - if @result[:image]
             %img.img-responsive-record{:alt => "", :src => @result[:image]}
@@ -55,7 +55,7 @@
                     #{video[:title]}
                     %strong
                       #{video[:published]}
-      .col-sm-9
+      .col-md-9.col-sm-8
         = render 'layouts/responsive_ad'
         .panel.panel-default
           .panel-heading

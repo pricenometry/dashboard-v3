@@ -7,11 +7,11 @@
       .col-md-3.col-sm-4.text-center
         = render 'layouts/responsive_ad'
         = render 'layouts/responsive_ad'
+        = render 'layouts/responsive_ad'
       .col-md-9.col-sm-8
         - @results.each_with_index do |result, index|
           - if index % 3 == 0
             .row
           = render 'search/result', result: result
 = render 'layouts/pagination', pagination: @pagination
-= render 'layouts/amazon_ads_search'
 
