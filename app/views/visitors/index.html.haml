@@ -1,10 +1,10 @@
 .container.text-center
+  = render 'layouts/search'
   .full.col-sm-12
     / content
     .row
       / main col left
-      .col-sm-6
-        = render 'layouts/search'
+      .col-md-9.col-sm-8
         #welcome.page-header
           %h1
             = content_for?(:h1) ? yield(:h1) : Rails.configuration.config[:site][:slogan]
@@ -16,8 +16,6 @@
             .col-md-4{align: 'center'}
               = image_tag "#{name}.png", :class => 'logo'
               #{count}
-      .col-sm-6.text-center
-        = render 'layouts/responsive_ad'
         .row
           .col-md-4{align: 'center'}
             %strong Indexing
@@ -28,3 +26,5 @@
           .col-md-4{align: 'center'}
             %strong Pending
             %p #{@pending}
+      .col-md-3.col-sm-4.text-center
+        = render 'layouts/responsive_ad'
