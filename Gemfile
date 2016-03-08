@@ -7,6 +7,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'excon'
 gem 'bootstrap-sass'
 gem "chartkick"
+gem 'groupdate'
 
 gem 'devise'
 gem 'pundit'
