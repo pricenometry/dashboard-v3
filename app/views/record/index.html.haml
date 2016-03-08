@@ -30,6 +30,7 @@
               %h1
                 %strong
                   $#{@result[:price][:original_price]}
+            #{@result[:availability]}
             %p
               - if @result[:container] == 'amazon-offers'
                 = render 'search/amazon_button', result: @result
@@ -40,6 +41,7 @@
                 / %a.btn.btn-danger{:href => "/users/sign_up"} Follow
               - else
                 / %a.btn.btn-danger{:href => "#"} Follow
+        = render 'layouts/responsive_ad'
         = render 'record/videos'
         / = render 'record/references'
       .col-md-9.col-sm-8

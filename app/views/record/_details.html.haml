@@ -9,9 +9,15 @@
             %li.list-group-item
               %span.badge= key.upcase
               = value
-        .clearfix
-          - if @result[:description]
-            - @result[:description].split('. ').shuffle.each do |sentence|
-              %p{align: 'left'}
-                #{sentence}.
+    %ul.list-group
+      - @result.each do |key, value|
+        - if @canonical_details.include?(key)
+          %li.list-group-item
+            %span.badge= key.upcase
+            = value
+    .clearfix
+      - if @result[:description]
+        - @result[:description].split('. ').shuffle.each do |sentence|
+          %p{align: 'left'}
+            #{sentence}.
 = render 'layouts/responsive_ad'

@@ -1,5 +1,4 @@
 - if @videos.any?
-  = render 'layouts/responsive_ad'
   .panel.panel-default
     .panel-heading
       %h4 Videos
@@ -13,3 +12,4 @@
             #{video[:title]}
             %strong
               #{video[:published]}
+  = render 'layouts/responsive_ad'

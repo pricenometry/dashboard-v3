@@ -1,5 +1,4 @@
 - if @references.any?
-  = render 'layouts/responsive_ad'
   .panel.panel-default
     .panel-heading
       %h4 References
@@ -14,3 +13,4 @@
             #{reference[:title]}
             %strong
               #{reference[:published]}
+  = render 'layouts/responsive_ad'

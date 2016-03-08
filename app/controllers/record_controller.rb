@@ -18,6 +18,18 @@ class RecordController < ApplicationController
         end
 
         threads.each(&:join)
+
+        @canonical_details = [
+                              :id,
+                              :container,
+                              :name,
+                              :upc,
+                              :model,
+                              :availability,
+                              :sku,
+                              :mpn,
+                              :manufacturer
+                             ]
       end
     end
   end
