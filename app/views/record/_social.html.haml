@@ -1,7 +1,7 @@
 - if @result[:social].any?
   .panel.panel-default
     .panel-heading
-      %h4 Social Coverage
+      %h4 Sharing on Social Networks
     .panel-body
       = pie_chart @result[:social].select {|k,v| k != :total_shares }
   = render 'layouts/responsive_ad'
