@@ -6,10 +6,11 @@ class Pricels::Record < Pricels::Base
   end
 
   def url type = nil
-    @url = URI.escape(Pricels::Base::ENDPOINT + '/v1/' + @container + '/' + @id + "/#{type}?" + params.merge(@options).merge(social: false).to_query)
+    @url = URI.escape(Pricels::Base::ENDPOINT + '/v1/' + @container + '/' + @id + "/#{type}?" + params.merge(@options).to_query)
   end
 
-  def record
+  def record crawl = true
+    @options = @options.merge(fetch: crawl, social: true)
     url
     json[:result]
   end

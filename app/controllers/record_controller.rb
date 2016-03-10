@@ -2,16 +2,32 @@ class RecordController < ApplicationController
   def index
     if params[:container].presence && params[:record_id].presence
 
-      if result[:error]
-        render_404
+      if browser.bot?
+        if result(false)[:error]
+          render_404
+        else
+          @query = result[:name]
+          threads = [ :history,
+                      :min_price,
+                      :canonical_details
+                    ].map do |thread|
+            Thread.new(thread) do |thread|
+              send(thread)
+            end
+          end
+
+          threads.each(&:join)
+        end
       else
-        @query = result[:name]
-        history
-        min_price
+        if result[:error]
+          render_404
+        else
+          @query = result[:name]
 
-        unless browser.bot?
-
-          threads = [ :news,
+          threads = [ :history,
+                      :min_price,
+                      :canonical_details,
+                      :news,
                       :videos,
                       :references,
                       :links
@@ -22,25 +38,26 @@ class RecordController < ApplicationController
           end
 
           threads.each(&:join)
-
         end
-
-        @canonical_details = [
-                              :id,
-                              :container,
-                              :name,
-                              :upc,
-                              :model,
-                              :availability,
-                              :sku,
-                              :mpn,
-                              :manufacturer
-                             ]
       end
     end
   end
 
   protected
+
+  def canonical_details
+    @canonical_details ||= [
+                            :id,
+                            :container,
+                            :name,
+                            :upc,
+                            :model,
+                            :availability,
+                            :sku,
+                            :mpn,
+                            :manufacturer
+                           ]
+  end
 
   def render_404
     render(file: "#{Rails.root}/public/404.html", layout: false, status: 404)
@@ -64,8 +81,8 @@ class RecordController < ApplicationController
     end
   end
 
-  def result
-    @result ||= record.record
+  def result(crawl = true)
+    @result ||= record.record(crawl)
   end
 
   def news
