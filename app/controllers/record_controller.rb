@@ -6,19 +6,24 @@ class RecordController < ApplicationController
         render_404
       else
         @query = result[:name]
-        threads = [ :history,
-                    :min_price,
-                    # :news,
-                    # :videos,
-                    # :references,
-                    # :links
-                  ].map do |thread|
-          Thread.new(thread) do |thread|
-            send(thread)
-          end
-        end
+        history
+        min_price
 
-        threads.each(&:join)
+        unless browser.bot?
+
+          threads = [ :news,
+                      :videos,
+                      :references,
+                      :links
+                    ].map do |thread|
+            Thread.new(thread) do |thread|
+              send(thread)
+            end
+          end
+
+          threads.each(&:join)
+
+        end
 
         @canonical_details = [
                               :id,
