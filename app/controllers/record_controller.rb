@@ -49,7 +49,13 @@ class RecordController < ApplicationController
   end
 
   def min_price
-    @min_price ||= history[:price].try(:values).try(:min_by).try(:min)
+    @min_price ||= begin
+      history[:price].try(:values).try(:min_by).try(:min) - 1
+    rescue
+      history[:price].try(:values).try(:min_by).try(:min)
+    rescue
+      0
+    end
   end
 
   def result
