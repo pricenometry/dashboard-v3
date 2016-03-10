@@ -4,4 +4,6 @@
       %h4 Popularity on Social Networks
     .panel-body
       = pie_chart @result[:social].select {|k,v| k != :total_shares }
+      - if @social_charts.presence
+        = area_chart @social_charts
   = render 'layouts/responsive_ad'

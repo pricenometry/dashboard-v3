@@ -7,8 +7,9 @@ class RecordController < ApplicationController
           render_404
         else
           @query = result[:name]
-          threads = [ :history,
-                      :min_price,
+          history
+          threads = [ :min_price,
+                      :social_charts,
                       :canonical_details
                     ].map do |thread|
             Thread.new(thread) do |thread|
@@ -23,9 +24,9 @@ class RecordController < ApplicationController
           render_404
         else
           @query = result[:name]
-
-          threads = [ :history,
-                      :min_price,
+          history
+          threads = [ :min_price,
+                      :social_charts,
                       :canonical_details,
                       :news,
                       :videos,
@@ -44,6 +45,23 @@ class RecordController < ApplicationController
   end
 
   protected
+
+  def social_charts
+    @social_charts ||= begin
+      chart = []
+      chart << {name: 'facebook', data: @history[:facebook_shares]} if @history[:facebook_shares].presence
+      chart << {name: 'twitter', data: @history[:twitter_shares]} if @history[:twitter_shares].presence
+      chart << {name: 'google plus', data: @history[:google_plus_shares]} if @history[:google_plus_shares].presence
+      chart << {name: 'reddit', data: @history[:reddit_shares]} if @history[:reddit_shares].presence
+      chart << {name: 'linkedin', data: @history[:linkedin_shares]} if @history[:linkedin_shares].presence
+      chart << {name: 'pinterest', data: @history[:pinterest_shares]} if @history[:pinterest_shares].presence
+      chart << {name: 'buffer', data: @history[:buffer_shares]} if @history[:buffer_shares].presence
+      chart << {name: 'stumbleupon', data: @history[:stumbleupon_shares]} if @history[:stumbleupon_shares].presence
+      chart
+    rescue => e
+      []
+    end
+  end
 
   def canonical_details
     @canonical_details ||= [
