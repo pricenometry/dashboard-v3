@@ -3,5 +3,5 @@
     .panel-heading
       %h4 Price History
     .panel-body
-      = line_chart @history[:price], min: @min_price
+      = line_chart @history[:price], min: @min_price, max: @max_price
   = render 'layouts/responsive_ad'

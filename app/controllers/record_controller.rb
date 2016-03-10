@@ -9,6 +9,7 @@ class RecordController < ApplicationController
           @query = result[:name]
           history
           threads = [ :min_price,
+                      :max_price,
                       :social_charts,
                       :canonical_details
                     ].map do |thread|
@@ -26,6 +27,7 @@ class RecordController < ApplicationController
           @query = result[:name]
           history
           threads = [ :min_price,
+                      :max_price,
                       :social_charts,
                       :canonical_details,
                       :news,
@@ -50,8 +52,8 @@ class RecordController < ApplicationController
     @social_charts ||= begin
       chart = []
       chart << {name: 'facebook', data: @history[:facebook_shares]} if @history[:facebook_shares].presence
-      chart << {name: 'twitter', data: @history[:twitter_shares]} if @history[:twitter_shares].presence
       chart << {name: 'google plus', data: @history[:google_plus_shares]} if @history[:google_plus_shares].presence
+      chart << {name: 'twitter', data: @history[:twitter_shares]} if @history[:twitter_shares].presence
       chart << {name: 'reddit', data: @history[:reddit_shares]} if @history[:reddit_shares].presence
       chart << {name: 'linkedin', data: @history[:linkedin_shares]} if @history[:linkedin_shares].presence
       chart << {name: 'pinterest', data: @history[:pinterest_shares]} if @history[:pinterest_shares].presence
@@ -94,6 +96,16 @@ class RecordController < ApplicationController
       history[:price].try(:values).try(:min_by).try(:min) - 1
     rescue
       history[:price].try(:values).try(:min_by).try(:min)
+    rescue
+      0
+    end
+  end
+
+  def max_price
+    @max_price ||= begin
+      history[:price].try(:values).try(:min_by).try(:max) + 1
+    rescue
+      history[:price].try(:values).try(:min_by).try(:max)
     rescue
       0
     end
