@@ -13,7 +13,7 @@
             - if result[:image]
               %img.img-responsive-search{:alt => "", :src => result[:image]}
             - else
-              = image_tag "thumbnail.jpg", :class => 'img-responsive'
+              = image_tag "thumbnail.jpg", :class => 'img-responsive-search'
             = image_tag "#{result[:container]}.png", :class => 'logo'
         - else
           %a{:href => "/#{result[:container]}/#{result[:id]}", rel: "nofollow", style: 'color:#ac4142;'}
