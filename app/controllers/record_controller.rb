@@ -21,7 +21,7 @@ class RecordController < ApplicationController
           threads.each(&:join)
         end
       else
-        if result(false)[:error]
+        if result[:error]
           render_404
         else
           @query = result[:name]
