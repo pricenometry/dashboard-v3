@@ -10,7 +10,7 @@ class Pricels::Record < Pricels::Base
   end
 
   def record crawl = true
-    @options = @options.merge(fetch: crawl, social: true)
+    @options = @options.merge(fetch: false, social: true)
     url
     json[:result]
   end
