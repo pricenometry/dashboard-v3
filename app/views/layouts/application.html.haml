@@ -1,6 +1,7 @@
 !!!
 %html
   %head
+    %meta{name:"msvalidate.01", content: "E343FD8E4D0D68E0349D841AFFFE6EEF"}
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
       %title= content_for?(:title) ? yield(:title) : Rails.configuration.config[:site][:name]
       %meta{:content => content_for?(:description) ? yield(:description) : Rails.configuration.config[:site][:description], :name => "description"}
