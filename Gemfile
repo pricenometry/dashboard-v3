@@ -69,6 +69,7 @@ end
 
 group :production do
   gem 'unicorn'
+  gem 'unicorn-worker-killer'
   gem 'pg'
   # gem 'pg_search'
   # gem "activerecord-postgres-hstore"
