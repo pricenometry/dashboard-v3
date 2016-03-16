@@ -10,19 +10,27 @@ class RecordController < ApplicationController
           canonical_details
         end
       else
+        threads = [ :result,
+                    :history,
+                    :news,
+                    :videos,
+                    :references,
+                    :links
+                  ].map do |thread|
+          Thread.new(thread) do |thread|
+            send(thread)
+          end
+        end
+
+        threads.each(&:join)
+
         if result[:error]
           render_404
         else
-          @query = result[:name]
-          history
           threads = [ :min_price,
                       :max_price,
                       :social_charts,
-                      :canonical_details,
-                      # :news,
-                      # :videos,
-                      # :references,
-                      # :links
+                      :canonical_details
                     ].map do |thread|
             Thread.new(thread) do |thread|
               send(thread)
