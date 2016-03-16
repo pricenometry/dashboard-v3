@@ -13,7 +13,7 @@
           .caption
             %a{:href => @result[:url], target: '_blank', style: 'color:#ac4142;'}
               %strong
-                #{@result[:name].truncate(75)}
+                #{@result[:name].to_s.truncate(75)}
               = image_tag "#{@result[:container]}.png", :class => 'logo'
             - if @result[:price][:price] && @result[:price][:original_price]
               %h3

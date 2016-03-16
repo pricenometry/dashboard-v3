@@ -26,7 +26,7 @@
           - if result[:container] == 'amazon-offers'
             %a{:href => result[:url], target: '_blank', style: 'color:#ac4142;'}
               %strong
-                #{result[:name].truncate(45)}
+                #{result[:name].to_s.truncate(45)}
           - else
             %a{:href => "/#{result[:container]}/#{result[:id]}", rel: "nofollow", style: 'color:#ac4142;'}
               %strong
