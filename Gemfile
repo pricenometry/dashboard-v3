@@ -24,6 +24,7 @@ gem 'haml'
 gem 'google-analytics-rails'
 gem 'sitemap_generator'
 gem 'browser'
+gem 'mechanize'
 
 gem 'mina', :require => false
 gem 'mina-unicorn', :require => false
