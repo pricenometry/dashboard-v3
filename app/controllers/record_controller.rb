@@ -12,10 +12,10 @@ class RecordController < ApplicationController
       else
         threads = [ :result,
                     :history,
-                    :news,
-                    :videos,
-                    :references,
-                    :links
+                    # :news,
+                    # :videos,
+                    # :references,
+                    # :links
                   ].map do |thread|
           Thread.new(thread) do |thread|
             send(thread)
