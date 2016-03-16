@@ -2,7 +2,7 @@ class RecordController < ApplicationController
   def index
     if params[:container].presence && params[:record_id].presence
 
-      if browser.bot? || !user_signed_in?
+      if browser.bot? #|| !user_signed_in?
         if result(false)[:error]
           render_404
         else
@@ -19,10 +19,10 @@ class RecordController < ApplicationController
                       :max_price,
                       :social_charts,
                       :canonical_details,
-                      :news,
-                      :videos,
-                      :references,
-                      :links
+                      # :news,
+                      # :videos,
+                      # :references,
+                      # :links
                     ].map do |thread|
             Thread.new(thread) do |thread|
               send(thread)
