@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
 
-  get '/:container/sitemap(:id).:format.:compression' => 'sitemap#show'
+
   get '/search/:query', to: 'search#index'
   get '/search', to: 'search#index'
+  get '/:container/sitemap(:id).:format.:compression' => 'sitemap#show'
   get '/:container/:record_id', to: 'record#index'
 end
