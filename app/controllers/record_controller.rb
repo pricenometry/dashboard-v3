@@ -2,23 +2,12 @@ class RecordController < ApplicationController
   def index
     if params[:container].presence && params[:record_id].presence
 
-      if browser.bot? #|| !user_signed_in?
+      if browser.bot? || !user_signed_in?
         if result(false)[:error]
           render_404
         else
           @query = result[:name]
-          history
-          threads = [ :min_price,
-                      :max_price,
-                      :social_charts,
-                      :canonical_details
-                    ].map do |thread|
-            Thread.new(thread) do |thread|
-              send(thread)
-            end
-          end
-
-          threads.each(&:join)
+          canonical_details
         end
       else
         if result[:error]
