@@ -6,6 +6,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'excon'
 gem 'bootstrap-sass'
+gem 'rails_12factor'
+
 gem "chartkick"
 gem 'groupdate'
 
@@ -73,5 +75,4 @@ group :production do
   gem 'pg'
   # gem 'pg_search'
   # gem "activerecord-postgres-hstore"
-  gem 'rails_12factor'
 end

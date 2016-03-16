@@ -2,7 +2,7 @@ class RecordController < ApplicationController
   def index
     if params[:container].presence && params[:record_id].presence
 
-      if browser.bot? || !user_signed_in?
+      if browser.bot? #|| !user_signed_in?
         if result(false)[:error]
           render_404
         else
