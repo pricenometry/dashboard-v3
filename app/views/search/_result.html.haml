@@ -38,15 +38,17 @@
             - elsif result[:price][:original_price]
               %strong
                 $#{result[:price][:original_price]}
-          - if result[:availability]
-            #{result[:availability]}
-          - else
-            Available
+          %p
+            - if result[:availability]
+              #{result[:availability]}
+            - else
+              Available
           %p
             - if result[:container] == 'amazon-offers'
               = render 'search/amazon_button', result: result
             - else
-              %a.btn.btn-primary{:href => result[:url], target: '_blank'} Buy Now
+              %a.btn.btn-primary{:href => result[:url], target: '_blank'}
+                Buy Now
               %br
             - if user_signed_in?
               %br
