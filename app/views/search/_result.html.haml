@@ -38,10 +38,11 @@
             - elsif result[:price][:original_price]
               %strong
                 $#{result[:price][:original_price]}
-          - if result[:availability]
-            #{result[:availability]}
-          - else
-            Available
+          %small
+            - if result[:availability]
+              #{result[:availability]}
+            - else
+              Available
           %p
             - if result[:container] == 'amazon-offers'
               = render 'search/amazon_button', result: result
