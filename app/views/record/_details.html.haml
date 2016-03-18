@@ -9,6 +9,16 @@
             %li.list-group-item
               %span.badge= key.upcase
               = value
+          - if @history.presence
+            - @history.each do |key, value|
+              %li.list-group-item
+                %strong
+                  = key.upcase.to_s + ' HISTORY'
+                %ul.list-group
+                  - value.each do |k,v|
+                    %li.list-group-item
+                      %span.badge= k.upcase
+                      = v
     %ul.list-group
       - @result.each do |key, value|
         - if @canonical_details.include?(key)
