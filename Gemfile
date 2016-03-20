@@ -11,6 +11,8 @@ gem 'rails_12factor'
 gem "chartkick"
 gem 'groupdate'
 
+gem 'shareable'
+
 gem 'devise'
 gem 'pundit'
 

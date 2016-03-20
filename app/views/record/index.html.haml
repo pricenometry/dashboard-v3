@@ -41,14 +41,23 @@
                 / %a.btn.btn-danger{:href => "/users/sign_up"} Follow
               - else
                 / %a.btn.btn-danger{:href => "#"} Follow
+          %br
+          %p
+            = pinterest_button
+          %p
+            = twitter_button
         = render 'layouts/responsive_ad'
         = render 'record/videos'
         / = render 'record/references'
       .col-md-9.col-sm-8
+        .panel
+          .fb-like{"data-share" => "true", "data-show-faces" => "true", "data-width" => "450", align: 'right' }
         = render 'record/history'
         = render 'record/social'
         = render 'record/details'
         = render 'record/news'
         = render 'record/links'
+        .panel
+          .fb-like{"data-share" => "true", "data-show-faces" => "true", "data-width" => "450", align: 'right' }
 = content_for :title, "Realtime Pricing Trends for " + @result[:name].to_s + " | " + @result[:id].try(:to_s) + " - Pricenometry.com"
 = content_for :description, "Get up to the minute " + @result[:name].to_s +  " price history and analysis as well as social network popularity, product videos, news trends and more only at Pricenometry.com"

@@ -6,4 +6,5 @@
       = pie_chart @result[:social].select {|k,v| k != :total_shares }
       - if @social_charts.presence
         = line_chart @social_charts
+      = linkedin_button
   = render 'layouts/responsive_ad'
