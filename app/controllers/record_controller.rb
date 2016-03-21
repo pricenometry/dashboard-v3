@@ -41,7 +41,7 @@ class RecordController < ApplicationController
         end
       end
 
-      prepare_meta_tags title: "Realtime Pricing Trends for " + result[:name].to_s + " | " + result[:id].try(:to_s),
+      prepare_meta_tags title: "Realtime Pricing Trends for " + result[:name].to_s,
                         description: "Get up to the minute " + result[:name].to_s +  " price history and analysis as well as social network popularity, product videos, news trends and more only at Pricenometry.com",
                         og: { title: "Realtime Pricing Trends for " + result[:name].to_s,
                               image: result[:image] },
