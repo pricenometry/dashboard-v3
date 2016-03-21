@@ -59,5 +59,3 @@
         = render 'record/links'
         .panel
           .fb-like{"data-share" => "true", "data-show-faces" => "true", "data-width" => "450", align: 'right' }
-= content_for :title, "Realtime Pricing Trends for " + @result[:name].to_s + " | " + @result[:id].try(:to_s) + " - Pricenometry.com"
-= content_for :description, "Get up to the minute " + @result[:name].to_s +  " price history and analysis as well as social network popularity, product videos, news trends and more only at Pricenometry.com"

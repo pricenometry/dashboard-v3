@@ -25,6 +25,8 @@ gem 'haml'
 
 gem 'google-analytics-rails'
 gem 'sitemap_generator'
+gem 'meta-tags'
+
 gem 'browser'
 gem 'mechanize'
 

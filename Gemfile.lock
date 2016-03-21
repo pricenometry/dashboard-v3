@@ -172,6 +172,8 @@ GEM
       nokogiri (~> 1.6)
       ntlm-http (~> 0.1, >= 0.1.1)
       webrobots (>= 0.0.9, < 0.2)
+    meta-tags (2.1.0)
+      actionpack (>= 3.0.0)
     method_source (0.8.2)
     mime-types (2.99.1)
     mina (0.3.8)
@@ -381,6 +383,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   mechanize
+  meta-tags
   mina
   mina-unicorn
   pg
