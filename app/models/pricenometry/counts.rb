@@ -1,6 +1,6 @@
-class Pricels::Counts < Pricels::Base
+class Pricenometry::Counts < Pricenometry::Base
   def initialize
-    @url = URI.escape(Pricels::Base::ENDPOINT + '/v1?' + params.to_query)
+    @url = URI.escape(Pricenometry::Base::ENDPOINT + '/v1?' + params.to_query)
   end
 
   def counts

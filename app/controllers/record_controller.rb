@@ -90,7 +90,7 @@ class RecordController < ApplicationController
   end
 
   def record
-    @record ||= Pricels::Record.new(params[:container], params[:record_id])
+    @record ||= Pricenometry::Record.new(params[:container], params[:record_id])
   end
 
   def history

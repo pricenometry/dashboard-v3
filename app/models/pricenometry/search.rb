@@ -1,7 +1,7 @@
-class Pricels::Search < Pricels::Base
+class Pricenometry::Search < Pricenometry::Base
   def initialize(query, options = {})
     return nil if query.nil?
-    @url = URI.escape(Pricels::Base::ENDPOINT + '/v1/search/' + query + '?' + params.merge(options).merge(social: true, results: 15).to_query)
+    @url = URI.escape(Pricenometry::Base::ENDPOINT + '/v1/search/' + query + '?' + params.merge(options).merge(social: true, results: 15).to_query)
   end
 
   def search

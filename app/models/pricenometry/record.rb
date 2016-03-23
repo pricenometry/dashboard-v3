@@ -1,4 +1,4 @@
-class Pricels::Record < Pricels::Base
+class Pricenometry::Record < Pricenometry::Base
   def initialize(container, id, options = {})
     @container = container
     @id = id
@@ -6,7 +6,7 @@ class Pricels::Record < Pricels::Base
   end
 
   def url type = nil
-    @url = URI.escape(Pricels::Base::ENDPOINT + '/v1/' + @container + '/' + @id + "/#{type}?" + params.merge(@options).to_query)
+    @url = URI.escape(Pricenometry::Base::ENDPOINT + '/v1/' + @container + '/' + @id + "/#{type}?" + params.merge(@options).to_query)
   end
 
   def record crawl = true

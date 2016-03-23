@@ -1,4 +1,4 @@
-class Pricels::Base
+class Pricenometry::Base
   ENDPOINT = 'http://api.pricenometry.com'
 
   def json
@@ -12,7 +12,7 @@ class Pricels::Base
   private
 
   def api_key
-    Rails.configuration.config[:pricels][:api_key]
+    Rails.configuration.config[:pricenometry][:api_key]
   end
 
   def params

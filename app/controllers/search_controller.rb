@@ -31,6 +31,6 @@ class SearchController < ApplicationController
   # end
 
   def object
-    @object ||= Pricels::Search.new(@query.gsub('+', ' '), {page: current_page})
+    @object ||= Pricenometry::Search.new(@query.gsub('+', ' '), {page: current_page})
   end
 end
