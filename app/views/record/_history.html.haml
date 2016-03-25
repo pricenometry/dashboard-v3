@@ -4,5 +4,6 @@
       %h4 Price History
     .panel-body
       = line_chart @history[:price], min: @min_price, max: @max_price
-      = linkedin_button
+      - unless browser.bot?
+        = linkedin_button
   = render 'layouts/responsive_ad'

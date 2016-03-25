@@ -30,5 +30,6 @@
         - @result[:description].split('. ').shuffle.each do |sentence|
           %p{align: 'left'}
             #{sentence}.
-    = linkedin_button
+    - unless browser.bot?
+      = linkedin_button
 = render 'layouts/responsive_ad'
