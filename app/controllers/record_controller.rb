@@ -4,7 +4,7 @@ class RecordController < ApplicationController
 
       if browser.bot? #|| !user_signed_in?
         if result(false)[:error]
-          render_404
+          redirect_to root_path
         else
           @query = result[:name]
           canonical_details
@@ -25,7 +25,7 @@ class RecordController < ApplicationController
         threads.each(&:join)
 
         if result[:error]
-          render_404
+          redirect_to root_path
         else
           threads = [ :min_price,
                       :max_price,
@@ -83,10 +83,6 @@ class RecordController < ApplicationController
                             :mpn,
                             :manufacturer
                            ]
-  end
-
-  def render_404
-    render(file: "#{Rails.root}/public/404.html", layout: false, status: 404)
   end
 
   def record
