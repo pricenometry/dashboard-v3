@@ -12,8 +12,8 @@ class RecordController < ApplicationController
       else
         threads = [ :result,
                     :history,
-                    # :news,
-                    # :videos,
+                    :news,
+                    :videos,
                     # :references,
                     # :links
                   ].map do |thread|
