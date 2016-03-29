@@ -2,7 +2,7 @@ class SitemapController < ApplicationController
   def show
     @url = "http://#{Rails.configuration.config[:admin][:domain_name]}-sitemaps.s3.amazonaws.com/#{params[:container]}/sitemap#{params[:id]}.xml.gz"
     if params[:container].include?('sitemaps')
-      render_404
+      redirect_to root_path
     else
       send_data file.content
     end
