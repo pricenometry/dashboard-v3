@@ -12,6 +12,7 @@ class RecordController < ApplicationController
       else
         threads = [ :result,
                     :history,
+                    :related,
                     # :news,
                     # :videos,
                     # :references,
@@ -115,6 +116,10 @@ class RecordController < ApplicationController
 
   def result(crawl = true)
     @result ||= record.record(crawl)
+  end
+
+  def related
+    @related ||= record.related
   end
 
   def news
