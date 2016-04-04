@@ -36,7 +36,7 @@
                 = render 'search/amazon_button', result: @result
                 %br
               - else
-                %a.btn.btn-primary{:href => @result[:url], target: '_blank'} Buy Now
+                %a.btn.btn-lg.btn-primary{:href => @result[:url], target: '_blank'} Buy Now
               - if user_signed_in?
                 / %a.btn.btn-danger{:href => "/users/sign_up"} Follow
               - else
@@ -55,6 +55,7 @@
           .panel
             .fb-like{"data-share" => "true", "data-show-faces" => "true", "data-width" => "450", align: 'right' }
         = render 'record/history'
+        = render 'record/related'
         = render 'record/social'
         = render 'record/details'
         = render 'record/news'

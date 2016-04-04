@@ -20,6 +20,11 @@ class Pricenometry::Record < Pricenometry::Base
     json[:result][:history]
   end
 
+  def related
+    url 'related'
+    json[:result][:related]
+  end
+
   def videos
     url 'videos'
     json[:result][:videos]

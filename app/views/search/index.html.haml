@@ -10,5 +10,5 @@
         - @results.each_with_index do |result, index|
           - if index % 3 == 0
             .row
-          = render 'search/result', result: result
+          = render 'search/vertical_result', result: result
 = render 'layouts/pagination', pagination: @pagination

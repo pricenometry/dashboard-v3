@@ -53,7 +53,7 @@
             - if user_signed_in?
               %br
               / %a.btn.btn-danger{:href => "/users/sign_up"} Follow
-              %a.btn.btn-default{:href => "/#{result[:container]}/#{result[:id]}", rel: "nofollow"} Analyze
+              %a.btn.btn-sm.btn-default{:href => "/#{result[:container]}/#{result[:id]}", rel: "nofollow"} More Info
               - if current_user.admin?
                 %ul.list-group
                   - result.each do |key, value|
@@ -63,4 +63,4 @@
             - else
               %br
               / %a.btn.btn-danger{:href => "/users/sign_in"} Follow
-              %a.btn.btn-default{:href => "/#{result[:container]}/#{result[:id]}", rel: "nofollow"} Analyze
+              %a.btn.btn-sm.btn-default{:href => "/#{result[:container]}/#{result[:id]}", rel: "nofollow"} More Info

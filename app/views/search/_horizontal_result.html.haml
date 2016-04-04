@@ -1,0 +1,64 @@
+.row-md-4.row-sm-4.hero-feature
+  - if result
+    - if result[:container] == 'google'
+      %script{:async => "", :src => "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"}
+      / Pricenometry Search
+      %ins.adsbygoogle{"data-ad-client" => "ca-pub-4228490019228264", "data-ad-slot" => "7023758185", "data-ad-query" => "#{params[:query]}", 'data-ad-images' => true, :style => "display:inline-block;width:120px;height:300px"}
+      :javascript
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    - else
+      .thumbnail.media
+        .col-md-2.col-sm-1
+          - if result[:container] == 'amazon-offers'
+            %a.media-left{:href => result[:url], target: '_blank', style: 'color:#ac4142;'}
+              - if result[:image]
+                %img.media-object{:alt => "", :src => result[:image]}
+              - else
+                = image_tag "thumbnail.jpg", :class => 'media-object'
+          - else
+            %a.media-left{:href => "/#{result[:container]}/#{result[:id]}", rel: "nofollow", style: 'color:#ac4142;'}
+              - if result[:image]
+                %img.media-object{:alt => "", :src => result[:image]}
+              - else
+                = image_tag "thumbnail.jpg", :class => 'media-object'
+          = image_tag "#{result[:container]}.png", class: 'logo'
+        .media-body
+          - if result[:container] == 'amazon-offers'
+            %a{:href => result[:url], target: '_blank', style: 'color:#ac4142;'}
+              %strong
+                #{result[:name].to_s}
+          - else
+            %a{:href => "/#{result[:container]}/#{result[:id]}", rel: "nofollow", style: 'color:#ac4142;'}
+              %strong
+                #{result[:name].to_s}
+          %p
+            - if result[:availability]
+              #{result[:availability]}
+            - else
+              Available
+          - if user_signed_in?
+            / %a.btn.btn-danger{:href => "/users/sign_up"} Follow
+            %a.btn.btn-xs.btn-default{:href => "/#{result[:container]}/#{result[:id]}", rel: "nofollow"} More Information
+            - if current_user.admin?
+              %ul.list-group
+                - result.each do |key, value|
+                  %li.list-group-item
+                    %span.badge= key.upcase
+                    = value
+          - else
+            / %a.btn.btn-danger{:href => "/users/sign_in"} Follow
+            %a.btn.btn-xs.btn-default{:href => "/#{result[:container]}/#{result[:id]}", rel: "nofollow"} More Information
+        .media-right
+          %h3
+            - if result[:price][:price]
+              %strong
+                $#{result[:price][:price]}
+            - elsif result[:price][:original_price]
+              %strong
+                $#{result[:price][:original_price]}
+          %p
+            - if result[:container] == 'amazon-offers'
+              = render 'search/amazon_button', result: result
+            - else
+              %a.btn.btn-primary{:href => result[:url], target: '_blank'}
+                Buy Now

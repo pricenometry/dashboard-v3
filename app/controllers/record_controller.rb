@@ -12,8 +12,9 @@ class RecordController < ApplicationController
       else
         threads = [ :result,
                     :history,
-                    :news,
-                    :videos,
+                    :related,
+                    # :news,
+                    # :videos,
                     # :references,
                     # :links
                   ].map do |thread|
@@ -115,6 +116,10 @@ class RecordController < ApplicationController
 
   def result(crawl = true)
     @result ||= record.record(crawl)
+  end
+
+  def related
+    @related ||= record.related
   end
 
   def news
