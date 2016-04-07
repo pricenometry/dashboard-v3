@@ -6,11 +6,11 @@ class Pricenometry::Record < Pricenometry::Base
   end
 
   def url type = nil
-    @url = URI.escape(Pricenometry::Base::ENDPOINT + '/v1/' + @container + '/' + @id + "/#{type}?" + params.merge(@options).to_query)
+    @url = URI.escape(Pricenometry::Base::ENDPOINT + '/v1/' + @container + '/' + @id + "/#{type}?" + params.merge(@options).merge(social: true).to_query)
   end
 
   def record crawl = true
-    @options = @options.merge(fetch: crawl, social: true)
+    @options = @options.merge(fetch: crawl)
     url
     json[:result]
   end
