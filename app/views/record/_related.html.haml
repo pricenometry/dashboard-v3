@@ -1,9 +1,8 @@
 - if @related.presence
   .panel.panel-default
     .panel-heading
-      %h4 Comparison
+      %h4 Related Items
     .panel-body
       %ul.list-unstyled
         - @related.each_with_index do |result, index|
           = render 'search/horizontal_result', result: result
-  = render 'layouts/responsive_ad'

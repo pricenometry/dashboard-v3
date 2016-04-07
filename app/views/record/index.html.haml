@@ -1,5 +1,4 @@
 .container
-  = render 'layouts/search'
   .full.col-sm-12
     / content
     .row
@@ -41,16 +40,18 @@
                 / %a.btn.btn-danger{:href => "/users/sign_up"} Follow
               - else
                 / %a.btn.btn-danger{:href => "#"} Follow
-          - unless browser.bot?
-            %br
-            %p
-              = pinterest_button
-            %p
-              = twitter_button
+          / - unless browser.bot?
+          /   %br
+          /   %p
+          /     = pinterest_button
+          /   %p
+          /     = twitter_button
+        = render 'layouts/responsive_ad'
         = render 'layouts/responsive_ad'
         = render 'record/videos'
         / = render 'record/references'
       .col-md-9.col-sm-8
+        = render 'layouts/responsive_ad'
         - unless browser.bot?
           .panel
             .fb-like{"data-share" => "true", "data-show-faces" => "true", "data-width" => "450", align: 'right' }
@@ -63,3 +64,5 @@
         - unless browser.bot?
           .panel
             .fb-like{"data-share" => "true", "data-show-faces" => "true", "data-width" => "450", align: 'right' }
+    %br
+    = render 'layouts/search'
