@@ -48,20 +48,20 @@
           /     = twitter_button
         = render 'layouts/responsive_ad'
         = render 'layouts/responsive_ad'
-        = render 'record/videos'
+        = render 'layouts/responsive_ad'
+        / = render 'record/videos'
         / = render 'record/references'
       .col-md-9.col-sm-8
         = render 'layouts/search'
-        = render 'layouts/responsive_ad'
         - unless browser.bot?
           .panel
             .fb-like{"data-share" => "true", "data-show-faces" => "true", "data-width" => "450", align: 'right' }
         = render 'record/history'
-        = render 'record/related'
         = render 'record/social'
-        = render 'record/details'
+        = render 'record/related'
         = render 'record/news'
         = render 'record/links'
+        = render 'record/details'
         - unless browser.bot?
           .panel
             .fb-like{"data-share" => "true", "data-show-faces" => "true", "data-width" => "450", align: 'right' }

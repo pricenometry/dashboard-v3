@@ -14,9 +14,9 @@ class RecordController < ApplicationController
                     :history,
                     :related,
                     # :news,
+                    # :links,
                     # :videos,
                     # :references,
-                    # :links
                   ].map do |thread|
           Thread.new(thread) do |thread|
             send(thread)
