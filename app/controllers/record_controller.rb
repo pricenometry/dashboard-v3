@@ -13,8 +13,8 @@ class RecordController < ApplicationController
         threads = [ :result,
                     :history,
                     :related,
-                    # :news,
-                    # :links,
+                    :news,
+                    :links,
                     # :videos,
                     # :references,
                   ].map do |thread|
