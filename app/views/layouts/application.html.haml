@@ -43,6 +43,14 @@
         fbq('track', "PageView");%noscript
         %img{:height => "1", :src => "https://www.facebook.com/tr?id=1068893889841141&ev=PageView&noscript=1", :style => "display:none", :width => "1"}/
       / End Facebook Pixel Code
+      :javascript
+        (function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=1008307585917302";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
 
   %body{:class => "#{controller_name} #{action_name}"}
     %header

@@ -9,3 +9,4 @@
         = line_chart @social_charts
       - unless browser.bot?
         = linkedin_button
+      .fb-comments{"data-href" => "#{@result[:url]}", "data-numposts" => "5"}
