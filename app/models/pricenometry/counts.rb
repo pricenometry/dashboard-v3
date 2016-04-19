@@ -7,6 +7,14 @@ class Pricenometry::Counts < Pricenometry::Base
     @counts ||= json[:status]
   end
 
+  def count
+    counts[:count]
+  end
+
+  def total
+    counts[:total]
+  end
+
   def available
     counts[:available]
   end
