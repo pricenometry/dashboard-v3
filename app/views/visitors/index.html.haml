@@ -7,7 +7,7 @@
         = render 'layouts/search'
         #welcome.page-header
           %h1
-            = content_for?(:h1) ? yield(:h1) : "Search across #{@total}illion realtime product prices across #{@count} sites."
+            = content_for?(:h1) ? yield(:h1) : "Search across #{@total}illion realtime product prices from #{@count} sites."
             %br
             %small
               = content_for?(:h3) ? yield(:h3) : Rails.configuration.config[:site][:description]
