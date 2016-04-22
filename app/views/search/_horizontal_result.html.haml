@@ -59,6 +59,10 @@
           %p
             - if result[:container] == 'amazon-offers'
               = render 'search/amazon_button', result: result
+            - elsif result[:container] == 'target-offers'
+              %a.btn.btn-primary{href: "/#{result[:container]}/#{result[:id]}"}
+                \#BoycottTarget
+              %br
             - else
               %a.btn.btn-primary{:href => result[:url], target: '_blank'}
                 Buy Now
