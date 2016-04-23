@@ -3,7 +3,7 @@
     / content
     .row
       / main col left
-      .col-md-9.col-sm-8
+      .col-md-12.col-sm-10
         = render 'layouts/search'
         #welcome.page-header
           %h1
@@ -11,7 +11,6 @@
             %br
             %small
               = content_for?(:h3) ? yield(:h3) : Rails.configuration.config[:site][:description]
-        = render 'layouts/responsive_ad'
         .row
           - @available.each do |name, count|
             .col-md-4{align: 'center'}
@@ -28,5 +27,5 @@
             %strong Pending
             %p #{@pending}
         = render 'layouts/responsive_ad'
-      .col-md-3.col-sm-4.text-center
+        = render 'layouts/responsive_ad'
         = render 'layouts/responsive_ad'
