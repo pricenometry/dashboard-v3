@@ -23,10 +23,20 @@ class RecordController < ApplicationController
           end
         end
 
+        if request.referer.presence && url = URI(request.referer)
+          params = CGI.parse(url.query)
+          #now you've got params as a hash you can do what you want to it.
+          @query = params["query"].presence.try(:first) || params["q"].presence.try(:first) || params["p"].presence.try(:first)
+        end
+
         threads.each(&:join)
 
         if result[:error]
-          redirect_to root_path
+          if @query.presence
+            redirect_to search_path(query: @query)
+          else
+            redirect_to root_path
+          end
         else
           threads = [ :min_price,
                       :max_price,
