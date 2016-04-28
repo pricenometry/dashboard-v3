@@ -1,2 +1,14 @@
 User-agent: *
 Disallow: /search
+
+# Sitemap files
+Sitemap: http://pricenometry.com/aliexpress-offers/sitemap.xml.gz
+Sitemap: http://pricenometry.com/amazon-offers/sitemap.xml.gz
+Sitemap: http://pricenometry.com/bestbuy-offers/sitemap.xml.gz
+Sitemap: http://pricenometry.com/boxed-offers/sitemap.xml.gz
+Sitemap: http://pricenometry.com/costco-offers/sitemap.xml.gz
+Sitemap: http://pricenometry.com/homedepot-offers/sitemap.xml.gz
+Sitemap: http://pricenometry.com/newegg-offers/sitemap.xml.gz
+Sitemap: http://pricenometry.com/staples-offers/sitemap.xml.gz
+Sitemap: http://pricenometry.com/target-offers/sitemap.xml.gz
+Sitemap: http://pricenometry.com/walmart-offers/sitemap.xml.gz
