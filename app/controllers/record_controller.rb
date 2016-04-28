@@ -24,6 +24,8 @@ class RecordController < ApplicationController
         end
 
         if request.referer.presence && url = URI(request.referer)
+          ap url
+          ap request.referer
           params = CGI.parse(url.query)
           #now you've got params as a hash you can do what you want to it.
           @query = params["query"].presence.try(:first) || params["q"].presence.try(:first) || params["p"].presence.try(:first)
