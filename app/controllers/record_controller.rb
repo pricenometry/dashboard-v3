@@ -39,17 +39,21 @@ class RecordController < ApplicationController
             redirect_to root_path
           end
         else
-          threads = [ :min_price,
-                      :max_price,
-                      :social_charts,
-                      :canonical_details
-                    ].map do |thread|
-            Thread.new(thread) do |thread|
-              send(thread)
+          unless result[:available]
+            redirect_to search_path(query: result[:name])
+          else
+            threads = [ :min_price,
+                        :max_price,
+                        :social_charts,
+                        :canonical_details
+                      ].map do |thread|
+              Thread.new(thread) do |thread|
+                send(thread)
+              end
             end
-          end
 
-          threads.each(&:join)
+            threads.each(&:join)
+          end
         end
       end
 
