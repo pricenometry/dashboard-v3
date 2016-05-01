@@ -6,7 +6,7 @@ class Pricenometry::Base
   end
 
   def response
-    Excon.get(@url)
+    Excon.get(@url, :headers => { "Accept" => "gzip" })
   end
 
   private
