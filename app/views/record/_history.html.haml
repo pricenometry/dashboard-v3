@@ -1,7 +1,7 @@
 - if @history && @history[:price].presence
   .panel.panel-default
     .panel-heading
-      %h4 Price History
+      %h4 Pricing History
     .panel-body
       = line_chart @history[:price], min: @min_price, max: @max_price
       - unless browser.bot?
