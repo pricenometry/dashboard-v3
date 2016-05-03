@@ -4,7 +4,9 @@ class Pricenometry::Counts < Pricenometry::Base
   end
 
   def counts
-    @counts ||= json[:status]
+    Rails.cache.fetch("counts", :expires_in => 1.hour) do
+      @counts ||= json[:status]
+    end
   end
 
   def count
