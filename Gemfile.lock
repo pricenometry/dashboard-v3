@@ -107,6 +107,8 @@ GEM
     faker (1.6.3)
       i18n (~> 0.5)
     ffi (1.9.10)
+    font-awesome-sass (4.6.2)
+      sass (>= 3.2)
     formatador (0.2.5)
     ga_events (1.2.0)
       rails (>= 3.1)
@@ -373,6 +375,7 @@ DEPENDENCIES
   excon
   factory_girl_rails
   faker
+  font-awesome-sass (~> 4.6.2)
   ga_events
   google-analytics-rails
   groupdate
