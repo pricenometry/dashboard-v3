@@ -24,6 +24,8 @@ gem 'progress'
 gem 'haml'
 
 gem 'google-analytics-rails'
+gem 'ga_events'
+
 gem 'sitemap_generator'
 gem 'meta-tags'
 

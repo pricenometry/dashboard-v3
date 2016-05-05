@@ -108,6 +108,8 @@ GEM
       i18n (~> 0.5)
     ffi (1.9.10)
     formatador (0.2.5)
+    ga_events (1.2.0)
+      rails (>= 3.1)
     get_process_mem (0.2.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
@@ -371,6 +373,7 @@ DEPENDENCIES
   excon
   factory_girl_rails
   faker
+  ga_events
   google-analytics-rails
   groupdate
   guard
