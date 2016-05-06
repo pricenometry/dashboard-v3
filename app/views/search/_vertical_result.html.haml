@@ -47,14 +47,13 @@
             - if result[:container] == 'amazon-offers'
               = render 'search/amazon_button', result: result
             - elsif result[:container] == 'target-offers'
-              %a.btn.btn-success{href: "/#{result[:container]}/#{result[:id]}"}
-                = icon('shopping-cart')
+              %a.btn.btn-danger{href: "/#{result[:container]}/#{result[:id]}"}
                 \#BoycottTarget
               %br
             - else
-              %a.btn.btn-success{:href => result[:url], target: '_blank'}
+              %a.btn.btn-lg.btn-success{:href => result[:url], target: '_blank'}
                 = icon('shopping-cart')
-                = "Buy Now at #{result[:container].split('-').first.capitalize}"
+                Buy Now
               %br
             - if user_signed_in?
               %br
