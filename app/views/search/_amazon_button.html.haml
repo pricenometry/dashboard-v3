@@ -3,4 +3,6 @@
   %input{:name => "SubscriptionId", :type => "hidden", :value => "[AWSAccessKeyId]"}/
   %input{:name => "ASIN.1", :type => "hidden", :value => "#{result[:id]}"}/
   %input{:name => "Quantity.1", :type => "hidden", :value => "1"}/
-  %button.btn.btn-primary Buy Now
+  %button.btn.btn-success
+    = icon('shopping-cart')
+    Buy Now at Amazon

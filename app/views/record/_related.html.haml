@@ -1,7 +1,9 @@
 - if @related.presence
   .panel.panel-default
     .panel-heading
-      %h4 Compare Pricing
+      %h4
+        = icon('bar-chart')
+        Compare Pricing
     .panel-body
       %ul.list-unstyled
         - @related.each_with_index do |result, index|

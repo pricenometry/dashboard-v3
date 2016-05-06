@@ -35,11 +35,14 @@
                 = render 'search/amazon_button', result: @result
                 %br
               - elsif @result[:container] == 'target-offers'
-                %a.btn.btn-primary{href: "/#{@result[:container]}/#{@result[:id]}"}
+                %a.btn.btn-success{href: "/#{@result[:container]}/#{@result[:id]}"}
+                  = icon('shopping-cart')
                   \#BoycottTarget
                 %br
               - else
-                %a.btn.btn-lg.btn-primary{:href => @result[:url], target: '_blank'} Buy Now
+                %a.btn.btn-success{:href => @result[:url], target: '_blank'}
+                  = icon('shopping-cart')
+                  = "Buy Now at #{@result[:container].split('-').first.capitalize}"
               - if user_signed_in?
                 / %a.btn.btn-danger{:href => "/users/sign_up"} Follow
               - else

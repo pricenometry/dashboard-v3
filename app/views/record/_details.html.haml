@@ -1,6 +1,8 @@
 .panel.panel-default
   .panel-heading
-    %h4 Details
+    %h4
+      = icon('tag')
+      Details
   .panel-body
     - if user_signed_in?
       - if current_user.admin?

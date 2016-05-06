@@ -1,7 +1,9 @@
 - if @result[:social].presence
   .panel.panel-default
     .panel-heading
-      %h4 Social Popularity
+      %h4
+        = icon('pie-chart')
+        Social Popularity
     .panel-body
       = pie_chart @result[:social].select {|k,v| k != :total_shares }
       = bar_chart @result[:social].select {|k,v| k != :total_shares }
