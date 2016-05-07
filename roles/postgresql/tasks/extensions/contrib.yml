@@ -1,0 +1,18 @@
+# file: postgresql/tasks/extensions/contrib.yml
+
+- name: PostgreSQL | Extensions | Make sure the postgres contrib extensions are installed
+  apt:
+    name: "postgresql-contrib-{{postgresql_version}}"
+    state: present
+  notify:
+    - restart postgresql
+  when: ansible_os_family == "Debian"
+
+
+- name: PostgreSQL | Extensions | Make sure the postgres contrib extensions are installed
+  yum:
+    name: "postgresql94-contrib"
+    state: present
+  notify:
+    - restart postgresql
+  when: ansible_os_family == "RedHat"

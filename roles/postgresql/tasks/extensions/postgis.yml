@@ -1,0 +1,24 @@
+# file: postgresql/tasks/extensions/postgis.yml
+
+- name: PostgreSQL | Extensions | Make sure the postgis extensions are installed
+  apt:
+    name: "{{item}}"
+    state: present
+  with_items:
+    - libgeos-c1
+    - "postgresql-{{postgresql_version}}-postgis-{{postgresql_ext_postgis_version}}"
+  notify:
+    - restart postgresql
+  when: ansible_os_family == "Debian"
+
+- name: PostgreSQL | Extensions | Make sure the postgis extensions are installed
+  yum:
+    name: "{{item}}"
+    state: present
+  with_items:
+    #- libgeos-c1
+    #- "postgresql-{{postgresql_version}}-postgis-{{postgresql_ext_postgis_version}}"
+    - postgis2_94
+  notify:
+    - restart postgresql
+  when: ansible_os_family == "RedHat"

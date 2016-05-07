@@ -8,6 +8,7 @@
     - ruby-install
     - role: build-ruby
       version: 2.3.0
+    - role: postgresql
     - role: nginx-unicorn
       nginx_sites:
         - name: 'production'
