@@ -39,8 +39,6 @@ GEM
     addressable (2.4.0)
     arel (6.0.3)
     ast (2.2.0)
-    autoprefixer-rails (6.3.3.1)
-      execjs
     awesome_print (1.6.1)
     bcrypt (3.1.11)
     better_errors (2.1.1)
@@ -49,9 +47,6 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootstrap-sass (3.3.6)
-      autoprefixer-rails (>= 5.2.1)
-      sass (>= 3.3.4)
     browser (2.0.2)
     builder (3.2.2)
     byebug (8.2.2)
@@ -107,8 +102,6 @@ GEM
     faker (1.6.3)
       i18n (~> 0.5)
     ffi (1.9.10)
-    font-awesome-sass (4.6.2)
-      sass (>= 3.2)
     formatador (0.2.5)
     ga_events (1.2.0)
       rails (>= 3.1)
@@ -363,7 +356,6 @@ DEPENDENCIES
   awesome_print
   better_errors
   binding_of_caller
-  bootstrap-sass
   browser
   byebug
   capybara
@@ -375,7 +367,6 @@ DEPENDENCIES
   excon
   factory_girl_rails
   faker
-  font-awesome-sass (~> 4.6.2)
   ga_events
   google-analytics-rails
   groupdate
