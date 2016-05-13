@@ -65,9 +65,9 @@
         = render 'record/history'
         = render 'record/related'
         = render 'record/social'
-        = render 'record/news'
-        = render 'record/links'
-        = render 'record/details'
+        / = render 'record/news'
+        / = render 'record/links'
+        / = render 'record/details'
         - unless browser.bot?
           .panel
             .fb-like{"data-share" => "true", "data-show-faces" => "true", "data-width" => "450", align: 'right' }
