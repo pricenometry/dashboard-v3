@@ -16,7 +16,6 @@ class RecordController < ApplicationController
                     # :news,
                     # :links,
                     # :videos,
-                    # :references,
                   ].map do |thread|
           Thread.new(thread) do |thread|
             send(thread)
@@ -45,7 +44,8 @@ class RecordController < ApplicationController
             threads = [ :min_price,
                         :max_price,
                         :social_charts,
-                        :canonical_details
+                        :canonical_details,
+                        :references,
                       ].map do |thread|
               Thread.new(thread) do |thread|
                 send(thread)
