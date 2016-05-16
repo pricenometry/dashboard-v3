@@ -45,7 +45,7 @@ class RecordController < ApplicationController
                         :max_price,
                         :social_charts,
                         :canonical_details,
-                        :references,
+                        # :references,
                       ].map do |thread|
               Thread.new(thread) do |thread|
                 send(thread)
