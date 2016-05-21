@@ -1,5 +1,6 @@
 class SearchController < ApplicationController
   def index
+    @cid = params[:cid]
     if @query = params[:query].presence
       @results = object.results.compact
 
