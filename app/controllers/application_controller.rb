@@ -6,6 +6,12 @@ class ApplicationController < ActionController::Base
 
   before_action :prepare_meta_tags, if: "request.get?"
 
+  before_action :set_cid
+
+  def set_cid
+    @cid = params[:cid]
+  end
+
   def prepare_meta_tags(options={})
     site_name   = Rails.configuration.config[:site][:name]
     title       = [controller_name, action_name].join(" ")
