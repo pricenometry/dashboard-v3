@@ -16,11 +16,7 @@ class SearchController < ApplicationController
         {k => path_without_page + '?query=' + params[:query] + '&page=' + v.to_s} if v
       end.compact.inject({},:merge)
     else
-      @results = []
-
-      prepare_meta_tags title: "Realtime Pricing Search",
-                      description: "Search for up to the minute price history and analysis as well as social network popularity, product videos, news trends and more only at Pricenometry.com",
-                      og: { title: "Realtime Pricing Search"}
+      redirect_to root_path
     end
   end
 
