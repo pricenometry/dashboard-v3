@@ -13,7 +13,7 @@ class RecordController < ApplicationController
         threads = [ :result,
                     :history,
                     :related,
-                    :references,
+                    # :references,
                     # :news,
                     # :links,
                     # :videos,
