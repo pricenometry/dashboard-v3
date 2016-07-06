@@ -9,7 +9,7 @@
     - else
       .thumbnail.media
         .col-md-2.col-sm-2
-          - if result[:container] == 'amazon-offers'
+          - if result[:container] == 'amazon-offers' || result[:container] == 'walmart-offers'
             %a.media-left{:href => result[:url], target: '_blank', style: 'color:#ac4142;'}
               - if result[:image]
                 %img.media-object{:alt => "", :src => result[:image]}

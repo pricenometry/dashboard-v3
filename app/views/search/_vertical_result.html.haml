@@ -8,7 +8,7 @@
         (adsbygoogle = window.adsbygoogle || []).push({});
     - else
       .thumbnail
-        - if result[:container] == 'amazon-offers'
+        - if result[:container] == 'amazon-offers' || result[:container] == 'walmart-offers'
           %a{:href => result[:url], target: '_blank', style: 'color:#ac4142;'}
             - if result[:image]
               %img.img-responsive-search{:alt => "", :src => result[:image]}
