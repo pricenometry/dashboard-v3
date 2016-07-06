@@ -46,6 +46,9 @@
           %p
             - if result[:container] == 'amazon-offers'
               = render 'search/amazon_button', result: result
+            - elsif result[:container] == 'walmart-offers'
+              = render 'search/walmart_button', result: result
+              %br
             - elsif result[:container] == 'target-offers'
               %a.btn.btn-primary{href: "/#{result[:container]}/#{result[:id]}"}
                 \#BoycottTarget
