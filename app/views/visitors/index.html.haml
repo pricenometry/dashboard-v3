@@ -5,7 +5,6 @@
     .row
       / main col left
       .col-md-12.col-sm-10
-        = render 'layouts/responsive_ad'
         #welcome.page-header
           %h1
             = content_for?(:h1) ? yield(:h1) : "Search #{@total}illion products from #{@count} different sites at once."
@@ -27,5 +26,6 @@
           .col-md-4{align: 'center'}
             %strong Pending
             %p #{@pending}
+        = render 'layouts/responsive_ad'
         = render 'layouts/responsive_ad'
         = render 'layouts/responsive_ad'

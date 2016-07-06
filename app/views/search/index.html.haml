@@ -6,9 +6,8 @@
       / main col left
       .col-md-3.col-sm-4.text-center
         = render 'layouts/responsive_ad'
-        = render 'layouts/responsive_ad'
-        = render 'layouts/responsive_ad'
       .col-md-9.col-sm-8
+        = render 'layouts/responsive_ad'
         - unless browser.bot?
           .panel
             .fb-like{"data-share" => "true", "data-show-faces" => "true", "data-width" => "450", align: 'right' }
@@ -17,5 +16,6 @@
             .row
           = render 'search/vertical_result', result: result
         = render 'layouts/pagination', pagination: @pagination
+    = render 'layouts/responsive_ad'
     %br
     = render 'layouts/search'
