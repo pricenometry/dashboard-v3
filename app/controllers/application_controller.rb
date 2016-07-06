@@ -6,10 +6,14 @@ class ApplicationController < ActionController::Base
 
   before_action :prepare_meta_tags, if: "request.get?"
 
-  before_action :set_cid
+  before_action :set_trackers
 
-  def set_cid
-    @cid = params[:cid]
+  def set_trackers
+    @trackers ||= []
+    if params[:cid].presence
+      @trackers << "http://postback.zeroredirect7.com/zppostback/b10d59d1-ed10-11e5-9deb-0ea7743a2ad5?cid=#{params[:cid]}"
+    end
+    @trackers
   end
 
   def prepare_meta_tags(options={})

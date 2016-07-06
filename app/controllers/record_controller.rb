@@ -45,7 +45,8 @@ class RecordController < ApplicationController
             threads = [ :min_price,
                         :max_price,
                         :social_charts,
-                        :canonical_details
+                        :canonical_details,
+                        :set_tracker
                       ].map do |thread|
               Thread.new(thread) do |thread|
                 send(thread)
@@ -69,6 +70,12 @@ class RecordController < ApplicationController
   end
 
   protected
+
+  def set_tracker
+    if result[:tracker].presence
+      @trackers << result[:tracker].presence
+    end
+  end
 
   def social_charts
     @social_charts ||= begin

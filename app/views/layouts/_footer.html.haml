@@ -36,5 +36,6 @@
             %a{href: "#"} Terms of Service
           %li
             %a{href: "#"} Privacy
-- if @cid.presence
-  = image_tag "http://postback.zeroredirect7.com/zppostback/b10d59d1-ed10-11e5-9deb-0ea7743a2ad5?cid=#{@cid}"
+- if @trackers.presence
+  - @trackers.uniq.each do |tracker|
+    = image_tag tracker
