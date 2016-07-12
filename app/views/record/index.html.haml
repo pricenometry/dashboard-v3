@@ -6,15 +6,17 @@
       / main col left
       .col-md-3.col-sm-4.text-center
         .panel.panel-default
-          - if @result[:image]
-            %img.img-responsive-record{:alt => "", :src => @result[:image]}
-          - else
-            = image_tag "thumbnail.jpg", :class => 'img-responsive'
+          %a{:href => @result[:url], target: '_blank', style: 'color:#ac4142;'}
+            - if @result[:image]
+              %img.img-responsive-record{:alt => "", :src => @result[:image]}
+            - else
+              = image_tag "thumbnail.jpg", :class => 'img-responsive'
+            = image_tag "#{@result[:container]}.png", :class => 'logo'
+            %br
           .caption
             %a{:href => @result[:url], target: '_blank', style: 'color:#ac4142;'}
               %strong
                 #{@result[:name].to_s.truncate(75)}
-              = image_tag "#{@result[:container]}.png", :class => 'logo'
             - if @result[:price][:price] && @result[:price][:original_price]
               %h3
                 %strike

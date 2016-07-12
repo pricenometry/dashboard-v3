@@ -9,28 +9,16 @@
     - else
       .thumbnail.media
         .col-md-2.col-sm-2
-          - if result[:container] == 'amazon-offers' || result[:container] == 'walmart-offers'
-            %a.media-left{:href => result[:url], target: '_blank', style: 'color:#ac4142;'}
-              - if result[:image]
-                %img.media-object{:alt => "", :src => result[:image]}
-              - else
-                = image_tag "thumbnail.jpg", :class => 'media-object'
-          - else
-            %a.media-left{:href => "/#{result[:container]}/#{result[:id]}", rel: "nofollow", style: 'color:#ac4142;'}
-              - if result[:image]
-                %img.media-object{:alt => "", :src => result[:image]}
-              - else
-                = image_tag "thumbnail.jpg", :class => 'media-object'
-          = image_tag "#{result[:container]}.png", class: 'logo'
+          %a.media-left{:href => "/#{result[:container]}/#{result[:id]}", rel: "nofollow", style: 'color:#ac4142;'}
+            - if result[:image]
+              %img.media-object{:alt => "", :src => result[:image]}
+            - else
+              = image_tag "thumbnail.jpg", :class => 'media-object'
+        = image_tag "#{result[:container]}.png", class: 'logo'
         .media-body
-          - if result[:container] == 'amazon-offers'
-            %a{:href => result[:url], target: '_blank', style: 'color:#ac4142;'}
-              %strong
-                #{result[:name].to_s}
-          - else
-            %a{:href => "/#{result[:container]}/#{result[:id]}", rel: "nofollow", style: 'color:#ac4142;'}
-              %strong
-                #{result[:name].to_s}
+          %a{:href => "/#{result[:container]}/#{result[:id]}", rel: "nofollow", style: 'color:#ac4142;'}
+            %strong
+              #{result[:name].to_s}
           %p
             - if result[:availability]
               #{result[:availability]}

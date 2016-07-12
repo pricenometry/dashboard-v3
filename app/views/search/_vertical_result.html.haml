@@ -8,29 +8,16 @@
         (adsbygoogle = window.adsbygoogle || []).push({});
     - else
       .thumbnail
-        - if result[:container] == 'amazon-offers' || result[:container] == 'walmart-offers'
-          %a{:href => result[:url], target: '_blank', style: 'color:#ac4142;'}
-            - if result[:image]
-              %img.img-responsive-search{:alt => "", :src => result[:image]}
-            - else
-              = image_tag "thumbnail.jpg", :class => 'img-responsive-search'
-            = image_tag "#{result[:container]}.png", :class => 'logo'
-        - else
-          %a{:href => "/#{result[:container]}/#{result[:id]}", rel: "nofollow", style: 'color:#ac4142;'}
-            - if result[:image]
-              %img.img-responsive-search{:alt => "", :src => result[:image]}
-            - else
-              = image_tag "thumbnail.jpg", :class => 'img-responsive'
-            = image_tag "#{result[:container]}.png", :class => 'logo'
-        .caption
-          - if result[:container] == 'amazon-offers'
-            %a{:href => result[:url], target: '_blank', style: 'color:#ac4142;'}
-              %strong
-                #{result[:name].to_s.truncate(45)}
+        %a{:href => "/#{result[:container]}/#{result[:id]}", rel: "nofollow", style: 'color:#ac4142;'}
+          - if result[:image]
+            %img.img-responsive-search{:alt => "", :src => result[:image]}
           - else
-            %a{:href => "/#{result[:container]}/#{result[:id]}", rel: "nofollow", style: 'color:#ac4142;'}
-              %strong
-                #{result[:name].truncate(45)}
+            = image_tag "thumbnail.jpg", :class => 'img-responsive'
+          = image_tag "#{result[:container]}.png", :class => 'logo'
+        .caption
+          %a{:href => "/#{result[:container]}/#{result[:id]}", rel: "nofollow", style: 'color:#ac4142;'}
+            %strong
+              #{result[:name].truncate(45)}
           %h3
             - if result[:price][:price]
               %strong
