@@ -32,5 +32,20 @@
         - @result[:description].split('. ').shuffle.each do |sentence|
           %p{align: 'left'}
             #{sentence}.
+      %p.text-center
+        - if @result[:container] == 'amazon-offers'
+          = render 'search/amazon_button', result: @result
+          %br
+        - elsif @result[:container] == 'walmart-offers'
+          = render 'search/walmart_button', result: @result
+        - elsif @result[:container] == 'target-offers'
+          %a.btn.btn-primary{href: "/#{@result[:container]}/#{@result[:id]}"}
+            = icon('shopping-cart')
+            \#BoycottTarget
+            %br
+        - else
+          %a.btn.btn-lg.btn-primary{:href => @result[:url], target: '_blank'}
+            = icon('shopping-cart')
+            = "Buy at #{@result[:container].split('-').first.capitalize}"
     - unless browser.bot?
       = linkedin_button
