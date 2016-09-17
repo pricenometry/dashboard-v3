@@ -12,6 +12,7 @@ class Pricenometry::Record < Pricenometry::Base
   def record crawl = true
     @options = @options.merge(fetch: crawl)
     url
+    json[:result][:image] = json[:result][:image].gsub('http://','https://') if json[:result][:image]
     json[:result]
   rescue
     nil
