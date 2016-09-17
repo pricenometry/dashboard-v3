@@ -1,5 +1,5 @@
 class Pricenometry::Base
-  ENDPOINT = 'http://api.pricenometry.com'
+  ENDPOINT = 'https://api.pricenometry.com'
 
   def json
     JSON.parse(response[:body]).deep_symbolize_keys!

@@ -11,10 +11,10 @@ class ApplicationController < ActionController::Base
   def set_trackers
     @trackers ||= []
     if params[:cid].presence
-      @trackers << "http://postback.zeroredirect7.com/zppostback/b10d59d1-ed10-11e5-9deb-0ea7743a2ad5?cid=#{params[:cid]}"
+      @trackers << "https://postback.zeroredirect7.com/zppostback/b10d59d1-ed10-11e5-9deb-0ea7743a2ad5?cid=#{params[:cid]}"
     end
 
-    @trackers << "http://beacon.walmart.com/vm/ttap.gif?affpublisherid=SSAm5cSHYzs&affsdkaction=buynow_button_impression&affsdktrack=#{session.id}&veh=aff&affs=sdk&affsdktype=html&affsdkcomp=buynowbutton&colorscheme=blue&sizescheme=default"
+    @trackers << "https://beacon.walmart.com/vm/ttap.gif?affpublisherid=SSAm5cSHYzs&affsdkaction=buynow_button_impression&affsdktrack=#{session.id}&veh=aff&affs=sdk&affsdktype=html&affsdkcomp=buynowbutton&colorscheme=blue&sizescheme=default"
 
     @trackers
   end
