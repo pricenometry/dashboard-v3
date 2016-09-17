@@ -3,17 +3,17 @@
   user: ubuntu
   sudo: yes
   roles:
-    # - ubuntu-common
-    # - chruby
-    # - ruby-install
-    # - role: build-ruby
-    #   version: 2.3.0
-    # - role: postgresql
-    # - role: letsencrypt
-    #   letsencrypt_webroot_path: /home/ubuntu/dashboard-v3/current/public
-    #   letsencrypt_email: bastosmichael@gmail.com
-    #   letsencrypt_cert_domains:
-    #     - pricenometry.com
+    - ubuntu-common
+    - chruby
+    - ruby-install
+    - role: build-ruby
+      version: 2.3.0
+    - role: postgresql
+    - role: letsencrypt
+      letsencrypt_webroot_path: /home/ubuntu/dashboard-v3/current/public
+      letsencrypt_email: bastosmichael@gmail.com
+      letsencrypt_cert_domains:
+        - pricenometry.com
     - role: nginx-unicorn
       nginx_sites:
         - name: 'production'
