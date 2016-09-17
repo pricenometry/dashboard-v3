@@ -3,17 +3,26 @@
   user: ubuntu
   sudo: yes
   roles:
-    - ubuntu-common
-    - chruby
-    - ruby-install
-    - role: build-ruby
-      version: 2.3.0
-    - role: postgresql
+    # - ubuntu-common
+    # - chruby
+    # - ruby-install
+    # - role: build-ruby
+    #   version: 2.3.0
+    # - role: postgresql
+    # - role: letsencrypt
+    #   letsencrypt_webroot_path: /home/ubuntu/dashboard-v3/current/public
+    #   letsencrypt_email: bastosmichael@gmail.com
+    #   letsencrypt_cert_domains:
+    #     - pricenometry.com
     - role: nginx-unicorn
       nginx_sites:
         - name: 'production'
-          server_name: '_'
+          server_name: 'pricenometry.com'
           root: '/home/ubuntu/dashboard-v3/current'
           listen: '0.0.0.0:80'
           access_log:
             format: 'combined'
+          ssl:
+            ssl_only: true
+            certificate: /etc/letsencrypt/live/pricenometry.com/fullchain.pem
+            certificate_key: /etc/letsencrypt/live/pricenometry.com/privkey.pem
