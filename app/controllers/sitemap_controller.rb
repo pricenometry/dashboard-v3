@@ -1,6 +1,6 @@
 class SitemapController < ApplicationController
   def show
-    @url = "https://#{Rails.configuration.config[:admin][:domain_name]}-sitemaps.s3.amazonaws.com/#{params[:container]}/sitemap#{params[:id]}.xml.gz"
+    @url = "http://#{Rails.configuration.config[:admin][:domain_name]}-sitemaps.s3.amazonaws.com/#{params[:container]}/sitemap#{params[:id]}.xml.gz"
     if params[:container].include?('sitemaps')
       redirect_to root_path
     else
