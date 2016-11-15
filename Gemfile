@@ -8,6 +8,7 @@ gem 'excon'
 gem 'bootstrap-sass'
 gem 'rails_12factor'
 gem 'font-awesome-sass', '~> 4.6.2'
+gem 'sqlite3'
 
 gem "chartkick"
 gem 'groupdate'
