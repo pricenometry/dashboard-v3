@@ -10,6 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require jquery-ui
  *= require waves
  *= require animate
  *= require 'masonry/basic'
@@ -19,6 +20,8 @@
  *= require 'masonry/infinitescroll'
  *= require 'masonry/right-to-left'
  *= require 'masonry/transitions'
+ *= require owl.carousel
+ *= require owl.theme
  *= require_tree .
  *= require_self
  */
