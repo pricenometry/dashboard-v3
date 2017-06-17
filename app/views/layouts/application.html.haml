@@ -53,11 +53,759 @@
         }(document, 'script', 'facebook-jssdk'));
 
   %body{:class => "#{controller_name} #{action_name}"}
-    %header
-      = render 'layouts/navigation'
+    #header
+      / Page Header Start
+      .top-menu-mob
+        / Top Line Mobile Start
+        .header-top-mob
+          %button#js-mnu_container.mnu_container
+            %span.sandwich
+              %span.sw-topper
+              %span.sw-bottom
+              %span.sw-footer
+          #mnu-popup-mob.mnu-popup-mob
+            .header-top-mob
+              .logo-popup-mob
+                %a{:href => "index.html"} Pricenometry
+            %nav#mnu-toggle.mnu-toggle
+              %form.search-form-mob{:action => "/"}
+                %i.fa.fa-search{"aria-hidden" => "true"}
+                %input.submit-search-mob{:type => "submit", :value => ""}/
+                %input#input-search-mob.input-search-mob{:autofocus => "", :placeholder => "Search", :type => "text"}/
+                #clear-searh-mob.clear-searh-mob
+              %ul
+                %li
+                  %a{:href => "https://pricenometry.com"} Home
+                %li
+                  %a{:href => "http://about.pricenometry.com/what-we-do/"} What We Do?
+                %li
+                  %a{:href => "http://about.pricenometry.com/"} Blog
+                %li
+                  %a{:href => "https://facebook.com/Pricenometry"} Facebook
+                %li
+                  %a{:href => "https://twitter.com/Pricenometry"} Twitter
+                %li
+                  %a{:href => "https://instagram.com/Pricenometry"} Instagram
+                %li
+                  %a{:href => "https://github.com/Pricenometry"} Github
+                %li
+                  %a{:href => "http://developers.pricenometry.com/"} Developer API
+                %li
+                  %a#js-account-mob{:href => "http://about.pricenometry.com/get-access/"} Get Access
+                %li
+                  %a.level-two{:href => "#"} Terms of Service
+                %li
+                  %a{:href => "#"} Privacy Policy
+              %ul
+                %li
+                  %a.level-two{:href => "page_product_2.html"}
+                    Amazon
+                    %i.fa.fa-angle-down{"aria-hidden" => "true"}
+                  %ul
+                    %li
+                      %a{:href => ""} Most Trending
+                    %li
+                      %a.level-two{:href => ""}
+                        Most Trending
+                        %i.fa.fa-angle-down{"aria-hidden" => "true"}
+                      %ul
+                        %li
+                          %a{:href => "#"} Facebook
+                        %li
+                          %a{:href => "#"} Twitter
+                        %li
+                          %a{:href => "#"} Pinterest
+                        %li
+                          %a{:href => "#"} Google
+                    %li
+                      %a{:href => "#"} Most Expensive
+                %li
+                  %a.level-two{:href => "page_product_2.html"}
+                    Walmart
+                    %i.fa.fa-angle-down{"aria-hidden" => "true"}
+                  %ul
+                    %li
+                      %a{:href => ""} Most Trending
+                    %li
+                      %a.level-two{:href => ""}
+                        Most Trending
+                        %i.fa.fa-angle-down{"aria-hidden" => "true"}
+                      %ul
+                        %li
+                          %a{:href => "#"} Facebook
+                        %li
+                          %a{:href => "#"} Twitter
+                        %li
+                          %a{:href => "#"} Pinterest
+                        %li
+                          %a{:href => "#"} Google
+                    %li
+                      %a{:href => "#"} Most Expensive
+                %li
+                  %a.level-two{:href => "page_product_2.html"}
+                    NewEgg
+                    %i.fa.fa-angle-down{"aria-hidden" => "true"}
+                  %ul
+                    %li
+                      %a{:href => ""} Most Trending
+                    %li
+                      %a.level-two{:href => ""}
+                        Most Trending
+                        %i.fa.fa-angle-down{"aria-hidden" => "true"}
+                      %ul
+                        %li
+                          %a{:href => "#"} Facebook
+                        %li
+                          %a{:href => "#"} Twitter
+                        %li
+                          %a{:href => "#"} Pinterest
+                        %li
+                          %a{:href => "#"} Google
+                    %li
+                      %a{:href => "#"} Most Expensive
+                %li
+                  %a.level-two{:href => "page_product_2.html"}
+                    Staples
+                    %i.fa.fa-angle-down{"aria-hidden" => "true"}
+                  %ul
+                    %li
+                      %a{:href => ""} Most Trending
+                    %li
+                      %a.level-two{:href => ""}
+                        Most Trending
+                        %i.fa.fa-angle-down{"aria-hidden" => "true"}
+                      %ul
+                        %li
+                          %a{:href => "#"} Facebook
+                        %li
+                          %a{:href => "#"} Twitter
+                        %li
+                          %a{:href => "#"} Pinterest
+                        %li
+                          %a{:href => "#"} Google
+                    %li
+                      %a{:href => "#"} Most Expensive
+                %li
+                  %a.level-two{:href => "page_product_2.html"}
+                    Best Buy
+                    %i.fa.fa-angle-down{"aria-hidden" => "true"}
+                  %ul
+                    %li
+                      %a{:href => ""} Most Trending
+                    %li
+                      %a.level-two{:href => ""}
+                        Most Trending
+                        %i.fa.fa-angle-down{"aria-hidden" => "true"}
+                      %ul
+                        %li
+                          %a{:href => "#"} Facebook
+                        %li
+                          %a{:href => "#"} Twitter
+                        %li
+                          %a{:href => "#"} Pinterest
+                        %li
+                          %a{:href => "#"} Google
+                    %li
+                      %a{:href => "#"} Most Expensive
+                %li
+                  %a.level-two{:href => "page_product_2.html"}
+                    Home Depot
+                    %i.fa.fa-angle-down{"aria-hidden" => "true"}
+                  %ul
+                    %li
+                      %a{:href => ""} Most Trending
+                    %li
+                      %a.level-two{:href => ""}
+                        Most Trending
+                        %i.fa.fa-angle-down{"aria-hidden" => "true"}
+                      %ul
+                        %li
+                          %a{:href => "#"} Facebook
+                        %li
+                          %a{:href => "#"} Twitter
+                        %li
+                          %a{:href => "#"} Pinterest
+                        %li
+                          %a{:href => "#"} Google
+                    %li
+                      %a{:href => "#"} Most Expensive
+                %li
+                  %a.level-two{:href => "page_product_2.html"}
+                    Target
+                    %i.fa.fa-angle-down{"aria-hidden" => "true"}
+                  %ul
+                    %li
+                      %a{:href => ""} Most Trending
+                    %li
+                      %a.level-two{:href => ""}
+                        Most Trending
+                        %i.fa.fa-angle-down{"aria-hidden" => "true"}
+                      %ul
+                        %li
+                          %a{:href => "#"} Facebook
+                        %li
+                          %a{:href => "#"} Twitter
+                        %li
+                          %a{:href => "#"} Pinterest
+                        %li
+                          %a{:href => "#"} Google
+                    %li
+                      %a{:href => "#"} Most Expensive
+                %li
+                  %a.level-two{:href => "page_product_2.html"}
+                    Costco
+                    %i.fa.fa-angle-down{"aria-hidden" => "true"}
+                  %ul
+                    %li
+                      %a{:href => ""} Most Trending
+                    %li
+                      %a.level-two{:href => ""}
+                        Most Trending
+                        %i.fa.fa-angle-down{"aria-hidden" => "true"}
+                      %ul
+                        %li
+                          %a{:href => "#"} Facebook
+                        %li
+                          %a{:href => "#"} Twitter
+                        %li
+                          %a{:href => "#"} Pinterest
+                        %li
+                          %a{:href => "#"} Google
+                    %li
+                      %a{:href => "#"} Most Expensive
+          .logo-mob
+            %a{:href => "index.html"} Pricenometry
+          /
+            <a href="page_cart-step-one.html" class="bug-mob">
+            <span>2</span>
+            </a>
+      / Top Line Mobile End
+      .header-top
+        / Top Menu Desktop  Start
+        .box-1675
+          .col-md-12
+            .row
+              #top-left.top-left
+                %ul
+                  %li
+                    %a{:href => "https://pricenometry.com"} Home
+                  %li
+                    %a.level-two{:href => "#"}
+                      Social
+                      %i.fa.fa-angle-down{"aria-hidden" => "true"}
+                    %ul
+                      %li
+                        %a{:href => "https://facebook.com/Pricenometry", :target => "_blank"} Facebook
+                      %li
+                        %a{:href => "https://twitter.com/Pricenometry", :target => "_blank"} Twitter
+                      %li
+                        %a{:href => "https://instagram.com/Pricenometry", :target => "_blank"} Instagram
+                      %li
+                        %a{:href => "https://github.com/Pricenometry", :target => "_blank"} Github
+                  %li
+                    %a.level-two{:href => "#"}
+                      About
+                      %i.fa.fa-angle-down{"aria-hidden" => "true"}
+                    %ul
+                      %li
+                        %a{:href => "http://about.pricenometry.com/what-we-do/", :target => "_blank"} What We Do?
+                      %li
+                        %a{:href => "http://about.pricenometry.com/", :target => "_blank"} Blog
+                      %li
+                        %a#js-account{:href => "#", :target => "_blank"} Terms of Service
+                      %li
+                        %a#js-account{:href => "#", :target => "_blank"} Privacy Policy
+              #top-right.top-right
+                %ul
+                  %li
+                    %a{:href => "http://developers.pricenometry.com/", :target => "_blank"} Developer API
+                  %li
+                    %a{:href => "http://about.pricenometry.com/get-access/", :target => "_blank"} Get Access
+      / Top Menu Desktop  End
+      .header-center
+        / Center Menu Desktop  Start
+        .box-1675
+          .col-md-12
+            .row
+              #col-size-logo.col-size-logo
+                %a.logo{:href => "index.html"} Pricenometry
+              #col-size-search.col-size-search
+                #box-search.box-search
+                  .beats
+                    %i.fa.fa-search{"aria-hidden" => "true"}>
+                    What Product Are You Looking For?
+                  #main-search-popup.main-search-popup
+                    #box-search-popup.box-search-popup
+                      #close-popup-search.close-popup-search
+                      .search-popup-main
+                        %form#live-search.search-form{:action => "/", :method => "post"}
+                          %fieldset
+                            %input#filter.input-search{:autocomplete => "off", :placeholder => "What Product Are You Looking For?", :type => "text", :value => ""}/
+                            %span#clear-searh.clear-searh
+                        /
+                          <nav class="results-search" id="results-search">
+                          <ul>
+                          <li class="item">
+                          <a href="page_product_2.html">
+                          <div class="box-img-search"><img src="http://webark.io/ecom/presentation/html/img/orange/product_1_1.jpg" alt=""></div>
+                          <div class="box-info-search">
+                          <div class="title-search">Armchair АC-150KS</div>
+                          <div class="price-search">$142.50</div>
+                          </div>
+                          </a>
+                          </li>
+                          <li class="item">
+                          <a href="page_product_2.html">
+                          <div class="box-img-search"><img src="http://webark.io/ecom/presentation/html/img/orange/product_2_1.jpg" alt=""></div>
+                          <div class="box-info-search">
+                          <div class="title-search">Oregon chair 723</div>
+                          <div class="price-search">$98</div>
+                          </div>
+                          </a>
+                          </li>
+                          <li class="item">
+                          <a href="page_product_2.html">
+                          <div class="box-img-search"><img src="http://webark.io/ecom/presentation/html/img/orange/product_3_1.jpg" alt=""></div>
+                          <div class="box-info-search">
+                          <div class="title-search">Parma 180</div>
+                          <div class="price-search">$4190</div>
+                          </div>
+                          </a>
+                          </li>
+                          <li class="item">
+                          <a href="page_product_2.html">
+                          <div class="box-img-search"><img src="http://webark.io/ecom/presentation/html/img/orange/product_4_1.jpg" alt=""></div>
+                          <div class="box-info-search">
+                          <div class="title-search">Roxy Canty RC-11</div>
+                          <div class="price-search">$875</div>
+                          </div>
+                          </a>
+                          </li>
+                          <li class="item">
+                          <a href="page_product_2.html">
+                          <div class="box-img-search"><img src="http://webark.io/ecom/presentation/html/img/orange/product_1_1.jpg" alt=""></div>
+                          <div class="box-info-search">
+                          <div class="title-search">Armchair АC-150KS</div>
+                          <div class="price-search">$142.50</div>
+                          </div>
+                          </a>
+                          </li>
+                          <li class="item">
+                          <a href="page_product_2.html">
+                          <div class="box-img-search"><img src="http://webark.io/ecom/presentation/html/img/orange/product_2_1.jpg" alt=""></div>
+                          <div class="box-info-search">
+                          <div class="title-search">Oregon chair 723</div>
+                          <div class="price-search">$98</div>
+                          </div>
+                          </a>
+                          </li>
+                          <li class="item">
+                          <a href="page_product_2.html">
+                          <div class="box-img-search"><img src="http://webark.io/ecom/presentation/html/img/orange/product_3_1.jpg" alt=""></div>
+                          <div class="box-info-search">
+                          <div class="title-search">Parma 180</div>
+                          <div class="price-search">$4190</div>
+                          </div>
+                          </a>
+                          </li>
+                          <li class="item">
+                          <a href="page_product_2.html">
+                          <div class="box-img-search"><img src="http://webark.io/ecom/presentation/html/img/orange/product_4_1.jpg" alt=""></div>
+                          <div class="box-info-search">
+                          <div class="title-search">Roxy Canty RC-11</div>
+                          <div class="price-search">$875</div>
+                          </div>
+                          </a>
+                          </li>
+                          <li class="item-rearched">
+                          <div class="wrap-results-rearched"><span id="filter-count"></span></div>
+                          <div class="wrap-see-all-results" id="wrap-see-all-results"><a href="page_search-results.html">See All Results<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                          </div>
+                          </li>
+                          </ul>
+                          </nav>
+                /
+                  <div class="wrap-allcat" id="wrap-allcat">
+                  <select id="cat-select-menu" class="cat-select-menu">
+                  <option>All categories</option>
+                  <option>Amazon</option>
+                  <option>Walmart</option>
+                  <option>NewEgg</option>
+                  <option>Staples</option>
+                  <option>Best Buy</option>
+                  <option>Home Depot</option>
+                  <option>Target</option>
+                  <option>Costco</option>
+                  </select>
+                  </div>
+              #col-size-buy.col-size-buy
+                .box-buy
+                  .box-inven
+                    /
+                      <span class="shlist"><a href="page_wish-list.html">
+                      <i class="fa fa-heart" aria-hidden="true"></i>
+                      Wishlist (10)</a></span>
+                      <span class="compare"><a href="page_compare.html"><i class="fa fa-exchange" aria-hidden="true"></i>
+                      Compare (3)</a></span>
+                /
+                  <a href="page_cart-step-one.html" class="box-basket">
+                  <div class="basket-price">$5458</div>
+                  <div class="basket-count-buy"><span>2</span></div>
+                  </a>
+      / Center Menu Desktop  End
+      / Center Menu Desktop  End
+      / Bottom Menu Desktop  Start
+      .header-bottom
+        .box-1675
+          .col-md-12
+            .row
+              .main-menu
+                %ul.ul-main-menu
+                  %li
+                    .dropdown.dropdown-inline
+                      %a.dropdown-toggle{"data-hover" => "dropdown", :href => "#"} Amazon
+                      %ul.dropdown-menu.offset-left.bordermenu{:role => "menu"}
+                        %li.dropdown
+                          %a{:href => "#"}
+                            Most Trending
+                            %i.fa.fa-angle-right{"aria-hidden" => "true"}
+                          %ul.dropdown-menu
+                            %li
+                              %a{:href => "#"} Facebook
+                            %li
+                              %a{:href => "#"} Twitter
+                            %li
+                              %a{:href => "#"} Pinterest
+                            %li
+                              %a{:href => "#"} Google
+                        %li
+                          %a{:href => "#"} Most Expensive
+                  %li
+                    .dropdown.dropdown-inline
+                      %a.dropdown-toggle{"data-hover" => "dropdown", :href => "#"} Walmart
+                      %ul.dropdown-menu.offset-left.bordermenu{:role => "menu"}
+                        %li.dropdown
+                          %a{:href => "#"}
+                            Most Trending
+                            %i.fa.fa-angle-right{"aria-hidden" => "true"}
+                          %ul.dropdown-menu
+                            %li
+                              %a{:href => "#"} Facebook
+                            %li
+                              %a{:href => "#"} Twitter
+                            %li
+                              %a{:href => "#"} Pinterest
+                            %li
+                              %a{:href => "#"} Google
+                        %li
+                          %a{:href => "#"} Most Expensive
+                  %li
+                    .dropdown.dropdown-inline
+                      %a.dropdown-toggle{"data-hover" => "dropdown", :href => "#"} NewEgg
+                      %ul.dropdown-menu.offset-left.bordermenu{:role => "menu"}
+                        %li.dropdown
+                          %a{:href => "#"}
+                            Most Trending
+                            %i.fa.fa-angle-right{"aria-hidden" => "true"}
+                          %ul.dropdown-menu
+                            %li
+                              %a{:href => "#"} Facebook
+                            %li
+                              %a{:href => "#"} Twitter
+                            %li
+                              %a{:href => "#"} Pinterest
+                            %li
+                              %a{:href => "#"} Google
+                        %li
+                          %a{:href => "#"} Most Expensive
+                  %li
+                    .dropdown.dropdown-inline
+                      %a.dropdown-toggle{"data-hover" => "dropdown", :href => "#"} Staples
+                      %ul.dropdown-menu.offset-left.bordermenu{:role => "menu"}
+                        %li.dropdown
+                          %a{:href => "#"}
+                            Most Trending
+                            %i.fa.fa-angle-right{"aria-hidden" => "true"}
+                          %ul.dropdown-menu
+                            %li
+                              %a{:href => "#"} Facebook
+                            %li
+                              %a{:href => "#"} Twitter
+                            %li
+                              %a{:href => "#"} Pinterest
+                            %li
+                              %a{:href => "#"} Google
+                        %li
+                          %a{:href => "#"} Most Expensive
+                  %li
+                    .dropdown.dropdown-inline
+                      %a.dropdown-toggle{"data-hover" => "dropdown", :href => "#"} Best Buy
+                      %ul.dropdown-menu.offset-left.bordermenu{:role => "menu"}
+                        %li.dropdown
+                          %a{:href => "#"}
+                            Most Trending
+                            %i.fa.fa-angle-right{"aria-hidden" => "true"}
+                          %ul.dropdown-menu
+                            %li
+                              %a{:href => "#"} Facebook
+                            %li
+                              %a{:href => "#"} Twitter
+                            %li
+                              %a{:href => "#"} Pinterest
+                            %li
+                              %a{:href => "#"} Google
+                        %li
+                          %a{:href => "#"} Most Expensive
+                  %li
+                    .dropdown.dropdown-inline
+                      %a.dropdown-toggle{"data-hover" => "dropdown", :href => "#"} Home Depot
+                      %ul.dropdown-menu.offset-left.bordermenu{:role => "menu"}
+                        %li.dropdown
+                          %a{:href => "#"}
+                            Most Trending
+                            %i.fa.fa-angle-right{"aria-hidden" => "true"}
+                          %ul.dropdown-menu
+                            %li
+                              %a{:href => "#"} Facebook
+                            %li
+                              %a{:href => "#"} Twitter
+                            %li
+                              %a{:href => "#"} Pinterest
+                            %li
+                              %a{:href => "#"} Google
+                        %li
+                          %a{:href => "#"} Most Expensive
+                  %li
+                    .dropdown.dropdown-inline
+                      %a.dropdown-toggle{"data-hover" => "dropdown", :href => "#"} Target
+                      %ul.dropdown-menu.offset-left.bordermenu{:role => "menu"}
+                        %li.dropdown
+                          %a{:href => "#"}
+                            Most Trending
+                            %i.fa.fa-angle-right{"aria-hidden" => "true"}
+                          %ul.dropdown-menu
+                            %li
+                              %a{:href => "#"} Facebook
+                            %li
+                              %a{:href => "#"} Twitter
+                            %li
+                              %a{:href => "#"} Pinterest
+                            %li
+                              %a{:href => "#"} Google
+                        %li
+                          %a{:href => "#"} Most Expensive
+                  %li
+                    .dropdown.dropdown-inline
+                      %a.dropdown-toggle{"data-hover" => "dropdown", :href => "#"} Costco
+                      %ul.dropdown-menu.offset-left.bordermenu{:role => "menu"}
+                        %li.dropdown
+                          %a{:href => "#"}
+                            Most Trending
+                            %i.fa.fa-angle-right{"aria-hidden" => "true"}
+                          %ul.dropdown-menu
+                            %li
+                              %a{:href => "#"} Facebook
+                            %li
+                              %a{:href => "#"} Twitter
+                            %li
+                              %a{:href => "#"} Pinterest
+                            %li
+                              %a{:href => "#"} Google
+                        %li
+                          %a{:href => "#"} Most Expensive
+
+    / %header
+    /   = render 'layouts/navigation'
     .container
       .row
         = render 'layouts/messages'
         = yield
 
-    = render 'layouts/footer'
+    #footer
+      / Page Footer Start
+      .footer
+        .box-1675
+          .container-fluid
+            .row.box-title-footer
+              .col-md-2.col-sm-2
+                .title-footer Ecom
+              .col-md-2.col-sm-2
+                .title-footer Categories
+              .col-md-2.col-sm-2
+                .title-footer Information
+              .col-md-2.col-sm-2
+                .title-footer Stay connected
+              .col-md-2.col-sm-2
+                .title-footer My Account
+              .col-md-2.col-sm-2
+                .title-footer Help &amp; Contact
+            .row
+              .hr-footer
+            .row
+              .col-md-2.col-sm-2.text-footer
+                %ul
+                  %li
+                    %a{:href => "product_accessories.html"} Products
+                  %li
+                    %a{:href => "page_cart-step-one.html"} Cart step one
+                  %li
+                    %a{:href => "page_cart-step-two.html"} Cart step two
+                  %li
+                    %a{:href => "page_compare.html"} Compare
+                  %li
+                    %a{:href => "page_wish-list.html"} Wishlist
+              .col-md-2.col-sm-2.text-footer
+                %ul
+                  %li
+                    %a{:href => "#"} Amazon
+                  %li
+                    %a{:href => "#"} Walmart
+                  %li
+                    %a{:href => "#"} NewEgg
+                  %li
+                    %a{:href => "#"} Staples
+                  %li
+                    %a{:href => "#"} Best Buy
+                  %li
+                    %a{:href => "#"} Home Depot
+                  %li
+                    %a{:href => "#"} Target
+                  %li
+                    %a{:href => "#"} Costco
+              .col-md-2.col-sm-2.text-footer
+                %ul
+                  %li
+                    %a{:href => "page_404.html"} 404
+                  %li
+                    %a{:href => "page_cart-step-empty.html"} Cart empty
+                  %li
+                    %a{:href => "page_delivery.html"} Delivery
+                  %li
+                    %a{:href => "page_opening-soon.html"} Opening soon
+                  %li
+                    %a{:href => "page_search-not-found.html"} Search not found
+                  %li
+                    %a{:href => "page_discont.html"} Discount
+              .col-md-2.col-sm-2.text-footer
+                %ul
+                  %li
+                    %a{:href => "https://www.instagram.com/webarksystem/", :target => "_blank"} Instagram
+                  %li
+                    %a{:href => "https://www.facebook.com/WebArk-346789308995961", :target => "_blank"} Facebook
+                  %li
+                    %a{:href => "https://twitter.com/WebarkSystems", :target => "_blank"} Twitter
+                  %li
+                    %a{:href => "https://plus.google.com/u/0/104841685075716062830", :target => "_blank"} Google+
+              .col-md-2.col-sm-2.text-footer
+                %ul
+                  %li
+                    %a{:href => "page_account.html?active_tab=0"} Personal Infromation
+                  %li
+                    %a{:href => "page_account.html?active_tab=1"} Address
+                  %li
+                    %a{:href => "page_account.html?active_tab=2"} Orders
+                  %li
+                    %a{:href => "page_account.html?active_tab=3"} Wishlist
+              .col-md-2.col-sm-2.text-footer
+                %ul
+                  %li
+                    %a{:href => "page_faq.html"} FAQ
+                  %li
+                    %a{:href => "page_privacy_policy.html"} Privacy policy
+                  %li
+                    %a{:href => "page_contacts.html"} Contact us
+                  %li
+                    %a{:href => "page_about-us.html"} About us
+      .footer-mob
+        .container
+          #js-footer-item.row{:style => "position: relative; height: 0px;"}
+            .footer-wrap-mob{:style => "position: absolute;"}
+              .title-footer-wrap-mob Ecom
+              %ul
+                %li
+                  %a{:href => "product_accessories.html"} Products
+                %li
+                  %a{:href => "page_cart-step-one.html"} Cart step one
+                %li
+                  %a{:href => "page_cart-step-two.html"} Cart step two
+                %li
+                  %a{:href => "page_compare.html"} Compare
+                %li
+                  %a{:href => "page_wish-list.html"} Wishlist
+            .footer-wrap-mob{:style => "position: absolute;"}
+              .title-footer-wrap-mob Categories
+              %ul
+                %li
+                  %a{:href => "#"} Amazon
+                %li
+                  %a{:href => "#"} Walmart
+                %li
+                  %a{:href => "#"} NewEgg
+                %li
+                  %a{:href => "#"} Staples
+                %li
+                  %a{:href => "#"} Best Buy
+                %li
+                  %a{:href => "#"} Home Depot
+                %li
+                  %a{:href => "#"} Target
+                %li
+                  %a{:href => "#"} Costco
+            .footer-wrap-mob{:style => "position: absolute;"}
+              .title-footer-wrap-mob Information
+              %ul
+                %li
+                  %a{:href => "page_404.html"} 404
+                %li
+                  %a{:href => "page_cart-step-empty.html"} Cart empty
+                %li
+                  %a{:href => "page_delivery.html"} Delivery
+                %li
+                  %a{:href => "page_opening-soon.html"} Opening soon
+                %li
+                  %a{:href => "page_search-not-found.html"} Search not found
+                %li
+                  %a{:href => "page_discont.html"} Discount
+            .footer-wrap-mob{:style => "position: absolute;"}
+              .title-footer-wrap-mob Stay connected
+              %ul
+                %li
+                  %a{:href => "https://www.instagram.com/webarksystem/", :target => "_blank"} Instagram
+                %li
+                  %a{:href => "https://www.facebook.com/WebArk-346789308995961", :target => "_blank"} Facebook
+                %li
+                  %a{:href => "https://twitter.com/WebarkSystems", :target => "_blank"} Twitter
+                %li
+                  %a{:href => "https://plus.google.com/u/0/104841685075716062830", :target => "_blank"} Google+
+            .footer-wrap-mob{:style => "position: absolute;"}
+              .title-footer-wrap-mob My Account
+              %ul
+                %li
+                  %a{:href => "page_account.html?active_tab=0"} Personal Infromation
+                %li
+                  %a{:href => "page_account.html?active_tab=1"} Address
+                %li
+                  %a{:href => "page_account.html?active_tab=2"} Orders
+                %li
+                  %a{:href => "page_account.html?active_tab=3"} Wishlist
+            .footer-wrap-mob{:style => "position: absolute;"}
+              .title-footer-wrap-mob Help &amp; Contact
+              %ul
+                %li
+                  %a{:href => "page_faq.html"} FAQ
+                %li
+                  %a{:href => "page_privacy_policy.html"} Privacy policy
+                %li
+                  %a{:href => "page_contacts.html"} Contact us
+                %li
+                  %a{:href => "page_about-us.html"} About us
+      .full-version
+        %a{:href => "#"} Full Version
+      .copyright
+        .box-1675
+          .container-fluid
+            .row
+              .text-copyright
+                Copyright © 2017 Pricenometry. All Rights Reserved
+      / Footer End
+
