@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require ga_events.js
+//= require waves
 //= require_tree .
 
 GaEvents.Event.adapter = function() {

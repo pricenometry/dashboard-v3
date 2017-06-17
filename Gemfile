@@ -1,16 +1,19 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.2.5'
+gem 'sqlite3'
+
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'excon'
 gem 'bootstrap-sass'
-gem 'rails_12factor'
-gem 'font-awesome-sass', '~> 4.6.2'
-gem 'sqlite3'
+gem 'waves-js-rails', '~> 0.7.5'
+gem 'chartkick'
 
-gem "chartkick"
+# gem 'rails_12factor'
+# gem 'font-awesome-sass', '~> 4.6.2'
+
 gem 'groupdate'
 
 gem 'shareable'
@@ -51,7 +54,6 @@ group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'faker'
-  gem 'sqlite3'
 end
 
 group :development do
@@ -81,7 +83,7 @@ end
 group :production do
   gem 'unicorn'
   gem 'unicorn-worker-killer'
-  gem 'pg'
+  # gem 'pg'
   # gem 'pg_search'
   # gem "activerecord-postgres-hstore"
 end
