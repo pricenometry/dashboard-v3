@@ -37,6 +37,8 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.4.0)
+    animate-rails (1.0.10)
+      rails
     arel (6.0.3)
     ast (2.3.0)
     autoprefixer-rails (6.5.1.1)
@@ -145,6 +147,8 @@ GEM
       domain_name (~> 0.5)
     http_parser.rb (0.6.0)
     i18n (0.7.0)
+    imagesLoaded_rails (4.1.0)
+      railties (>= 3.1)
     jbuilder (2.6.0)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
@@ -165,6 +169,8 @@ GEM
     lumberjack (1.0.10)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
+    masonry-rails (0.2.4)
+      railties
     mechanize (2.7.5)
       domain_name (~> 0.5, >= 0.5.1)
       http-cookie (~> 1.0)
@@ -345,6 +351,8 @@ GEM
       rack (>= 1.0)
     waves-js-rails (0.7.5)
       rails (>= 4.0.1)
+    waypoints-rails (0.1)
+      railties (>= 3.1.0)
     web-console (2.3.0)
       activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
@@ -359,6 +367,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  animate-rails
   awesome_print
   better_errors
   binding_of_caller
@@ -383,9 +392,11 @@ DEPENDENCIES
   guard-rspec
   haml
   headless
+  imagesLoaded_rails
   jbuilder (~> 2.0)
   jquery-rails
   launchy
+  masonry-rails
   mechanize
   meta-tags
   mina
@@ -412,6 +423,7 @@ DEPENDENCIES
   unicorn
   unicorn-worker-killer
   waves-js-rails (~> 0.7.5)
+  waypoints-rails
   web-console (~> 2.0)
 
 BUNDLED WITH
