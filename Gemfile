@@ -9,6 +9,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'excon'
 gem 'bootstrap-sass'
 gem 'waves-js-rails', '~> 0.7.5'
+gem 'modernizr_rails'
 gem 'chartkick'
 
 # gem 'rails_12factor'
@@ -57,7 +58,7 @@ group :development, :test do
 end
 
 group :development do
-  gem "rack-livereload"
+  # gem "rack-livereload"
   gem 'better_errors'
   gem 'binding_of_caller', platforms: [:mri_19, :mri_20, :rbx]
   gem 'quiet_assets'
