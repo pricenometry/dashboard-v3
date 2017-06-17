@@ -10,11 +10,11 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
+//= require jquery3
+//= require bootstrap-sprockets
 //= require jquery-ui
 //= require jquery_ujs
 //= require turbolinks
-//= require bootstrap-sprockets
 //= require ga_events.js
 //= require waypoints
 //= require imagesloaded
