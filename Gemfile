@@ -16,8 +16,8 @@ gem 'waypoints-rails'
 gem 'animate-rails'
 gem 'chartkick'
 
-# gem 'rails_12factor'
-# gem 'font-awesome-sass', '~> 4.6.2'
+gem 'rails_12factor'
+gem 'font-awesome-sass', '~> 4.6.2'
 
 gem 'groupdate'
 
