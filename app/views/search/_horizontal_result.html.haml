@@ -24,18 +24,20 @@
               #{result[:availability]}
             - else
               Available
-          - if user_signed_in?
-            / %a.btn.btn-danger{:href => "/users/sign_up"} Follow
-            %a.btn.btn-xs.btn-default{:href => "/#{result[:container]}/#{result[:id]}", rel: "nofollow"} Compare Price & History
-            - if current_user.admin?
-              %ul.list-group
-                - result.each do |key, value|
-                  %li.list-group-item
-                    %span.badge= key.upcase
-                    = value
-          - else
-            / %a.btn.btn-danger{:href => "/users/sign_in"} Follow
-            %a.btn.btn-xs.btn-default{:href => "/#{result[:container]}/#{result[:id]}", rel: "nofollow"} Compare Price & History
+          %p
+            - if result[:container] == 'amazon-offers'
+              = render 'search/amazon_button', result: result
+            - elsif result[:container] == 'walmart-offers'
+              = render 'search/walmart_button', result: result
+              %br
+            - elsif result[:container] == 'target-offers'
+              %a.btn.btn-xs.btn-success{href: "/#{result[:container]}/#{result[:id]}"}
+                \#BoycottTarget
+              %br
+            - else
+              %a.btn.btn-xs.btn-success{:href => result[:url], target: '_blank'}
+                = icon('shopping-cart')
+                Buy Now
         .media-right
           %h3
             - if result[:price][:price]
@@ -45,17 +47,4 @@
               %strong
                 $#{result[:price][:original_price]}
           %p
-            - if result[:container] == 'amazon-offers'
-              = render 'search/amazon_button', result: result
-            - elsif result[:container] == 'walmart-offers'
-              = render 'search/walmart_button', result: result
-              %br
-            - elsif result[:container] == 'target-offers'
-              %a.btn.btn-primary{href: "/#{result[:container]}/#{result[:id]}"}
-                = icon('shopping-cart')
-                \#BoycottTarget
-              %br
-            - else
-              %a.btn.btn-lg.btn-primary{:href => result[:url], target: '_blank'}
-                = icon('shopping-cart')
-                Buy Now
+            %a.btn.btn-md.btn-primary{:href => "/#{result[:container]}/#{result[:id]}", rel: "nofollow"} Compare Pricing

@@ -2,6 +2,7 @@
   .full.col-sm-12
     / content
     = render 'layouts/search'
+    = render 'layouts/responsive_ad'
     .row
       / main col left
       .col-md-12.col-sm-10
@@ -26,4 +27,5 @@
           .col-md-4{align: 'center'}
             %strong Pending
             %p #{@pending}
+        = render 'layouts/responsive_text_ad'
         = render 'layouts/responsive_ad'
