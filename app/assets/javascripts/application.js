@@ -11,10 +11,9 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery_ujs
 //= require bootstrap-sprockets
 //= require jquery-ui
-//= require jquery_ujs
-//= require turbolinks
 //= require ga_events.js
 //= require waypoints
 //= require imagesloaded
@@ -26,6 +25,7 @@
 //= require owl.carousel
 //= require waves
 //= require modernizr
+//= require turbolinks
 //= require_tree .
 
 GaEvents.Event.adapter = function() {
