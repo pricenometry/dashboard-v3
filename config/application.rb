@@ -10,6 +10,8 @@ module RailsDevisePundit
   class Application < Rails::Application
     config.config = config_for(:config).deep_symbolize_keys!
 
+    config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+
     config.generators do |g|
       g.test_framework :rspec,
                        fixtures: true,
