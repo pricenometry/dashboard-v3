@@ -14,7 +14,6 @@
         - @results.each_with_index do |result, index|
           - if index % 3 == 0
             .row
-              = render 'layouts/responsive_text_ad'
           = render 'search/vertical_result', result: result
         = render 'layouts/pagination', pagination: @pagination
     = render 'layouts/responsive_text_ad'
