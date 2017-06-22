@@ -2,6 +2,7 @@
   .full.col-sm-12
     / content
     = render 'layouts/search'
+    = render 'layouts/responsive_ad'
     .row
       / main col left
       .col-md-3.col-sm-4.text-center
@@ -60,9 +61,11 @@
           /     = twitter_button
         / = render 'layouts/fb_responsive_ad'
         = render 'layouts/responsive_text_ad'
+        = render 'layouts/responsive_ad'
         = render 'layouts/responsive_text_ad'
+        = render 'layouts/responsive_ad'
         = render 'layouts/responsive_text_ad'
-        = render 'layouts/responsive_text_ad'
+        = render 'layouts/responsive_ad'
         / = render 'record/videos'
       .col-md-9.col-sm-8
         - unless browser.bot?
