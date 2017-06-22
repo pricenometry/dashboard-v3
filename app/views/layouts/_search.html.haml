@@ -1,19 +1,26 @@
-/ .row.search-container.text-center
-/   = form_tag(search_path, :method => "get") do
-/     .input-group.custom-search-form
-/       %input.form-control{:type => "text", :name => 'query', :value => @query, :placeholder => 'What product are you looking for?'}
-/         %span.input-group-btn
-/           %button.btn.btn-default{:type => "submit", :name => 'commit'}
-/             %span.glyphicon.glyphicon-search
-/     .input-group
-/       %strong trending:
-/       %a{href: '/search?query=fitbit charge hr'}
-/         fitbit charge hr,
-/       %a{href: '/search?query=amazon fire tv'}
-/         amazon fire tv,
-/       %a{href: '/search?query=google chromecast'}
-/         google chromecast,
-/       %a{href: '/search?query=roku streaming player'}
-/         roku streaming player,
-/       %a{href: '/search?query=apple ipad pro'}
-/         apple ipad pro
+= form_tag(search_path, :method => "get", :id => "live-search", :class => 'search-form') do
+  #col-size-search.col-size-search
+    #box-search.box-search
+      .beats
+        %i.fa.fa-search{"aria-hidden" => "true"}>
+        = @query.presence || 'What product are you looking for?'
+      #main-search-popup.main-search-popup
+        #box-search-popup.box-search-popup
+          #close-popup-search.close-popup-search
+          .search-popup-main
+            %fieldset
+              %input#filter.input-search.form-control{:type => "text", :name => 'query', :value => @query, :autocomplete => "off", :placeholder => "What Product Are You Looking For?"}
+              %span#clear-searh.clear-searh
+    #wrap-allcat.wrap-allcat
+      .select
+        %select#cat-select-menu.cat-select-menu.select-hidden
+          %option All Sites
+          %option Amazon
+          %option Walmart
+          %option NewEgg
+          %option Staples
+          %option Best Buy
+          %option Home Depot
+          %option Target
+          %option Costco
+      %i.fa.fa-angle-down

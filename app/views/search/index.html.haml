@@ -1,8 +1,5 @@
 .container.text-center
   .full.col-sm-12
-    / content
-    = render 'layouts/search'
-    = render 'layouts/responsive_ad'
     .row
       / main col left
       .col-md-2.col-sm-3.text-center
@@ -20,5 +17,3 @@
           = render 'search/vertical_result', result: result
         = render 'layouts/pagination', pagination: @pagination
     = render 'layouts/responsive_text_ad'
-    %br
-    = render 'layouts/search'

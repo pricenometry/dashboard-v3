@@ -66,10 +66,11 @@
               .logo-popup-mob
                 %a{:href => "/"} Pricenometry
             %nav#mnu-toggle.mnu-toggle
-              %form.search-form-mob{:action => "/"}
+              = form_tag(search_path, :method => "get", :class => 'search-form-mob') do
+
                 %i.fa.fa-search{"aria-hidden" => "true"}
                 %input.submit-search-mob{:type => "submit", :value => ""}/
-                %input#input-search-mob.input-search-mob{:autofocus => "", :placeholder => "Search", :type => "text"}/
+                %input#input-search-mob.input-search-mob{:type => "text", :name => 'query', :value => @query, :autocomplete => "off", :placeholder => "What Product Are You Looking For?"}
                 #clear-searh-mob.clear-searh-mob
               %ul
                 %li
@@ -78,16 +79,6 @@
                   %a{:href => "http://about.pricenometry.com/what-we-do/", :target => "_blank"} What We Do?
                 %li
                   %a{:href => "http://about.pricenometry.com/", :target => "_blank"} Blog
-                %li
-                  %a{:href => "https://facebook.com/Pricenometry", :target => "_blank"} Facebook
-                %li
-                  %a{:href => "https://twitter.com/Pricenometry", :target => "_blank"} Twitter
-                %li
-                  %a{:href => "https://instagram.com/Pricenometry", :target => "_blank"} Instagram
-                %li
-                  %a{:href => "https://www.linkedin.com/showcase/18125556/", :target => "_blank"} LinkedIn
-                %li
-                  %a{:href => "https://github.com/Pricenometry", :target => "_blank"} Github
                 %li
                   %a{:href => "http://developers.pricenometry.com/", :target => "_blank"} Developer API
                 %li
@@ -297,6 +288,10 @@
                     %a#js-account{:href => "/", :target => "_blank"} Terms of Service
                   %li
                     %a#js-account{:href => "/", :target => "_blank"} Privacy Policy
+                  %li
+                    %a{:href => "http://developers.pricenometry.com/", :target => "_blank"} Developer API
+                  %li
+                    %a{:href => "http://about.pricenometry.com/get-access/", :target => "_blank"} Get Access
               #top-right.top-right
                 %ul
                   %li
@@ -309,10 +304,6 @@
                     %a{:href => "https://www.linkedin.com/showcase/18125556/", :target => "_blank"} LinkedIn
                   %li
                     %a{:href => "https://github.com/Pricenometry", :target => "_blank"} Github
-                  %li
-                    %a{:href => "http://developers.pricenometry.com/", :target => "_blank"} Developer API
-                  %li
-                    %a{:href => "http://about.pricenometry.com/get-access/", :target => "_blank"} Get Access
       / Top Menu Desktop  End
       .header-center
         / Center Menu Desktop  Start
@@ -321,33 +312,7 @@
             .row
               #col-size-logo.col-size-logo
                 %a.logo{:href => "/"} Pricenometry
-              = form_tag(search_path, :method => "get", :id => "live-search", :class => 'search-form') do
-                #col-size-search.col-size-search
-                  #box-search.box-search
-                    .beats
-                      %i.fa.fa-search{"aria-hidden" => "true"}>
-                      = @query.presence || 'What product are you looking for?'
-                    #main-search-popup.main-search-popup
-                      #box-search-popup.box-search-popup
-                        #close-popup-search.close-popup-search
-                        .search-popup-main
-                          %form#live-search.search-form{:action => "/", :method => "post"}
-                            %fieldset
-                              %input#filter.input-search.form-control{:type => "text", :name => 'query', :value => @query, :autocomplete => "off", :placeholder => "What Product Are You Looking For?"}
-                              %span#clear-searh.clear-searh
-                  #wrap-allcat.wrap-allcat
-                    .select
-                      %select#cat-select-menu.cat-select-menu.select-hidden
-                        %option All Sites
-                        %option Amazon
-                        %option Walmart
-                        %option NewEgg
-                        %option Staples
-                        %option Best Buy
-                        %option Home Depot
-                        %option Target
-                        %option Costco
-                    %i.fa.fa-angle-down
+              = render 'layouts/search'
               #col-size-buy.col-size-buy
                 .box-buy
                   .box-inven
