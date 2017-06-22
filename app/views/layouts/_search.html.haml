@@ -1,19 +1,19 @@
-.row.search-container.text-center
-  = form_tag(search_path, :method => "get") do
-    .input-group.custom-search-form
-      %input.form-control{:type => "text", :name => 'query', :value => @query, :placeholder => 'What product are you looking for?'}
-        %span.input-group-btn
-          %button.btn.btn-default{:type => "submit", :name => 'commit'}
-            %span.glyphicon.glyphicon-search
-    .input-group
-      %strong trending:
-      %a{href: '/search?query=fitbit charge hr'}
-        fitbit charge hr,
-      %a{href: '/search?query=amazon fire tv'}
-        amazon fire tv,
-      %a{href: '/search?query=google chromecast'}
-        google chromecast,
-      %a{href: '/search?query=roku streaming player'}
-        roku streaming player,
-      %a{href: '/search?query=apple ipad pro'}
-        apple ipad pro
+/ .row.search-container.text-center
+/   = form_tag(search_path, :method => "get") do
+/     .input-group.custom-search-form
+/       %input.form-control{:type => "text", :name => 'query', :value => @query, :placeholder => 'What product are you looking for?'}
+/         %span.input-group-btn
+/           %button.btn.btn-default{:type => "submit", :name => 'commit'}
+/             %span.glyphicon.glyphicon-search
+/     .input-group
+/       %strong trending:
+/       %a{href: '/search?query=fitbit charge hr'}
+/         fitbit charge hr,
+/       %a{href: '/search?query=amazon fire tv'}
+/         amazon fire tv,
+/       %a{href: '/search?query=google chromecast'}
+/         google chromecast,
+/       %a{href: '/search?query=roku streaming player'}
+/         roku streaming player,
+/       %a{href: '/search?query=apple ipad pro'}
+/         apple ipad pro

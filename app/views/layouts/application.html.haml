@@ -336,9 +336,12 @@
                     #box-search-popup.box-search-popup
                       #close-popup-search.close-popup-search
                       .search-popup-main
-                        %form#live-search.search-form{:action => "/", :method => "post"}
+                        = form_tag(search_path, :method => "get", :id => "live-search", :class => 'search-form') do
                           %fieldset
-                            %input#filter.input-search{:autocomplete => "off", :placeholder => "What Product Are You Looking For?", :type => "text", :value => ""}/
+                            %input#filter.input-search.form-control{:type => "text", :name => 'query', :value => @query, :autocomplete => "off", :placeholder => "What Product Are You Looking For?"}
+                            / %span.input-group-btn
+                            /   %button.btn.btn-default{:type => "submit", :name => 'commit'}
+                            /     %span.glyphicon.glyphicon-search
                             %span#clear-searh.clear-searh
                         /
                           <nav class="results-search" id="results-search">
