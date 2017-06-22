@@ -4,16 +4,17 @@
     = display_meta_tags
     %meta{name:"msvalidate.01", content: "E343FD8E4D0D68E0349D841AFFFE6EEF"}
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
-      = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
-      = javascript_include_tag 'application', 'data-turbolinks-track' => true
-      - if user_signed_in?
-        = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/highcharts/4.2.3/highcharts.js", "chartkick"
-      - else
-        = javascript_include_tag "//www.google.com/jsapi", "chartkick"
-      = csrf_meta_tags
-      = analytics_init if GoogleAnalytics.valid_tracker?
-      = yield(:head)
-      :javascript
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    - if user_signed_in?
+      = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/highcharts/4.2.3/highcharts.js", "chartkick"
+    - else
+      = javascript_include_tag "//www.google.com/jsapi", "chartkick"
+    = csrf_meta_tags
+    = analytics_init if GoogleAnalytics.valid_tracker?
+    = yield(:head)
+    %script{:async => "", :src => "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"}
+    :javascript
         window.fbAsyncInit = function() {
           FB.init({
             appId      : '1008307585917302',
@@ -30,7 +31,7 @@
            fjs.parentNode.insertBefore(js, fjs);
          }(document, 'script', 'facebook-jssdk'));
       / Facebook Pixel Code
-      :javascript
+    :javascript
         !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
         n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
         n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
@@ -41,7 +42,7 @@
         fbq('track', "PageView");%noscript
         %img{:height => "1", :src => "https://www.facebook.com/tr?id=1068893889841141&ev=PageView&noscript=1", :style => "display:none", :width => "1"}/
       / End Facebook Pixel Code
-      :javascript
+    :javascript
         (function(d, s, id) {
           var js, fjs = d.getElementsByTagName(s)[0];
           if (d.getElementById(id)) return;
