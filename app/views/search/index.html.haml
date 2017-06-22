@@ -6,6 +6,7 @@
       / main col left
       .col-md-3.col-sm-4.text-center
         = render 'layouts/responsive_text_ad'
+        = render 'layouts/responsive_text_ad'
       .col-md-9.col-sm-8
         - unless browser.bot?
           .panel
@@ -13,8 +14,9 @@
         - @results.each_with_index do |result, index|
           - if index % 3 == 0
             .row
+              = render 'layouts/responsive_text_ad'
           = render 'search/vertical_result', result: result
         = render 'layouts/pagination', pagination: @pagination
-    = render 'layouts/responsive_ad'
+    = render 'layouts/responsive_text_ad'
     %br
     = render 'layouts/search'

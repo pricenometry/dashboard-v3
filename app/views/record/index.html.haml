@@ -60,6 +60,9 @@
           /     = twitter_button
         / = render 'layouts/fb_responsive_ad'
         = render 'layouts/responsive_text_ad'
+        = render 'layouts/responsive_text_ad'
+        = render 'layouts/responsive_text_ad'
+        = render 'layouts/responsive_text_ad'
         / = render 'record/videos'
       .col-md-9.col-sm-8
         - unless browser.bot?
@@ -75,6 +78,6 @@
         - unless browser.bot?
           .panel
             .fb-like{"data-share" => "true", "data-show-faces" => "true", "data-width" => "450", align: 'right' }
-    = render 'layouts/responsive_ad'
+    = render 'layouts/responsive_text_ad'
     %br
     = render 'layouts/search'
