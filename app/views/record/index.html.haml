@@ -5,7 +5,7 @@
     = render 'layouts/responsive_ad'
     .row
       / main col left
-      .col-md-3.col-sm-4.text-center
+      .col-md-2.col-sm-3.text-center
         .panel.panel-default
           %a{:href => @result[:url], target: '_blank', style: 'color:#ac4142;'}
             - if @result[:image]
@@ -41,33 +41,20 @@
               - elsif @result[:container] == 'walmart-offers'
                 = render 'search/walmart_button', result: @result
               - elsif @result[:container] == 'target-offers'
-                %a.btn.btn-primary{href: "/#{@result[:container]}/#{@result[:id]}"}
-                  = icon('shopping-cart')
+                %a.btn.btn-xs.btn-success{href: "/#{@result[:container]}/#{@result[:id]}"}
                   \#BoycottTarget
                 %br
               - else
-                %a.btn.btn-lg.btn-primary{:href => @result[:url], target: '_blank'}
+                %a.btn.btn-xs.btn-success{:href => @result[:url], target: '_blank'}
                   = icon('shopping-cart')
                   = "Buy at #{@result[:container].split('-').first.capitalize}"
-              - if user_signed_in?
-                / %a.btn.btn-danger{:href => "/users/sign_up"} Follow
-              - else
-                / %a.btn.btn-danger{:href => "#"} Follow
-          / - unless browser.bot?
-          /   %br
-          /   %p
-          /     = pinterest_button
-          /   %p
-          /     = twitter_button
         / = render 'layouts/fb_responsive_ad'
         = render 'layouts/responsive_text_ad'
         = render 'layouts/responsive_ad'
         = render 'layouts/responsive_text_ad'
         = render 'layouts/responsive_ad'
-        = render 'layouts/responsive_text_ad'
-        = render 'layouts/responsive_ad'
         / = render 'record/videos'
-      .col-md-9.col-sm-8
+      .col-md-10.col-sm-9
         - unless browser.bot?
           .panel
             .fb-like{"data-share" => "true", "data-show-faces" => "true", "data-width" => "450", align: 'right' }

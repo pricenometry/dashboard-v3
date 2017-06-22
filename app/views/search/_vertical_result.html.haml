@@ -31,31 +31,18 @@
             - else
               Available
           %p
+            %a.btn.btn-md.btn-primary{:href => "/#{result[:container]}/#{result[:id]}", rel: "nofollow"} Compare Pricing
+          %p
             - if result[:container] == 'amazon-offers'
               = render 'search/amazon_button', result: result
             - elsif result[:container] == 'walmart-offers'
               = render 'search/walmart_button', result: result
               %br
             - elsif result[:container] == 'target-offers'
-              %a.btn.btn-primary{href: "/#{result[:container]}/#{result[:id]}"}
+              %a.btn.btn-xs.btn-success{href: "/#{result[:container]}/#{result[:id]}"}
                 \#BoycottTarget
               %br
             - else
-              %a.btn.btn-lg.btn-primary{:href => result[:url], target: '_blank'}
+              %a.btn.btn-xs.btn-success{:href => result[:url], target: '_blank'}
                 = icon('shopping-cart')
                 Buy Now
-              %br
-            - if user_signed_in?
-              %br
-              / %a.btn.btn-danger{:href => "/users/sign_up"} Follow
-              %a.btn.btn-sm.btn-default{:href => "/#{result[:container]}/#{result[:id]}", rel: "nofollow"} Compare Price & History
-              - if current_user.admin?
-                %ul.list-group
-                  - result.each do |key, value|
-                    %li.list-group-item
-                      %span.badge= key.upcase
-                      = value
-            - else
-              %br
-              / %a.btn.btn-danger{:href => "/users/sign_in"} Follow
-              %a.btn.btn-sm.btn-default{:href => "/#{result[:container]}/#{result[:id]}", rel: "nofollow"} Compare Price & History
