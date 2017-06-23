@@ -59,12 +59,15 @@
                   %span.price-strike
                     $#{@result[:price][:original_price]}
                   %span.price-normal
+                    = icon('tag')
                     $#{@result[:price][:price]}
                 - elsif @result[:price][:price]
                   %span.price-normal
+                    = icon('tag')
                     $#{@result[:price][:price]}
                 - elsif @result[:price][:original_price]
                   %span.price-normal
+                    = icon('tag')
                     $#{@result[:price][:original_price]}
             .box-add-cart-product
               - if @result[:container] == 'amazon-offers'
@@ -103,9 +106,11 @@
                     %span.now
                     - if @result[:price][:price]
                       %span.now
+                        = icon('tag')
                         $#{result[:price][:price]}
                     - elsif result[:price][:original_price]
                       %span.now
+                        = icon('tag')
                         $#{result[:price][:original_price]}
                   .box-hide-related
                     - if @result[:container] == 'amazon-offers'
@@ -119,7 +124,6 @@
                       %a.add-cart-product.button-small.waves-effect.waves-circle.waves-float{:href => @result[:url], target: '_blank'}
                         = icon('shopping-cart')
                         = "Buy at #{@result[:container].split('-').first.capitalize}"
-
     #tabs_cart_product
       %ul
         %li
@@ -150,15 +154,6 @@
                 %tr
                   %td= key
                   %td= value
-            %tr
-              %td Hard Disk
-              %td Built-in
-            %tr
-              %td Video
-              %td BD6xCAV DVD 8xCAV
-            %tr
-              %td Sound
-              %td Stereo
       #tabs-3
         - if @result[:description].presence
           - @result[:description].split('. ').shuffle.each do |sentence|
