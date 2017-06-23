@@ -1,3 +1,4 @@
-%a.btn.btn-xs.btn-success{:href => "https://c.affil.walmart.com/t/affsdk?l=https://affil.walmart.com/cart/buynow?items=#{result[:id]}&wmlspartner=SSAm5cSHYzs&affsdktrack=#{session.id}&veh=aff&affs=sdk&affsdktype=html&affsdkcomp=buynowbutton&colorscheme=orange&sizescheme=compact", target: '_blank'}
-  = icon('shopping-cart')
-  Buy Now
+.box-add-cart-product
+  %a.add-cart-product.button-lardge.waves-effect.waves-circle.waves-float{:href => "https://c.affil.walmart.com/t/affsdk?l=https://affil.walmart.com/cart/buynow?items=#{result[:id]}&wmlspartner=SSAm5cSHYzs&affsdktrack=#{session.id}&veh=aff&affs=sdk&affsdktype=html&affsdkcomp=buynowbutton&colorscheme=orange&sizescheme=compact", target: '_blank'}
+    = icon('shopping-cart')
+    Buy Now

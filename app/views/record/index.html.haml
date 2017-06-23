@@ -44,14 +44,14 @@
         .block-decr-product
           .title= @result[:name]
           .undertitle
-            .brand-name= @result[:brand].presence
+            .brand-name= @result[:availability].presence || 'Available'
             .wrap-info-product
           #context-desdr.description
             #chart-1{:style => "height: 300px; width: 100%; text-align: center; color: #999; line-height: 300px; font-size: 14px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, Arial, Helvetica, sans-serif;"} Loading...
-          %form.wrap-cost{:action => "/"}
+          .wrap-cost
             .box-price
               .wrap-price
-                = image_tag "#{@result[:container]}.png"
+                %p= image_tag "#{@result[:container]}.png"
                 - if @result[:price][:price] && @result[:price][:original_price]
                   %span.price-strike
                     $#{@result[:price][:original_price]}
@@ -63,8 +63,19 @@
                 - elsif @result[:price][:original_price]
                   %span.price-normal
                     $#{@result[:price][:original_price]}
-            .box-add-cart-product
-              %a.add-cart-product.button-lardge.waves-effect.waves-circle.waves-float{:href => "page_cart-step-one.html"} Buy Now
+            - if @result[:container] == 'amazon-offers'
+              = render 'search/amazon_button', result: @result
+            - elsif @result[:container] == 'walmart-offers'
+              = render 'search/walmart_button', result: @result
+            - elsif @result[:container] == 'target-offers'
+              .box-add-cart-product
+                %a.add-cart-product.button-lardge.waves-effect.waves-circle.waves-float{href: "/#{@result[:container]}/#{@result[:id]}"}
+                  \#BoycottTarget
+            - else
+              .box-add-cart-product
+                %a.add-cart-product.button-lardge.waves-effect.waves-circle.waves-float{:href => @result[:url], target: '_blank'}
+                  = icon('shopping-cart')
+                  = "Buy at #{@result[:container].split('-').first.capitalize}"
     .row
       .related-products
         .title Compare Pricing
