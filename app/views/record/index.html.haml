@@ -46,6 +46,8 @@
     - if @history && @history[:price].presence
       = line_chart @history[:price], min: @min_price, max: @max_price
 
+= render 'layouts/responsive_text_ad'
+
 .main-product.hidden-768
   .box-1675
     / Bread Сrumbs Start

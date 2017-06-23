@@ -76,6 +76,17 @@
                   %a{:href => "/", :target => "_blank"} Terms of Service
                 %li
                   %a{:href => "/", :target => "_blank"} Privacy Policy
+              %ul
+                %li
+                  %a{:href => "https://facebook.com/Pricenometry", :target => "_blank"} Facebook
+                %li
+                  %a{:href => "https://twitter.com/Pricenometry", :target => "_blank"} Twitter
+                %li
+                  %a{:href => "https://instagram.com/Pricenometry", :target => "_blank"} Instagram
+                %li
+                  %a{:href => "https://www.linkedin.com/showcase/18125556/", :target => "_blank"} LinkedIn
+                %li
+                  %a{:href => "https://github.com/Pricenometry", :target => "_blank"} Github
           .logo-mob
             %a{:href => "/"} Pricenometry
       / Top Line Mobile End
@@ -95,13 +106,13 @@
               #top-right.top-right
                 %ul
                   %li
-                    %a#js-account{:href => "/", :target => "_blank"} Terms of Service
-                  %li
-                    %a#js-account{:href => "/", :target => "_blank"} Privacy Policy
-                  %li
                     %a{:href => "http://developers.pricenometry.com/", :target => "_blank"} Developer API
                   %li
                     %a{:href => "http://about.pricenometry.com/get-access/", :target => "_blank"} Get Access
+                  %li
+                    %a#js-account{:href => "/", :target => "_blank"} Terms of Service
+                  %li
+                    %a#js-account{:href => "/", :target => "_blank"} Privacy Policy
       / Top Menu Desktop  End
       .header-center
         / Center Menu Desktop  Start
@@ -137,13 +148,11 @@
 
     #footer
       / Page Footer Start
+      = render 'layouts/responsive_text_ad'
       .footer
         .box-1675
           .container-fluid
             .row
-
-
-
       .copyright
         .box-1675
           .container-fluid
