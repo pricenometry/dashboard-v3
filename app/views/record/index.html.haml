@@ -94,7 +94,8 @@
             = icon('line-chart')
             = @result[:name]
           .undertitle
-            .brand-name= @result[:availability].presence || 'Available'
+            .brand-name
+              = @result[:availability].presence || 'Available'
             .wrap-info-product
           #context-desdr.description
             - if @history && @history[:price].presence
@@ -102,7 +103,6 @@
           .wrap-cost
             .box-price
               .wrap-price
-                %p= image_tag "#{@result[:container]}.png"
                 - if @result[:price][:price] && @result[:price][:original_price]
                   %span.price-strike
                     $#{@result[:price][:original_price]}
@@ -123,10 +123,10 @@
               - elsif @result[:container] == 'walmart-offers'
                 = render 'search/walmart_button', result: @result
               - elsif @result[:container] == 'target-offers'
-                %a.add-cart-product.button-small.waves-effect.waves-circle.waves-float{href: "/#{@result[:container]}/#{@result[:id]}"}
+                %a.add-cart-product.button-lardge.waves-effect.waves-circle.waves-float{href: "/#{@result[:container]}/#{@result[:id]}"}
                   \#BoycottTarget
               - else
-                %a.add-cart-product.button-small.waves-effect.waves-circle.waves-float{:href => @result[:url], target: '_blank'}
+                %a.add-cart-product.button-lardge.waves-effect.waves-circle.waves-float{:href => @result[:url], target: '_blank'}
                   = icon('shopping-cart')
                   = "Buy at #{@result[:container].split('-').first.capitalize}"
     - if @related.presence
@@ -150,16 +150,16 @@
                       %p= image_tag "#{result[:container]}.png"
                     .model-products
                       #{result[:availability].presence || 'Available'}
-                  .price-products
+                .price-products
+                  %span.now
+                  - if @result[:price][:price]
                     %span.now
-                    - if @result[:price][:price]
-                      %span.now
-                        = icon('tag')
-                        $#{result[:price][:price]}
-                    - elsif result[:price][:original_price]
-                      %span.now
-                        = icon('tag')
-                        $#{result[:price][:original_price]}
+                      = icon('tag')
+                      $#{result[:price][:price]}
+                  - elsif result[:price][:original_price]
+                    %span.now
+                      = icon('tag')
+                      $#{result[:price][:original_price]}
     #tabs_cart_product
       %ul
         %li
