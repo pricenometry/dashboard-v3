@@ -3,7 +3,6 @@
   %input{:name => "SubscriptionId", :type => "hidden", :value => "[AWSAccessKeyId]"}/
   %input{:name => "ASIN.1", :type => "hidden", :value => "#{result[:id]}"}/
   %input{:name => "Quantity.1", :type => "hidden", :value => "1"}/
-  .box-add-cart-product
-    %button.add-cart-product.button-lardge.waves-effect.waves-circle.waves-float
-      = icon('amazon')
-      Buy Now
+  %button.add-cart-product.button-small.waves-effect.waves-circle.waves-float
+    = icon('amazon')
+    Buy Now

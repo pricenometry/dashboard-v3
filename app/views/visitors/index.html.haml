@@ -1,8 +1,6 @@
 .container.text-center
   .full.col-sm-12
     / content
-    = render 'layouts/search'
-    = render 'layouts/responsive_ad'
     .row
       / main col left
       .col-md-12.col-sm-10
@@ -15,8 +13,8 @@
         .row
           - @available.each do |name, count|
             .col-md-4{align: 'center'}
-              = image_tag "#{name}.png", :class => 'logo'
-              #{count}
+              = image_tag "#{name}.png"
+              %p= count
         .row
           .col-md-4{align: 'center'}
             %strong Indexing
@@ -28,4 +26,3 @@
             %strong Pending
             %p #{@pending}
         = render 'layouts/responsive_text_ad'
-        = render 'layouts/responsive_ad'

@@ -42,12 +42,15 @@
                   %i.fa.fa-reddit{"aria-hidden" => "true"}
       .col-md-6.col-sm-7.col-xs-12
         .block-decr-product
-          .title= @result[:name]
+          .title
+            = @result[:name]
+            = icon('line-chart')
           .undertitle
             .brand-name= @result[:availability].presence || 'Available'
             .wrap-info-product
           #context-desdr.description
-            #chart-1{:style => "height: 300px; width: 100%; text-align: center; color: #999; line-height: 300px; font-size: 14px; font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, Arial, Helvetica, sans-serif;"} Loading...
+            - if @history && @history[:price].presence
+              = line_chart @history[:price], min: @min_price, max: @max_price
           .wrap-cost
             .box-price
               .wrap-price
@@ -63,237 +66,90 @@
                 - elsif @result[:price][:original_price]
                   %span.price-normal
                     $#{@result[:price][:original_price]}
-            - if @result[:container] == 'amazon-offers'
-              = render 'search/amazon_button', result: @result
-            - elsif @result[:container] == 'walmart-offers'
-              = render 'search/walmart_button', result: @result
-            - elsif @result[:container] == 'target-offers'
-              .box-add-cart-product
-                %a.add-cart-product.button-lardge.waves-effect.waves-circle.waves-float{href: "/#{@result[:container]}/#{@result[:id]}"}
+            .box-add-cart-product
+              - if @result[:container] == 'amazon-offers'
+                = render 'search/amazon_button', result: @result
+              - elsif @result[:container] == 'walmart-offers'
+                = render 'search/walmart_button', result: @result
+              - elsif @result[:container] == 'target-offers'
+                %a.add-cart-product.button-small.waves-effect.waves-circle.waves-float{href: "/#{@result[:container]}/#{@result[:id]}"}
                   \#BoycottTarget
-            - else
-              .box-add-cart-product
-                %a.add-cart-product.button-lardge.waves-effect.waves-circle.waves-float{:href => @result[:url], target: '_blank'}
+              - else
+                %a.add-cart-product.button-small.waves-effect.waves-circle.waves-float{:href => @result[:url], target: '_blank'}
                   = icon('shopping-cart')
                   = "Buy at #{@result[:container].split('-').first.capitalize}"
-    .row
-      .related-products
-        .title Compare Pricing
-        #owl-carousel.owl-carousel.owl-theme{:style => "opacity: 1; display: block;"}
-          .owl-wrapper-outer
-            .owl-wrapper{:style => "width: 6840px; left: 0px; display: block;"}
-              .owl-item.active.active-border{:style => "width: 285px;"}
-                .wrap-item
-                  %form.item{:action => "/"}
-                    %a{:href => "page_product_2.html"}
-                      .image
-                        %img{:alt => "", :src => "http://webark.io/ecom/presentation/html/img/orange/product_1_1_690x690.jpg"}/
-                      .name-products
-                        Armchair АC-150KS
-                      .model-products
-                        Amazon
-                    .price-products
-                      %span.now $142.50
-                    .box-hide-related
-                      %a.btn-related.button-small.waves-effect.waves-circle.waves-float{:href => "page_cart-step-one.html"} buy now
-                      .wrap-info-product
-              .owl-item.active{:style => "width: 285px;"}
-                .wrap-item
-                  %form.item{:action => "/"}
-                    %a{:href => "page_product_2.html"}
-                      .image
-                        %img{:alt => "", :src => "http://webark.io/ecom/presentation/html/img/orange/product_2_1_690x690.jpg"}/
-                      .name-products
-                        Oregon chair 723
-                      .model-products
-                        Walmart
-                    .price-products
-                      %span.now $699
-                    .box-hide-related
-                      %a.btn-related.button-small.waves-effect.waves-circle.waves-float{:href => "page_cart-step-one.html"} buy now
-                      .wrap-info-product
-              .owl-item.active{:style => "width: 285px;"}
-                .wrap-item
-                  %form.item{:action => "/"}
-                    %a{:href => "page_product_2.html"}
-                      .image
-                        %img{:alt => "", :src => "http://webark.io/ecom/presentation/html/img/orange/product_3_1_690x690.jpg"}/
-                      .name-products
-                        Parma 180
-                      .model-products
-                        Best Buy
-                    .price-products
-                      %span.old
-                      %span.now $4190
-                    .box-hide-related
-                      %a.btn-related.button-small.waves-effect.waves-circle.waves-float{:href => "page_cart-step-one.html"} buy now
-                      .wrap-info-product
-              .owl-item.active{:style => "width: 285px;"}
-                .wrap-item
-                  %form.item{:action => "/"}
-                    %a{:href => "page_product_2.html"}
-                      .image
-                        %img{:alt => "", :src => "http://webark.io/ecom/presentation/html/img/orange/product_4_1_690x690.jpg"}/
-                      .name-products
-                        Roxy Canty RC-11
-                      .model-products
-                        NewEgg
-                    .price-products
-                      %span.now $875
-                    .box-hide-related
-                      %a.btn-related.button-small.waves-effect.waves-circle.waves-float{:href => "page_cart-step-one.html"} buy now
-                      .wrap-info-product
-              .owl-item{:style => "width: 285px;"}
-                .wrap-item
-                  %form.item{:action => "/"}
-                    %a{:href => "page_product_2.html"}
-                      .image
-                        %img{:alt => "", :src => "http://webark.io/ecom/presentation/html/img/orange/product_1_1_690x690.jpg"}/
-                      .name-products
-                        Armchair АC-150KS
-                      .model-products
-                        Amazon
-                    .price-products
-                      %span.now $142.50
-                    .box-hide-related
-                      %a.btn-related.button-small.waves-effect.waves-circle.waves-float{:href => "page_cart-step-one.html"} buy now
-                      .wrap-info-product
-              .owl-item{:style => "width: 285px;"}
-                .wrap-item
-                  %form.item{:action => "/"}
-                    %a{:href => "page_product_2.html"}
-                      .image
-                        %img{:alt => "", :src => "http://webark.io/ecom/presentation/html/img/orange/product_2_1_690x690.jpg"}/
-                      .name-products
-                        Oregon chair 723
-                      .model-products
-                        Walmart
-                    .price-products
-                      %span.old
-                      %span.now $98
-                    .box-hide-related
-                      %a.btn-related.button-small.waves-effect.waves-circle.waves-float{:href => "page_cart-step-one.html"} buy now
-                      .wrap-info-product
-              .owl-item{:style => "width: 285px;"}
-                .wrap-item
-                  %form.item{:action => "/"}
-                    %a{:href => "page_product_2.html"}
-                      .image
-                        %img{:alt => "", :src => "http://webark.io/ecom/presentation/html/img/orange/product_3_1_690x690.jpg"}/
-                      .name-products
-                        Parma 180
-                      .model-products
-                        Best Buy
-                    .price-products
-                      %span.now $4190
-                    .box-hide-related
-                      %a.btn-related.button-small.waves-effect.waves-circle.waves-float{:href => "page_cart-step-one.html"} buy now
-                      .wrap-info-product
-              .owl-item{:style => "width: 285px;"}
-                .wrap-item
-                  %form.item{:action => "/"}
-                    %a{:href => "page_product_2.html"}
-                      .image
-                        %img{:alt => "", :src => "http://webark.io/ecom/presentation/html/img/orange/product_4_1_690x690.jpg"}/
-                      .name-products
-                        Roxy Canty RC-11
-                      .model-products
-                        NewEgg
-                    .price-products
-                      %span.now $875
-                    .box-hide-related
-                      %a.btn-related.button-small.waves-effect.waves-circle.waves-float{:href => "page_cart-step-one.html"} buy now
-                      .wrap-info-product
-              .owl-item{:style => "width: 285px;"}
-                .wrap-item
-                  %form.item{:action => "/"}
-                    %a{:href => "page_product_2.html"}
-                      .image
-                        %img{:alt => "", :src => "http://webark.io/ecom/presentation/html/img/orange/product_1_1_690x690.jpg"}/
-                      .name-products
-                        Armchair АC-150KS
-                      .model-products
-                        Amazon
-                    .price-products
-                      %span.old
-                      %span.now $142.50
-                    .box-hide-related
-                      %a.btn-related.button-small.waves-effect.waves-circle.waves-float{:href => "page_cart-step-one.html"} buy now
-                      .wrap-info-product
-              .owl-item{:style => "width: 285px;"}
-                .wrap-item
-                  %form.item{:action => "/"}
+    - if @related.presence
+      .row
+        .related-products
+          .title
+            = icon('bar-chart')
+            Compare Pricing
+          #owl-carousel.owl-carousel.owl-theme
+            - @related.each_with_index do |result, index|
+              .wrap-item
+                .item
+                  %a{:href => "/#{result[:container]}/#{result[:id]}"}
                     .image
-                      %img{:alt => "", :src => "http://webark.io/ecom/presentation/html/img/orange/product_2_1_690x690.jpg"}/
+                      - if result[:image]
+                        %img{:style => "width: 100%; height: 140px;", :alt => "#{result[:name]}", :src => "#{result[:image]}"}/
+                      - else
+                        = image_tag "thumbnail.jpg", :style => "width: 100%; height: 140px;", :alt => "#{result[:name]}"
                     .name-products
-                      Oregon chair 723
+                      = result[:name]
+                      %p= image_tag "#{result[:container]}.png"
                     .model-products
-                      Walmart
-                    .price-products
-                      %span.now $98
-                    .box-hide-related
-                      %a.btn-related.button-small.waves-effect.waves-circle.waves-float{:href => "page_cart-step-one.html"} buy now
-                      .wrap-info-product
-              .owl-item{:style => "width: 285px;"}
-                .wrap-item
-                  %form.item{:action => "/"}
-                    .image
-                      %img{:alt => "", :src => "http://webark.io/ecom/presentation/html/img/orange/product_3_1_690x690.jpg"}/
-                    .name-products
-                      Parma 180
-                    .model-products
-                      Best Buy
-                    .price-products
-                      %span.now $4190
-                    .box-hide-related
-                      %a.btn-related.button-small.waves-effect.waves-circle.waves-float{:href => "page_cart-step-one.html"} buy now
-                      .wrap-info-product
-              .owl-item{:style => "width: 285px;"}
-                .wrap-item
-                  %form.item{:action => "/"}
-                    .image
-                      %img{:alt => "", :src => "http://webark.io/ecom/presentation/html/img/orange/product_4_1_690x690.jpg"}/
-                    .name-products
-                      Roxy Canty RC-11
-                    .model-products
-                      NewEgg
-                    .price-products
-                      %span.old
-                      %span.now $875
-                    .box-hide-related
-                      %a.btn-related.button-small.waves-effect.waves-circle.waves-float{:href => "page_cart-step-one.html"} buy now
-                      .wrap-info-product
-          .owl-controls.clickable
-            .owl-pagination
-              .owl-page.active
-                %span
-              .owl-page
-                %span
-              .owl-page
-                %span
-            .owl-buttons
-              .owl-prev
-                %i.fa.fa-angle-left{"aria-hidden" => "true"}
-              .owl-next
-                %i.fa.fa-angle-right{"aria-hidden" => "true"}
-    #tabs_cart_product.ui-tabs.ui-corner-all.ui-widget.ui-widget-content
-      %ul.ui-tabs-nav.ui-corner-all.ui-helper-reset.ui-helper-clearfix.ui-widget-header{:role => "tablist"}
-        %li.ui-tabs-tab.ui-corner-top.ui-state-default.ui-tab.ui-tabs-active.ui-state-active{"aria-controls" => "tabs-1", "aria-expanded" => "true", "aria-labelledby" => "ui-id-7", "aria-selected" => "true", :role => "tab", :tabindex => "0"}
-          %a#ui-id-7.ui-tabs-anchor{:href => "#tabs-1", :role => "presentation", :tabindex => "-1"} Description
-        %li.ui-tabs-tab.ui-corner-top.ui-state-default.ui-tab{"aria-controls" => "tabs-2", "aria-expanded" => "false", "aria-labelledby" => "ui-id-8", "aria-selected" => "false", :role => "tab", :tabindex => "-1"}
-          %a#ui-id-8.ui-tabs-anchor{:href => "#tabs-2", :role => "presentation", :tabindex => "-1"} Additional Information
-        %li.ui-tabs-tab.ui-corner-top.ui-state-default.ui-tab{"aria-controls" => "tabs-3", "aria-expanded" => "false", "aria-labelledby" => "ui-id-9", "aria-selected" => "false", :role => "tab", :tabindex => "-1"}
-          %a#ui-id-9.ui-tabs-anchor{:href => "#tabs-3", :role => "presentation", :tabindex => "-1"}
-            Reviews (
-            %span> 4
-            )
-      #tabs-1.ui-tabs-panel.ui-corner-bottom.ui-widget-content{"aria-hidden" => "false", "aria-labelledby" => "ui-id-7", :role => "tabpanel"}
-        %p Lorem ipsum dolor sit amet, quod wisi liber cu ius. Ut augue timeam usu, id nec vero maiestatis efficiendi, est primis neglegentur an. At eam diam nibh labitur. Cum et meliore fierent consequat, eum dicit debitis inimicus an. Idque nonumy timeam te vel, ad eos dolore maiorum feugait. Vix cu nostrud atomorum referrentur.
-        %p Ei posse dicant adolescens ius, error argumentum disputationi sit et, pri soluta menandri ei. Vis eu dicta integre probatus. Pro omnis quaestio definitionem ne, nam suas partem percipitur eu, id quo alia eligendi. Ne vivendum suavitate consequat pro, ad etiam fabulas imperdiet mei, error copiosae at usu. Pri vocibus recusabo eu. Simul alterum ullamcorper ne eos, audiam inciderint ei cum. Facilisis maluisset duo ea, similique cotidieque id pri, et eum esse mutat invidunt.
-        %p Pri ad recteque patrioque, tibique phaedrum duo ut. Vix id voluptua fabellas platonem, cu nec summo theophrastus. Cu esse eius dignissim qui. Insolens convenire deseruisse ei est, sea ne delenit apeirian expetenda. His eu minim signiferumque, delenit vituperata quo cu. Alia veniam ad vis, option epicurei cu mel. Esse vero an nam, no sint choro facilis sit.
-      #tabs-2.ui-tabs-panel.ui-corner-bottom.ui-widget-content{"aria-hidden" => "true", "aria-labelledby" => "ui-id-8", :role => "tabpanel", :style => "display: none;"}
+                      #{result[:availability].presence || 'Available'}
+                  .price-products
+                    %span.now
+                    - if @result[:price][:price]
+                      %span.now
+                        $#{result[:price][:price]}
+                    - elsif result[:price][:original_price]
+                      %span.now
+                        $#{result[:price][:original_price]}
+                  .box-hide-related
+                    - if @result[:container] == 'amazon-offers'
+                      = render 'search/amazon_button', result: @result
+                    - elsif @result[:container] == 'walmart-offers'
+                      = render 'search/walmart_button', result: @result
+                    - elsif @result[:container] == 'target-offers'
+                      %a.add-cart-product.button-small.waves-effect.waves-circle.waves-float{href: "/#{@result[:container]}/#{@result[:id]}"}
+                        \#BoycottTarget
+                    - else
+                      %a.add-cart-product.button-small.waves-effect.waves-circle.waves-float{:href => @result[:url], target: '_blank'}
+                        = icon('shopping-cart')
+                        = "Buy at #{@result[:container].split('-').first.capitalize}"
+
+    #tabs_cart_product
+      %ul
+        %li
+          %a{:href => "#tabs-1"}
+            = icon('pie-chart')
+            Social Popularity
+        %li
+          %a{:href => "#tabs-2"} Specifications
+        %li
+          %a{:href => "#tabs-3"} Description
+      #tabs-1
+        - if @result[:social].presence
+          .row
+            .col-md-6.col-sm-5.col-xs-12
+              = pie_chart @result[:social].select {|k,v| k != :total_shares }
+            .col-md-6.col-sm-7.col-xs-12
+              = bar_chart @result[:social].select {|k,v| k != :total_shares }
+        - if @social_charts.presence
+          .row
+            = line_chart @social_charts
+        .row
+          .fb-comments{"data-width" => "100%", "data-href" => "https://pricenometry.com/#{@result[:container]}/#{@result[:id]}", "data-numposts" => "5", "order_by" => "reverse_time"}
+      #tabs-2
         %table
           %tbody
+            - @result.each do |key, value|
+              - if @canonical_details.include?(key)
+                %tr
+                  %td= key
+                  %td= value
             %tr
               %td Hard Disk
               %td Built-in
@@ -303,107 +159,8 @@
             %tr
               %td Sound
               %td Stereo
-      #tabs-3.ui-tabs-panel.ui-corner-bottom.ui-widget-content{"aria-hidden" => "true", "aria-labelledby" => "ui-id-9", :role => "tabpanel", :style => "display: none;"}
-        .title 4 Reviews for Beats studio
-        .wrap-comment
-          .image-auther
-            %img{:alt => "", :src => "img/img-products/auther-img1.jpg"}/
-          .info-auther
-            .top
-              .name Mark smith
-              .date September 22, 2015
-            .text-auther
-              %p He is damn right, the first wave of customers just buy the product with no questions asked…the stupidity or the shear wastage of money they want to do, no idea. But wait till winter sale comes.
-        .wrap-comment
-          .image-auther
-            %img{:alt => "", :src => "img/img-products/auther-img2.jpg"}/
-          .info-auther
-            .top
-              .name Sandra ashley
-              .date March 16, 2015
-            .text-auther
-              %p
-                The stupidity or the shear wastage of money they want to do, no idea. But wait till winter sale comes. He is damn right, the first wave of customers just buy the product with no questions asked. He is damn right, the first wave of customers just buy the product with no questions asked.
-        .wrap-comment
-          .image-auther
-            %img{:alt => "", :src => "img/img-products/auther-img3.jpg"}/
-          .info-auther
-            .top
-              .name Tom H.
-              .date March 16, 2015
-            .text-auther
-              %p The stupidity or the shear wastage of money they want to do, no idea. But wait till winter sale comes. He is damn right, the first wave of customers just buy the product with no questions asked. He is damn right, the first wave of customers just buy the product with no questions asked.
-        .block-review
-          .title Add a review
-          %form.form-review{:action => "/"}
-            %input.name{:placeholder => "NAME", :type => "text"}/
-            %input.email{:placeholder => "EMAIL", :type => "text"}/
-            %textarea.text-comment{:cols => "30", :placeholder => "COMMENT", :rows => "10"}
-            %input.btn-review{:type => "submit", :value => "Add comment"}/
-
-
-
-
-
-
-.container
-  .full.col-sm-12
-    .row
-      / main col left
-      .col-md-2.col-sm-3.text-center
-        .panel.panel-default
-          .caption
-            %a{:href => @result[:url], target: '_blank', style: 'color:#ac4142;'}
-              %strong
-                #{@result[:name].to_s.truncate(75)}
-            - if @result[:price][:price] && @result[:price][:original_price]
-              %h3
-                %strike
-                  $#{@result[:price][:original_price]}
-              %h1
-                %strong
-                  $#{@result[:price][:price]}
-            - elsif @result[:price][:price]
-              %h1
-                %strong
-                  $#{@result[:price][:price]}
-            - elsif @result[:price][:original_price]
-              %h1
-                %strong
-                  $#{@result[:price][:original_price]}
-            #{@result[:availability]}
-            %p
-              - if @result[:container] == 'amazon-offers'
-                = render 'search/amazon_button', result: @result
-                %br
-              - elsif @result[:container] == 'walmart-offers'
-                = render 'search/walmart_button', result: @result
-              - elsif @result[:container] == 'target-offers'
-                %a.btn.btn-xs.btn-success{href: "/#{@result[:container]}/#{@result[:id]}"}
-                  \#BoycottTarget
-                %br
-              - else
-                %a.btn.btn-xs.btn-success{:href => @result[:url], target: '_blank'}
-                  = icon('shopping-cart')
-                  = "Buy at #{@result[:container].split('-').first.capitalize}"
-        / = render 'layouts/fb_responsive_ad'
-        = render 'layouts/responsive_text_ad'
-        = render 'layouts/responsive_ad'
-        = render 'layouts/responsive_text_ad'
-        = render 'layouts/responsive_ad'
-        / = render 'record/videos'
-      .col-md-10.col-sm-9
-        - unless browser.bot?
-          .panel
-            .fb-like{"data-share" => "true", "data-show-faces" => "true", "data-width" => "450", align: 'right' }
-        = render 'record/history'
-        = render 'record/related'
-        = render 'record/social'
-        / = render 'record/news'
-        / = render 'record/links'
-        = render 'record/details'
-        = render 'record/references'
-        - unless browser.bot?
-          .panel
-            .fb-like{"data-share" => "true", "data-show-faces" => "true", "data-width" => "450", align: 'right' }
-    = render 'layouts/responsive_text_ad'
+      #tabs-3
+        - if @result[:description].presence
+          - @result[:description].split('. ').shuffle.each do |sentence|
+            %p{align: 'left'}
+              #{sentence}.
