@@ -1,3 +1,51 @@
+.main-product
+  .block-title-product-mob
+    .back-link-mob
+      %a{:href => "javascript:history.back()"}
+        %i.fa.fa-angle-left{"aria-hidden" => "true"}>
+        Back
+    .title
+      = icon('line-chart')
+      = @result[:name]
+      = image_tag "#{@result[:container]}.png"
+  / Slider Mobile Start
+  #slider-product-mob.carousel.slide{"data-ride" => "carousel"}
+    .carousel-inner
+      .item.active
+        - if @result[:image]
+          %img{:alt => "#{@result[:name]}", :src => @result[:image]}
+        - else
+          = image_tag "thumbnail.jpg"
+  / Slider Mobile End
+  .block-price-mob
+    - if @result[:price][:price] && @result[:price][:original_price]
+      %span.price-strike
+        $#{@result[:price][:original_price]}
+      %span.price-normal
+        = icon('tag')
+        $#{@result[:price][:price]}
+    - elsif @result[:price][:price]
+      %span.price-normal
+        = icon('tag')
+        $#{@result[:price][:price]}
+    - elsif @result[:price][:original_price]
+      %span.price-normal
+        = icon('tag')
+        $#{@result[:price][:original_price]}
+    - if @result[:container] == 'amazon-offers'
+      = render 'search/amazon_button', result: @result
+    - elsif @result[:container] == 'walmart-offers'
+      = render 'search/walmart_button', result: @result
+    - elsif @result[:container] == 'target-offers'
+      %a.add-cart-product.add-cart-mob.button-small.waves-effect.waves-circle.waves-float{href: "/#{@result[:container]}/#{@result[:id]}"}
+        \#BoycottTarget
+    - else
+      %a.add-cart-product.add-cart-mob.button-small.waves-effect.waves-circle.waves-float{:href => @result[:url], target: '_blank'}
+        = icon('shopping-cart')
+        = "Buy at #{@result[:container].split('-').first.capitalize}"
+    - if @history && @history[:price].presence
+      = line_chart @history[:price], min: @min_price, max: @max_price
+
 .main-product.hidden-768
   .box-1675
     / Bread Сrumbs Start
@@ -6,7 +54,7 @@
         .row
           .block-bread
             %span
-              %a{:href => "/"} Back
+              %a{:href => "javascript:history.back()"} Back
             %span
               %i.fa.fa-angle-right{"aria-hidden" => "true"}
               %a{:href => "/"}= image_tag "#{@result[:container]}.png"
@@ -25,7 +73,7 @@
           #block-img-product.block-img-product
             #full-img-product.full-img-product
               - if @result[:image]
-                %img{:alt => "", :src => @result[:image]}
+                %img{:alt => "#{@result[:name]}", :src => @result[:image]}
               - else
                 = image_tag "thumbnail.jpg"
             .box-preview-img-product
@@ -94,9 +142,9 @@
                   %a{:href => "/#{result[:container]}/#{result[:id]}"}
                     .image
                       - if result[:image]
-                        %img{:style => "width: 100%; height: 140px;", :alt => "#{result[:name]}", :src => "#{result[:image]}"}/
+                        %img{:style => "width: 100%;", :alt => "#{result[:name]}", :src => "#{result[:image]}"}/
                       - else
-                        = image_tag "thumbnail.jpg", :style => "width: 100%; height: 140px;", :alt => "#{result[:name]}"
+                        = image_tag "thumbnail.jpg", :style => "width: 100%;", :alt => "#{result[:name]}"
                     .name-products
                       = result[:name]
                       %p= image_tag "#{result[:container]}.png"
@@ -112,18 +160,6 @@
                       %span.now
                         = icon('tag')
                         $#{result[:price][:original_price]}
-                  .box-hide-related
-                    - if @result[:container] == 'amazon-offers'
-                      = render 'search/amazon_button', result: @result
-                    - elsif @result[:container] == 'walmart-offers'
-                      = render 'search/walmart_button', result: @result
-                    - elsif @result[:container] == 'target-offers'
-                      %a.add-cart-product.button-small.waves-effect.waves-circle.waves-float{href: "/#{@result[:container]}/#{@result[:id]}"}
-                        \#BoycottTarget
-                    - else
-                      %a.add-cart-product.button-small.waves-effect.waves-circle.waves-float{:href => @result[:url], target: '_blank'}
-                        = icon('shopping-cart')
-                        = "Buy at #{@result[:container].split('-').first.capitalize}"
     #tabs_cart_product
       %ul
         %li
@@ -156,10 +192,41 @@
             - @result.each do |key, value|
               - if @canonical_details.include?(key)
                 %tr
-                  %td= key
+                  %td= key.upcase
                   %td= value
       #tabs-3
         - if @result[:description].presence
           - @result[:description].split('. ').shuffle.each do |sentence|
             %p{align: 'left'}
               #{sentence}.
+
+#accordion_cart_product_mob.ui-accordion.ui-widget.ui-helper-reset{:role => "tablist"}
+  %h3#ui-id-1.ui-accordion-header.ui-corner-top.ui-state-default.ui-accordion-header-active.ui-state-active.ui-accordion-icons{"aria-controls" => "ui-id-2", "aria-expanded" => "true", "aria-selected" => "true", :role => "tab", :tabindex => "0"}
+    Social Popularity
+    %i.fa.fa-angle-down{"aria-hidden" => "true"}
+  #ui-id-2.item.text-description.ui-accordion-content.ui-corner-bottom.ui-helper-reset.ui-widget-content.ui-accordion-content-active{"aria-hidden" => "false", "aria-labelledby" => "ui-id-1", :role => "tabpanel", :style => "display: block;"}
+    - if @result[:social].presence
+      = pie_chart @result[:social].select {|k,v| k != :total_shares }
+      = bar_chart @result[:social].select {|k,v| k != :total_shares }
+      - if @social_charts.presence
+        = line_chart @social_charts
+    .fb-comments{"data-width" => "100%", "data-href" => "https://pricenometry.com/#{@result[:container]}/#{@result[:id]}", "data-numposts" => "5", "order_by" => "reverse_time"}
+  %h3#ui-id-3.ui-accordion-header.ui-corner-top.ui-accordion-header-collapsed.ui-corner-all.ui-state-default.ui-accordion-icons{"aria-controls" => "ui-id-4", "aria-expanded" => "false", "aria-selected" => "false", :role => "tab", :tabindex => "-1"}
+    Specifications
+    %i.fa.fa-angle-down{"aria-hidden" => "true"}
+  #ui-id-4.item.ui-accordion-content.ui-corner-bottom.ui-helper-reset.ui-widget-content{"aria-hidden" => "true", "aria-labelledby" => "ui-id-3", :role => "tabpanel", :style => "display: none;"}
+    %table
+      %tbody
+        - @result.each do |key, value|
+          - if @canonical_details.include?(key)
+            %tr
+              %td= key.upcase
+              %td= value
+  %h3#ui-id-5.ui-accordion-header.ui-corner-top.ui-accordion-header-collapsed.ui-corner-all.ui-state-default.ui-accordion-icons{"aria-controls" => "ui-id-6", "aria-expanded" => "false", "aria-selected" => "false", :role => "tab", :tabindex => "-1"}
+    Description
+    %i.fa.fa-angle-down{"aria-hidden" => "true"}
+  #ui-id-6.reviews.ui-accordion-content.ui-corner-bottom.ui-helper-reset.ui-widget-content{"aria-hidden" => "true", "aria-labelledby" => "ui-id-5", :role => "tabpanel", :style => "display: none;"}
+    - if @result[:description].presence
+      - @result[:description].split('. ').shuffle.each do |sentence|
+        %p{align: 'left'}
+          #{sentence}.
