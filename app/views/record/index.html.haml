@@ -43,8 +43,8 @@
       .col-md-6.col-sm-7.col-xs-12
         .block-decr-product
           .title
-            = @result[:name]
             = icon('line-chart')
+            = @result[:name]
           .undertitle
             .brand-name= @result[:availability].presence || 'Available'
             .wrap-info-product
@@ -131,9 +131,13 @@
             = icon('pie-chart')
             Social Popularity
         %li
-          %a{:href => "#tabs-2"} Specifications
+          %a{:href => "#tabs-2"}
+            = icon('calendar-check-o')
+            Specifications
         %li
-          %a{:href => "#tabs-3"} Description
+          %a{:href => "#tabs-3"}
+            = icon('info')
+            Description
       #tabs-1
         - if @result[:social].presence
           .row
