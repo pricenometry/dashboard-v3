@@ -17,31 +17,35 @@
               = render 'layouts/responsive_text_ad'
           .col-content
             .display-unit
-              #unit-three.block-products.unit-three.active
+              #unit-four.block-products.unit-four.active
                 - @results.each_with_index do |result, index|
-                  .wrap-products-masonry.product-style-rows.js-change-img.js-wrap-products
-                    %a.box-img-products{:href => "/#{result[:container]}/#{result[:id]}"}
-                      - if result[:image].presence
-                        %img{:style => "width: 90%;", :alt => "#{result[:name]}", :src => result[:image]}/
-                      - else
-                        = image_tag "thumbnail.jpg", :style => "width: 90%;", :alt => result[:name]
-                    .prod-offer
+                  %form.wrap-products-masonry.js-change-img.js-wrap-products.products-style-line{:action => "/"}
+                    .left
+                      %a.box-img-products{:href => "/#{result[:container]}/#{result[:id]}"}
+                        - if result[:image].presence
+                          %img{:style => "height: 100%;", :alt => "#{result[:name]}", :src => result[:image]}/
+                        - else
+                          = image_tag "thumbnail.jpg", :style => "height: 100%;", :alt => result[:name]
+                    .center
                       %a.title-product{:href => "/#{result[:container]}/#{result[:id]}", :title => result[:name]}
-                        = result[:name].presence.truncate(25)
+                        = result[:name].presence
                         %p= image_tag "#{result[:container]}.png"
+                      .box-price-prod
+                        %span.price-sale.hidden-1700
                       .wrap-info-prod
                         %span.mark-info-prod
                           %a{:href => "/#{result[:container]}/#{result[:id]}"}
                             = result[:availability].presence || 'Available'
-                      .square-foot
-                        .box-price-prod
-                          %span.price-now
-                            - if result[:price][:price].presence
-                              $#{result[:price][:price]}
-                            - elsif result[:price][:original_price].presence
-                              $#{result[:price][:original_price]}
-                    .square-hidden
-
+                      .wrap
+                        .box-preview-img.hidden-md
+                    .right
+                      %span.price-now
+                        - if result[:price][:price].presence
+                          $#{result[:price][:price]}
+                        - elsif result[:price][:original_price].presence
+                          $#{result[:price][:original_price]}
+                      %span.price-sale.visible-1700
+                      %a.btn-add-cart.button-middle.waves-effect.waves-circle.waves-float{:href => "/#{result[:container]}/#{result[:id]}"} Buy Now
             .box-pagination
               -if @pagination[:prev_page]
                 %a.item-pagination{:href => @pagination[:prev_page]} &larr; Previous
