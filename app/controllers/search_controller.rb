@@ -3,6 +3,8 @@ class SearchController < ApplicationController
     if @query = params[:query].presence
       @results = object.results.compact
 
+      # @latest = @latest.results
+
       @trackers = @trackers + @results.map {|r| r[:tracker] }
 
       prepare_meta_tags title: "Realtime Pricing Search Results for " + @query,
@@ -31,4 +33,8 @@ class SearchController < ApplicationController
   def object
     @object ||= Pricenometry::Search.new(@query.gsub('+', ' '), {page: current_page})
   end
+
+  # def latest
+  #   @latest ||= Pricenometry::Trends.new('date')
+  # end
 end

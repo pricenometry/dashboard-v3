@@ -5,278 +5,34 @@
     .box-1675
       .container-fluid
         .row
-          = render 'layouts/responsive_text_ad'
+          = render 'layouts/responsive_ad'
           %br
           .col-sidebar
-            / Block Bar Categories Start
             .block-sidebar.hidden-768
               .title-sidebar
-                All categories
+                Sponsors
               .content-sidebar
-                %ul.categories-wrap
-                  %li
-                    .dropdown.dropdown-inline
-                      %a.dropdown-toggle{"data-hover" => "dropdown", "data-toggle" => "dropdown", :href => "#"}
-                        Amazon
-                        %i.fa.fa-angle-right{"aria-hidden" => "true"}
-                      %ul.dropdown-menu.bordermenu{:role => "menu"}
-                        %li
-                        %li.dropdown
-                          %a{:href => "#"}
-                            Most Trending
-                            %i.fa.fa-angle-right{"aria-hidden" => "true"}
-                          %ul.dropdown-menu
-                            %li
-                              %a{:href => "#"} Facebook
-                            %li
-                              %a{:href => "#"} Twitter
-                            %li
-                              %a{:href => "#"} Pinterest
-                            %li
-                              %a{:href => "#"} Google
-                        %li
-                          %a{:href => "#"} Most Expensive
-                  %li
-                    .dropdown.dropdown-inline
-                      %a.dropdown-toggle{"data-hover" => "dropdown", "data-toggle" => "dropdown", :href => "#"}
-                        Walmart
-                        %i.fa.fa-angle-right{"aria-hidden" => "true"}
-                      %ul.dropdown-menu.bordermenu{:role => "menu"}
-                        %li
-                        %li.dropdown
-                          %a{:href => "#"}
-                            Most Trending
-                            %i.fa.fa-angle-right{"aria-hidden" => "true"}
-                          %ul.dropdown-menu
-                            %li
-                              %a{:href => "#"} Facebook
-                            %li
-                              %a{:href => "#"} Twitter
-                            %li
-                              %a{:href => "#"} Pinterest
-                            %li
-                              %a{:href => "#"} Google
-                        %li
-                          %a{:href => "#"} Most Expensive
-                  %li
-                    .dropdown.dropdown-inline
-                      %a.dropdown-toggle{"data-hover" => "dropdown", "data-toggle" => "dropdown", :href => "#"}
-                        NewEgg
-                        %i.fa.fa-angle-right{"aria-hidden" => "true"}
-                      %ul.dropdown-menu.bordermenu{:role => "menu"}
-                        %li
-                        %li.dropdown
-                          %a{:href => "#"}
-                            Most Trending
-                            %i.fa.fa-angle-right{"aria-hidden" => "true"}
-                          %ul.dropdown-menu
-                            %li
-                              %a{:href => "#"} Facebook
-                            %li
-                              %a{:href => "#"} Twitter
-                            %li
-                              %a{:href => "#"} Pinterest
-                            %li
-                              %a{:href => "#"} Google
-                        %li
-                          %a{:href => "#"} Most Expensive
-                  %li
-                    .dropdown.dropdown-inline
-                      %a.dropdown-toggle{"data-hover" => "dropdown", "data-toggle" => "dropdown", :href => "#"}
-                        Staples
-                        %i.fa.fa-angle-right{"aria-hidden" => "true"}
-                      %ul.dropdown-menu.bordermenu{:role => "menu"}
-                        %li
-                        %li.dropdown
-                          %a{:href => "#"}
-                            Most Trending
-                            %i.fa.fa-angle-right{"aria-hidden" => "true"}
-                          %ul.dropdown-menu
-                            %li
-                              %a{:href => "#"} Facebook
-                            %li
-                              %a{:href => "#"} Twitter
-                            %li
-                              %a{:href => "#"} Pinterest
-                            %li
-                              %a{:href => "#"} Google
-                        %li
-                          %a{:href => "#"} Most Expensive
-                  %li
-                    .dropdown.dropdown-inline
-                      %a.dropdown-toggle{"data-hover" => "dropdown", "data-toggle" => "dropdown", :href => "#"}
-                        Best Buy
-                        %i.fa.fa-angle-right{"aria-hidden" => "true"}
-                      %ul.dropdown-menu.bordermenu{:role => "menu"}
-                        %li
-                        %li.dropdown
-                          %a{:href => "#"}
-                            Most Trending
-                            %i.fa.fa-angle-right{"aria-hidden" => "true"}
-                          %ul.dropdown-menu
-                            %li
-                              %a{:href => "#"} Facebook
-                            %li
-                              %a{:href => "#"} Twitter
-                            %li
-                              %a{:href => "#"} Pinterest
-                            %li
-                              %a{:href => "#"} Google
-                        %li
-                          %a{:href => "#"} Most Expensive
-                  %li
-                    .dropdown.dropdown-inline
-                      %a.dropdown-toggle{"data-hover" => "dropdown", "data-toggle" => "dropdown", :href => "#"}
-                        Home Depot
-                        %i.fa.fa-angle-right{"aria-hidden" => "true"}
-                      %ul.dropdown-menu.bordermenu{:role => "menu"}
-                        %li
-                        %li.dropdown
-                          %a{:href => "#"}
-                            Most Trending
-                            %i.fa.fa-angle-right{"aria-hidden" => "true"}
-                          %ul.dropdown-menu
-                            %li
-                              %a{:href => "#"} Facebook
-                            %li
-                              %a{:href => "#"} Twitter
-                            %li
-                              %a{:href => "#"} Pinterest
-                            %li
-                              %a{:href => "#"} Google
-                        %li
-                          %a{:href => "#"} Most Expensive
-                  %li
-                    .dropdown.dropdown-inline
-                      %a.dropdown-toggle{"data-hover" => "dropdown", "data-toggle" => "dropdown", :href => "#"}
-                        Target
-                        %i.fa.fa-angle-right{"aria-hidden" => "true"}
-                      %ul.dropdown-menu.bordermenu{:role => "menu"}
-                        %li
-                        %li.dropdown
-                          %a{:href => "#"}
-                            Most Trending
-                            %i.fa.fa-angle-right{"aria-hidden" => "true"}
-                          %ul.dropdown-menu
-                            %li
-                              %a{:href => "#"} Facebook
-                            %li
-                              %a{:href => "#"} Twitter
-                            %li
-                              %a{:href => "#"} Pinterest
-                            %li
-                              %a{:href => "#"} Google
-                        %li
-                          %a{:href => "#"} Most Expensive
-                  %li
-                    .dropdown.dropdown-inline
-                      %a.dropdown-toggle{"data-hover" => "dropdown", "data-toggle" => "dropdown", :href => "#"}
-                        Costco
-                        %i.fa.fa-angle-right{"aria-hidden" => "true"}
-                      %ul.dropdown-menu.bordermenu{:role => "menu"}
-                        %li
-                        %li.dropdown
-                          %a{:href => "#"}
-                            Most Trending
-                            %i.fa.fa-angle-right{"aria-hidden" => "true"}
-                          %ul.dropdown-menu
-                            %li
-                              %a{:href => "#"} Facebook
-                            %li
-                              %a{:href => "#"} Twitter
-                            %li
-                              %a{:href => "#"} Pinterest
-                            %li
-                              %a{:href => "#"} Google
-                        %li
-                          %a{:href => "#"} Most Expensive
-            / Block Bar Categories End
-            / Block Bar Filters Start
-            .block-sidebar.hidden-768
-              .title-sidebar Filters
-              .content-sidebar
-                #nav_list_first.nav_list
-                  .all-box-custom
-                    %a{:href => "#"}
-                      Price
-                      %i.fa.fa-angle-down{"aria-hidden" => "true"}
-                    .box-custom-size-div
-                      %form.box-custom-size
-                        #resize-curs.resize-curs
-                          %input#min-custom-size{:type => "text"}/
-                          .hr-custim-size -
-                          %input#max-custom-size{:type => "text"}/
-                          .hr-custim-size $
-                          %input.submin-custom-size{:type => "submit", :value => "Ok"}/
-                        #slider-range
-                  .all-box-custom
-                    %a{:href => "#"}
-                      Size
-                      %i.fa.fa-angle-down{"aria-hidden" => "true"}
-                    .box-custom-check-div
-                      .box-filtrs-check
-                        %label
-                          %input.checkbox{:name => "checkbox-test", :type => "checkbox"}/
-                          %span.checkbox-custom
-                          %span.nameprod
-                            Manufacturer(
-                            %span> 1
-                            )
-                        %label
-                          %input.checkbox{:name => "checkbox-test", :type => "checkbox"}/
-                          %span.checkbox-custom
-                          %span.nameprod
-                            Manufacturer(
-                            %span> 569
-                            )
-                        %label
-                          %input.checkbox{:name => "checkbox-test", :type => "checkbox"}/
-                          %span.checkbox-custom
-                          %span.nameprod
-                            Manufacturer(
-                            %span> 22
-                            )
-            / Block Bar Filters End
-            / Block Bar Bunner Start
+                = render 'layouts/responsive_text_ad'
+            / .block-sidebar.hidden-768
+            /   .title-sidebar
+            /     Latest Offers
+            /   .block-special-offers
+            /     %ul
+            /       - @latest.each_with_index do |result, index|
+            /         %li
+            /           %a{:href => "/#{result[:container]}/#{result[:id]}"}
+            /             .spec-offers-img
+            /               %img{:alt => result[:name], :src => result[:image]}/
+            /             .spec-offers-content
+            /               .spec-offers-title{:title => result[:name]}= result[:name]
+            /               - if result[:price][:price].presence
+            /                 .spec-offers-cost{:title => "$#{result[:price][:price]}"}
+            /                   $#{result[:price][:price]}
+            /               - elsif result[:price][:original_price].presence
+            /                 .spec-offers-cost{:title => "$#{result[:price][:original_price]}"}
+            /                   $#{result[:price][:original_price]}
             .block-bunners.hidden-768
-              %a{:href => "#"}
-                %img{:alt => "", :src => "img/bunner-img.jpg"}/
-            / Block Bar Bunner End
-            / Block Bar Offers Start
-            .block-sidebar.hidden-768
-              .title-sidebar
-                Special offers
-              .block-special-offers
-                %ul
-                  %li
-                    %a{:href => "page_product_2.html"}
-                      .spec-offers-img
-                        %img{:alt => "", :src => "http://webark.io/ecom/presentation/html/img/orange/product_1_1_80x80.jpg"}/
-                      .spec-offers-content
-                        .spec-offers-title{:title => "Armchair АC-150KS"} Armchair АC-150KS
-                        .spec-offers-cost{:title => "$167.50"} $1255.50
-                  %li
-                    %a{:href => "page_product_2.html"}
-                      .spec-offers-img
-                        %img{:alt => "", :src => "http://webark.io/ecom/presentation/html/img/orange/product_2_1_80x80.jpg"}/
-                      .spec-offers-content
-                        .spec-offers-title{:title => "Oregon chair 723"} Oregon chair 723
-                        .spec-offers-cost{:title => "$167.50"} $1255.50
-                  %li
-                    %a{:href => "page_product_2.html"}
-                      .spec-offers-img
-                        %img{:alt => "", :src => "http://webark.io/ecom/presentation/html/img/orange/product_3_1_80x80.jpg"}/
-                      .spec-offers-content
-                        .spec-offers-title{:title => "Parma 180"} Parma 180
-                        .spec-offers-cost{:title => "$167.50"} $8936.50
-                  %li
-                    %a{:href => "page_product_2.html"}
-                      .spec-offers-img
-                        %img{:alt => "", :src => "http://webark.io/ecom/presentation/html/img/orange/product_4_1_80x80.jpg"}/
-                      .spec-offers-content
-                        .spec-offers-title{:title => "Roxy Canty RC-11"} Roxy Canty RC-11
-                        .spec-offers-cost{:title => "$167.50"} $167.50
-            / Block Bar Offers End
+              = render 'layouts/responsive_text_ad'
           .col-content
             .display-unit
               #unit-three.block-products.unit-three.active
