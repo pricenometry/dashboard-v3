@@ -26,10 +26,6 @@ class SearchController < ApplicationController
 
   protected
 
-  # def google_ad
-  #   {container: 'google'}
-  # end
-
   def object
     @object ||= Pricenometry::Search.new(@query.gsub('+', ' '), {page: current_page})
   end
