@@ -5,6 +5,8 @@
     .box-1675
       .container-fluid
         .row
+          = render 'layouts/responsive_text_ad'
+          %br
           .col-sidebar
             / Block Bar Categories Start
             .block-sidebar.hidden-768
@@ -316,24 +318,3 @@
                 %a.item-pagination{:href => '#'} Next &rarr;
                 %span.dot-pagination ...
                 %a.item-pagination{:href => '#'} Last &rarr;
-
-
-/ .container.text-center
-/   .full.col-sm-12
-/     .row
-/       / main col left
-/       .col-md-2.col-sm-3.text-center
-/         = render 'layouts/responsive_text_ad'
-/         = render 'layouts/responsive_ad'
-/         = render 'layouts/responsive_text_ad'
-/         = render 'layouts/responsive_ad'
-/       .col-md-10.col-sm-9
-/         - unless browser.bot?
-/           .panel
-/             .fb-like{"data-share" => "true", "data-show-faces" => "true", "data-width" => "450", align: 'right' }
-/         - @results.each_with_index do |result, index|
-/           - if index % 4 == 0
-/             .row
-/           = render 'search/vertical_result', result: result
-/         = render 'layouts/pagination', pagination: @pagination
-/     = render 'layouts/responsive_text_ad'
