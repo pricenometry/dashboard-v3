@@ -13,24 +13,28 @@
                 Sponsors
               .content-sidebar
                 = render 'layouts/responsive_text_ad'
-            / .block-sidebar.hidden-768
-            /   .title-sidebar
-            /     Latest Offers
-            /   .block-special-offers
-            /     %ul
-            /       - @latest.each_with_index do |result, index|
-            /         %li
-            /           %a{:href => "/#{result[:container]}/#{result[:id]}"}
-            /             .spec-offers-img
-            /               %img{:alt => result[:name], :src => result[:image]}/
-            /             .spec-offers-content
-            /               .spec-offers-title{:title => result[:name]}= result[:name]
-            /               - if result[:price][:price].presence
-            /                 .spec-offers-cost{:title => "$#{result[:price][:price]}"}
-            /                   $#{result[:price][:price]}
-            /               - elsif result[:price][:original_price].presence
-            /                 .spec-offers-cost{:title => "$#{result[:price][:original_price]}"}
-            /                   $#{result[:price][:original_price]}
+            .block-sidebar.hidden-768
+              .title-sidebar
+                Latest Offers
+              .block-special-offers
+                %ul
+                  - @latest.each_with_index do |result, index|
+                    %li
+                      %a{:href => "/#{result[:container]}/#{result[:id]}"}
+                        .spec-offers-img
+                          - if result[:image].presence
+                            %img{:style => "width: 90%;", :alt => "#{result[:name]}", :src => result[:image]}/
+                          - else
+                            = image_tag "thumbnail.jpg", :style => "width: 90%;", :alt => result[:name]
+                        .spec-offers-content
+                          .spec-offers-title{:title => result[:name]}
+                            = result[:name].truncate(25)
+                          - if result[:price][:price].presence
+                            .spec-offers-cost{:title => "$#{result[:price][:price]}"}
+                              $#{result[:price][:price]}
+                          - elsif result[:price][:original_price].presence
+                            .spec-offers-cost{:title => "$#{result[:price][:original_price]}"}
+                              $#{result[:price][:original_price]}
             .block-bunners.hidden-768
               = render 'layouts/responsive_text_ad'
           .col-content

@@ -159,5 +159,7 @@
             .row
               .text-copyright
                 Copyright © 2017 Pricenometry. All Rights Reserved
+      - if @trackers.presence
+        - @trackers.uniq.each do |tracker|
+          = image_tag tracker
       / Footer End
-
