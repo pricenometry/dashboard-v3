@@ -16,6 +16,12 @@
             .block-bunners.hidden-768
               = render 'layouts/responsive_text_ad'
           .col-content
+            .title
+              %h1
+                Trending
+                = @query.gsub('_', ' ').capitalize
+                for
+                = params[:container].presence || 'All Sites'
             .display-unit
               #unit-four.block-products.unit-four.active
                 - @results.each_with_index do |result, index|
