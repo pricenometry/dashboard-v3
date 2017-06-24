@@ -45,6 +45,28 @@
         = "Buy at #{@result[:container].split('-').first.capitalize}"
     - if @history && @history[:price].presence
       = line_chart @history[:price], min: @min_price, max: @max_price
+    - if @related.presence
+      .block-title-product-mob
+        .title
+          = icon('bar-chart')
+          Compare Pricing
+      .panel-body
+        %ul.list-unstyled
+          - @related.each_with_index do |result, index|
+            .thumbnail.media
+              .media-body
+                %p= image_tag "#{result[:container]}.png"
+                %a{:href => "/#{result[:container]}/#{result[:id]}", rel: "nofollow", style: 'color:#ac4142;'}
+                  %strong
+                    = result[:name].to_s
+                %p= result[:availability].presence || 'Available'
+              .media-right
+                %h3
+                  %strong
+                    - if result[:price][:price]
+                      $#{result[:price][:price]}
+                    - elsif result[:price][:original_price]
+                      $#{result[:price][:original_price]}
 
 = render 'layouts/responsive_text_ad'
 
