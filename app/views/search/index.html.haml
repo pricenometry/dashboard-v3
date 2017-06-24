@@ -288,9 +288,9 @@
                     .prod-offer
                       %a.title-product{:href => "/#{result[:container]}/#{result[:id]}", :title => result[:name]}
                         = result[:name].presence.truncate(25)
+                        %p= image_tag "#{result[:container]}.png"
                       .wrap-info-prod
                         %span.mark-info-prod
-                          = image_tag "#{result[:container]}.png"
                           %a{:href => "/#{result[:container]}/#{result[:id]}"}
                             = result[:availability].presence || 'Available'
                       .square-foot
@@ -309,13 +309,13 @@
                 %a.item-pagination{:href => '#'} &larr; Previous
               %span.dot-pagination ...
               -if @pagination[:next_page]
-                %a.item-pagination{:href => @pagination[:total_pages]} Last &rarr;
-                %span.dot-pagination ...
                 %a.item-pagination{:href => @pagination[:next_page]} Next &rarr;
-              -else
-                %a.item-pagination{:href => '#'} Last &rarr;
                 %span.dot-pagination ...
+                %a.item-pagination{:href => @pagination[:total_pages]} Last &rarr;
+              -else
                 %a.item-pagination{:href => '#'} Next &rarr;
+                %span.dot-pagination ...
+                %a.item-pagination{:href => '#'} Last &rarr;
 
 
 / .container.text-center
