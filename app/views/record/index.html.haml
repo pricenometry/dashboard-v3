@@ -147,10 +147,10 @@
               - elsif @result[:container] == 'walmart-offers'
                 = render 'search/walmart_button', result: @result
               - elsif @result[:container] == 'target-offers'
-                %a.add-cart-product.button-lardge.waves-effect.waves-circle.waves-float{href: "/#{@result[:container]}/#{@result[:id]}"}
+                %a.add-cart-product.button-small.waves-effect.waves-circle.waves-float{href: "/#{@result[:container]}/#{@result[:id]}"}
                   \#BoycottTarget
               - else
-                %a.add-cart-product.button-lardge.waves-effect.waves-circle.waves-float{:href => @result[:url], target: '_blank'}
+                %a.add-cart-product.button-small.waves-effect.waves-circle.waves-float{:href => @result[:url], target: '_blank'}
                   = icon('shopping-cart')
                   = "Buy at #{@result[:container].split('-').first.capitalize}"
     - if @related.presence
