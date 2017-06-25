@@ -81,7 +81,7 @@
               %a{:href => "javascript:history.back()"} Back
             %span
               %i.fa.fa-angle-right{"aria-hidden" => "true"}
-              %a{:href => "/"}= image_tag "#{@result[:container]}.png"
+              %a{:href => root_url}= image_tag "#{@result[:container]}.png"
             - if @result[:categories].presence
               - @result[:categories].each do |category|
                 %span

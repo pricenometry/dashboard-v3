@@ -51,7 +51,7 @@
             .display-unit
               #unit-four.block-products.unit-four.active
                 - @results.each_with_index do |result, index|
-                  %form.wrap-products-masonry.js-change-img.js-wrap-products.products-style-line{:action => "/"}
+                  %form.wrap-products-masonry.js-change-img.js-wrap-products.products-style-line
                     .left
                       %a.box-img-products{:href => "/#{result[:container]}/#{result[:id]}"}
                         - if result[:image].presence

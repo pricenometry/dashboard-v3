@@ -9,7 +9,7 @@
           #close-popup-search.close-popup-search
           .search-popup-main
             %fieldset
-              %input#filter.input-search.form-control{:type => "text", :name => 'query', :value => @query, :autocomplete => "off", :placeholder => "What Product Are You Looking For?"}
+              %input#filter.input-search.form-control{:type => "text", :name => 'query', :value => (@query.presence || ' '), :autocomplete => "off", :placeholder => "What Product Are You Looking For?"}
               %span#clear-searh.clear-searh
     #wrap-allcat.wrap-allcat
       .select
