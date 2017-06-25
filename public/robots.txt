@@ -1,5 +1,6 @@
 User-agent: *
 Disallow: /search
+Disallow: /trending
 
 # Sitemap files
 Sitemap: https://pricenometry.com/aliexpress-offers/sitemap.xml.gz
