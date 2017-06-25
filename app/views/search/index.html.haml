@@ -66,7 +66,7 @@
                       - elsif result[:container] == 'walmart-offers'
                         = render 'search/walmart_button', result: result
                       - elsif result[:container] == 'target-offers'
-                        %a.add-cart-product.add-cart-mob.button-small.waves-effect.waves-circle.waves-float{href: "/#{result[:container]}/#{@result[:id]}"}
+                        %a.add-cart-product.add-cart-mob.button-small.waves-effect.waves-circle.waves-float{href: "/#{result[:container]}/#{result[:id]}"}
                           \#BoycottTarget
                       - else
                         %a.add-cart-product.add-cart-mob.button-small.waves-effect.waves-circle.waves-float{:href => result[:url], target: '_blank'}
