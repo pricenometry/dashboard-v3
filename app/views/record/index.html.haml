@@ -20,18 +20,18 @@
   .block-price-mob
     - if @result[:price][:price] && @result[:price][:original_price]
       %span.price-strike
-        $#{@result[:price][:original_price]}
+        = number_to_currency(@result[:price][:original_price])
       %span.price-normal
         = icon('tag')
-        $#{@result[:price][:price]}
+        = number_to_currency(@result[:price][:price])
     - elsif @result[:price][:price]
       %span.price-normal
         = icon('tag')
-        $#{@result[:price][:price]}
+        = number_to_currency(@result[:price][:price])
     - elsif @result[:price][:original_price]
       %span.price-normal
         = icon('tag')
-        $#{@result[:price][:original_price]}
+        = number_to_currency(@result[:price][:original_price])
     - if @result[:container] == 'amazon-offers'
       = render 'search/amazon_button', result: @result
     - elsif @result[:container] == 'walmart-offers'
@@ -64,9 +64,9 @@
                 %h3
                   %strong
                     - if result[:price][:price]
-                      $#{result[:price][:price]}
+                      = number_to_currency(result[:price][:price])
                     - elsif result[:price][:original_price]
-                      $#{result[:price][:original_price]}
+                      = number_to_currency(result[:price][:original_price])
 
 = render 'layouts/responsive_text_ad'
 
@@ -129,18 +129,18 @@
               .wrap-price
                 - if @result[:price][:price] && @result[:price][:original_price]
                   %span.price-strike
-                    $#{@result[:price][:original_price]}
+                    = number_to_currency(@result[:price][:original_price])
                   %span.price-normal
                     = icon('tag')
-                    $#{@result[:price][:price]}
+                    = number_to_currency(@result[:price][:price])
                 - elsif @result[:price][:price]
                   %span.price-normal
                     = icon('tag')
-                    $#{@result[:price][:price]}
+                    = number_to_currency(@result[:price][:price])
                 - elsif @result[:price][:original_price]
                   %span.price-normal
                     = icon('tag')
-                    $#{@result[:price][:original_price]}
+                    = number_to_currency(@result[:price][:original_price])
             .box-add-cart-product
               - if @result[:container] == 'amazon-offers'
                 = render 'search/amazon_button', result: @result
@@ -179,11 +179,11 @@
                   - if @result[:price][:price]
                     %span.now
                       = icon('tag')
-                      $#{result[:price][:price]}
+                      = number_to_currency(result[:price][:price])
                   - elsif result[:price][:original_price]
                     %span.now
                       = icon('tag')
-                      $#{result[:price][:original_price]}
+                      = number_to_currency(result[:price][:original_price])
     #tabs_cart_product
       %ul
         %li

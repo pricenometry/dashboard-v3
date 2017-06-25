@@ -13,15 +13,41 @@
                 Sponsors
               .content-sidebar
                 = render 'layouts/responsive_text_ad'
+            .block-sidebar.hidden-768
+              .title-sidebar
+                Latest Offers
+              .block-special-offers
+                %ul
+                  - @latest.each_with_index do |result, index|
+                    %li
+                      %a{:href => "/#{result[:container]}/#{result[:id]}"}
+                        .spec-offers-img
+                          - if result[:image].presence
+                            %img{:style => "width: 90%;", :alt => "#{result[:name]}", :src => result[:image]}/
+                          - else
+                            = image_tag "thumbnail.jpg", :style => "width: 90%;", :alt => result[:name]
+                        .spec-offers-content
+                          .spec-offers-title{:title => result[:name]}
+                            = result[:name].truncate(25)
+                          - if result[:price][:price].presence
+                            .spec-offers-cost{:title => number_to_currency(result[:price][:price])}
+                              = number_to_currency(result[:price][:price])
+                          - elsif result[:price][:original_price].presence
+                            .spec-offers-cost{:title => number_to_currency(result[:price][:original_price])}
+                              = number_to_currency(result[:price][:original_price])
+            .block-bunners.hidden-768
+              = render 'layouts/responsive_text_ad'
+            .block-bunners.hidden-768
+              = render 'layouts/responsive_ad'
             .block-bunners.hidden-768
               = render 'layouts/responsive_text_ad'
           .col-content
             .title
               %h1
-                Trending
-                = @query.gsub('_', ' ').capitalize
+                Trending Top
+                = params[:type].gsub('_', ' ').capitalize
                 for
-                = params[:container].presence || 'All Sites'
+                = (params[:container].split('-').try(:first).try(:capitalize) rescue nil) || 'All Sites'
             .display-unit
               #unit-four.block-products.unit-four.active
                 - @results.each_with_index do |result, index|
@@ -42,16 +68,27 @@
                         %span.mark-info-prod
                           %a{:href => "/#{result[:container]}/#{result[:id]}"}
                             = result[:availability].presence || 'Available'
+                        - if result[:social].presence
+                          = pie_chart result[:social].select {|k,v| k != :total_shares }
                       .wrap
                         .box-preview-img.hidden-md
                     .right
                       %span.price-now
                         - if result[:price][:price].presence
-                          $#{result[:price][:price]}
+                          = number_to_currency(result[:price][:price])
                         - elsif result[:price][:original_price].presence
-                          $#{result[:price][:original_price]}
-                      %span.price-sale.visible-1700
-                      %a.btn-add-cart.button-middle.waves-effect.waves-circle.waves-float{:href => "/#{result[:container]}/#{result[:id]}"} Buy Now
+                          = number_to_currency(result[:price][:original_price])
+                      - if result[:container] == 'amazon-offers'
+                        = render 'search/amazon_button', result: result
+                      - elsif result[:container] == 'walmart-offers'
+                        = render 'search/walmart_button', result: result
+                      - elsif result[:container] == 'target-offers'
+                        %a.add-cart-product.add-cart-mob.button-small.waves-effect.waves-circle.waves-float{href: "/#{result[:container]}/#{@result[:id]}"}
+                          \#BoycottTarget
+                      - else
+                        %a.add-cart-product.add-cart-mob.button-small.waves-effect.waves-circle.waves-float{:href => result[:url], target: '_blank'}
+                          = icon('shopping-cart')
+                          = "Buy at #{result[:container].split('-').first.capitalize}"
             .box-pagination
               -if @pagination[:prev_page]
                 %a.item-pagination{:href => @pagination[:prev_page]} &larr; Previous

@@ -30,11 +30,11 @@
                           .spec-offers-title{:title => result[:name]}
                             = result[:name].truncate(25)
                           - if result[:price][:price].presence
-                            .spec-offers-cost{:title => "$#{result[:price][:price]}"}
-                              $#{result[:price][:price]}
+                            .spec-offers-cost{:title => number_to_currency(result[:price][:price])}
+                              = number_to_currency(result[:price][:price])
                           - elsif result[:price][:original_price].presence
-                            .spec-offers-cost{:title => "$#{result[:price][:original_price]}"}
-                              $#{result[:price][:original_price]}
+                            .spec-offers-cost{:title => number_to_currency(result[:price][:original_price])}
+                              = number_to_currency(result[:price][:original_price])
             .block-bunners.hidden-768
               = render 'layouts/responsive_text_ad'
           .col-content
@@ -59,9 +59,9 @@
                         .box-price-prod
                           %span.price-now
                             - if result[:price][:price].presence
-                              $#{result[:price][:price]}
+                              = number_to_currency(result[:price][:price])
                             - elsif result[:price][:original_price].presence
-                              $#{result[:price][:original_price]}
+                              = number_to_currency(result[:price][:original_price])
                     .square-hidden
 
             .box-pagination

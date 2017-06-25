@@ -1,15 +1,17 @@
 class TrendsController < ApplicationController
   def index
-    if @query = params[:type].presence
+    if params[:type].presence
       @results = object.results.compact
+
+      @latest = Pricenometry::Trends.new('date').results
 
       @trackers = @trackers + @results.map {|r| r[:tracker] }
 
-      prepare_meta_tags title: "Realtime Trending Results for " + @query,
+      prepare_meta_tags title: "Realtime Trending Results for " + params[:type],
                       description: "Search for up to the minute trends at Pricenometry.com",
-                      og: { title: "Realtime Trending Results for " + @query,
+                      og: { title: "Realtime Trending Results for " + params[:type],
                             image: @results.first[:image] },
-                      twitter: { description: "Realtime Trending Results for " + @query,
+                      twitter: { description: "Realtime Trending Results for " + params[:type],
                                  image: @results.first[:image],
                                  card: "summary_large_image" },
                       image: @results.first[:image]
@@ -25,7 +27,7 @@ class TrendsController < ApplicationController
   protected
 
   def object
-    @object ||= Pricenometry::Trends.new(@query.gsub('+', '_'), params[:container].presence, {page: current_page})
+    @object ||= Pricenometry::Trends.new(params[:type].gsub('+', '_'), params[:container].presence, {page: current_page})
   end
 end
 
