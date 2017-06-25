@@ -5,6 +5,38 @@
     %meta{name:"msvalidate.01", content: "E343FD8E4D0D68E0349D841AFFFE6EEF"}
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    - if user_signed_in?
+      = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/highcharts/4.2.3/highcharts.js", "chartkick"
+    - else
+      = javascript_include_tag "//www.google.com/jsapi", "chartkick"
+    = csrf_meta_tags
+    = analytics_init if GoogleAnalytics.valid_tracker?
+    %script{:async => "", :src => "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"}
+    :javascript
+            window.fbAsyncInit = function() {
+              FB.init({
+                appId      : '1008307585917302',
+                xfbml      : true,
+                version    : 'v2.5'
+              });
+            };
+
+            (function(d, s, id){
+               var js, fjs = d.getElementsByTagName(s)[0];
+               if (d.getElementById(id)) {return;}
+               js = d.createElement(s); js.id = id;
+               js.src = "//connect.facebook.net/en_US/sdk.js";
+               fjs.parentNode.insertBefore(js, fjs);
+             }(document, 'script', 'facebook-jssdk'));
+    :javascript
+            (function(d, s, id) {
+              var js, fjs = d.getElementsByTagName(s)[0];
+              if (d.getElementById(id)) return;
+              js = d.createElement(s); js.id = id;
+              js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=1008307585917302";
+              fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
     = yield(:head)
   %body{:class => "#{controller_name} #{action_name}"}
     #header
@@ -684,35 +716,3 @@
         - @trackers.uniq.each do |tracker|
           = image_tag tracker
       / Footer End
-= javascript_include_tag 'application', 'data-turbolinks-track' => true
-- if user_signed_in?
-  = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/highcharts/4.2.3/highcharts.js", "chartkick"
-- else
-  = javascript_include_tag "//www.google.com/jsapi", "chartkick"
-= csrf_meta_tags
-= analytics_init if GoogleAnalytics.valid_tracker?
-%script{:async => "", :src => "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"}
-:javascript
-        window.fbAsyncInit = function() {
-          FB.init({
-            appId      : '1008307585917302',
-            xfbml      : true,
-            version    : 'v2.5'
-          });
-        };
-
-        (function(d, s, id){
-           var js, fjs = d.getElementsByTagName(s)[0];
-           if (d.getElementById(id)) {return;}
-           js = d.createElement(s); js.id = id;
-           js.src = "//connect.facebook.net/en_US/sdk.js";
-           fjs.parentNode.insertBefore(js, fjs);
-         }(document, 'script', 'facebook-jssdk'));
-:javascript
-        (function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=1008307585917302";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
