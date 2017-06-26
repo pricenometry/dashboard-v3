@@ -25,7 +25,6 @@
 //= require owl.carousel
 //= require waves
 //= require modernizr
-//= require turbolinks
 //= require_tree .
 
 GaEvents.Event.adapter = function() {

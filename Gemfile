@@ -5,7 +5,6 @@ gem 'sqlite3'
 
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'excon'
 gem 'bootstrap-sass'
