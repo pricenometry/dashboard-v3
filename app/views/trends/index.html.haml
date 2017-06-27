@@ -58,7 +58,7 @@
                     .center
                       %a.title-product{:href => "/#{result[:container]}/#{result[:id]}", :title => result[:name]}
                         = result[:name].presence
-                        = image_tag "#{result[:container]}.png"
+                        = image_tag "stores/#{result[:container]}.png"
                       .box-price-prod
                         %span.price-sale.hidden-1700
                       .wrap-info-prod

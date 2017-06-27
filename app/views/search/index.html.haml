@@ -31,7 +31,7 @@
                     .prod-offer
                       .title-product
                         = result[:name].presence.truncate(35)
-                        %p= image_tag "#{result[:container]}.png"
+                        %p= image_tag "stores/#{result[:container]}.png"
                       .square-foot
                         .box-price-prod
                           %span.price-now
