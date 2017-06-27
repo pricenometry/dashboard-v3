@@ -60,18 +60,18 @@
                     .center
                       %a.title-product{:href => "/#{result[:container]}/#{result[:id]}", :title => result[:name]}
                         = result[:name].presence
-                        %p= image_tag "#{result[:container]}.png"
+                        = image_tag "#{result[:container]}.png"
                       .box-price-prod
                         %span.price-sale.hidden-1700
                       .wrap-info-prod
-                        %span.mark-info-prod
-                          %a{:href => "/#{result[:container]}/#{result[:id]}"}
-                            = result[:availability].presence || 'Available'
                         - if result[:social].presence
                           = pie_chart result[:social].select {|k,v| k != :total_shares }
                       .wrap
                         .box-preview-img.hidden-md
                     .right
+                      %span.mark-info-prod
+                        %a{:href => "/#{result[:container]}/#{result[:id]}"}
+                          = result[:availability].presence || 'Available'
                       %span.price-now
                         - if result[:price][:price].presence
                           = number_to_currency(result[:price][:price])
