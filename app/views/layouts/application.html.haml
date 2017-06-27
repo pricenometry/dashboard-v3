@@ -424,6 +424,12 @@
                   %li
                     %a{:href => "http://about.pricenometry.com/", :target => "_blank"} Blog
                   %li
+                    %a{:href => "http://developers.pricenometry.com/", :target => "_blank"} Developer API
+                  %li
+                    %a{:href => "http://about.pricenometry.com/get-access/", :target => "_blank"} Get Access
+              #top-right.top-right
+                %ul
+                  %li
                     %a{:href => "https://facebook.com/Pricenometry", :target => "_blank"} Facebook
                   %li
                     %a{:href => "https://twitter.com/Pricenometry", :target => "_blank"} Twitter
@@ -433,16 +439,6 @@
                     %a{:href => "https://www.linkedin.com/showcase/18125556/", :target => "_blank"} LinkedIn
                   %li
                     %a{:href => "https://github.com/Pricenometry", :target => "_blank"} Github
-              #top-right.top-right
-                %ul
-                  %li
-                    %a{:href => "http://developers.pricenometry.com/", :target => "_blank"} Developer API
-                  %li
-                    %a{:href => "http://about.pricenometry.com/get-access/", :target => "_blank"} Get Access
-                  %li
-                    %a#js-account{:href => root_url, :target => "_blank"} Terms of Service
-                  %li
-                    %a#js-account{:href => root_url, :target => "_blank"} Privacy Policy
       / Top Menu Desktop  End
       .header-center
         / Center Menu Desktop  Start
@@ -464,11 +460,14 @@
               .main-menu
                 %ul.ul-main-menu
                   %li
-                    %a{:href => "https://twitter.com/intent/tweet?text=#{@title}&url=#{request.original_url}&via=Pricenometry&related=bastosmichael", :target => "_blank"}
+                    %a{:href => "https://www.facebook.com/dialog/share?app_id=1008307585917302&display=page&href=#{request.original_url}&redirect_uri=#{request.original_url}", :target => "_blank"}
+                      %i.fa.fa-facebook{"aria-hidden" => "true"}
+                  %li
+                    %a{:href => "https://twitter.com/intent/tweet?text=#{@title}&url=#{request.original_url}&via=Pricenometry&related=bastosmichael&hashtags=#pricing", :target => "_blank"}
                       %i.fa.fa-twitter{"aria-hidden" => "true"}
                   %li
-                    %a{:href => "https://facebook.com/sharer.php?u=#{request.original_url}", :target => "_blank"}
-                      %i.fa.fa-facebook{"aria-hidden" => "true"}
+                    %a{:href => "https://pinterest.com/pin/create/bookmarklet/?url=#{request.original_url}&is_video=false&description=#{@title}", :target => "_blank"}
+                      %i.fa.fa-pinterest{"aria-hidden" => "true"}
                   %li
                     %a{:href => "https://plus.google.com/share?url=#{request.original_url}", :target => "_blank"}
                       %i.fa.fa-google-plus{"aria-hidden" => "true"}
@@ -476,10 +475,17 @@
                     %a{:href => "https://www.linkedin.com/shareArticle?url=#{request.original_url}&title=#{@title}", :target => "_blank"}
                       %i.fa.fa-linkedin{"aria-hidden" => "true"}
                   %li
+                    %a{:href => "http://digg.com/submit?url=#{request.original_url}&title=#{@title}", :target => "_blank"}
+                      %i.fa.fa-digg{"aria-hidden" => "true"}
+                  %li
                     %a{:href => "https://www.reddit.com/submit?url=#{request.original_url}&title=#{@title}", :target => "_blank"}
                       %i.fa.fa-reddit{"aria-hidden" => "true"}
-
-
+                  %li
+                    %a{:href => "http://www.stumbleupon.com/submit?url=#{request.original_url}&title=#{@title}", :target => "_blank"}
+                      %i.fa.fa-stumbleupon{"aria-hidden" => "true"}
+                  %li
+                    %a{:href => "https://delicious.com/save?v=5&provider=Pricenometry&noui&jump=close&url=#{request.original_url}&title=#{@title}", :target => "_blank"}
+                      %i.fa.fa-delicious{"aria-hidden" => "true"}
     = render 'layouts/messages'
     = yield
 
@@ -496,6 +502,10 @@
             .row
               .text-copyright
                 Copyright © 2017 Pricenometry. All Rights Reserved
+                |
+                %a#js-account{:href => root_url, :target => "_blank"} Terms of Service
+                |
+                %a#js-account{:href => root_url, :target => "_blank"} Privacy Policy
       - if @trackers.presence
         - @trackers.uniq.each do |tracker|
           = image_tag tracker
