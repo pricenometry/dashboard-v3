@@ -5,7 +5,6 @@
     .box-1675
       .container-fluid
         .row
-          = render 'layouts/responsive_ad'
           %br
           .col-sidebar
             .block-sidebar.hidden-768
@@ -36,6 +35,12 @@
                             .spec-offers-cost{:title => number_to_currency(result[:price][:original_price])}
                               = number_to_currency(result[:price][:original_price])
           .col-content
+            .title
+              %h1
+                Search Results with
+                = @query.presence
+                for
+                = (params[:container].split('-').try(:first).try(:capitalize) rescue nil) || 'All Sites'
             .display-unit
               #unit-three.block-products.unit-three.active
                 - @results.each_with_index do |result, index|
