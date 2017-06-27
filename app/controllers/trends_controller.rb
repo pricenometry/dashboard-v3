@@ -9,6 +9,8 @@ class TrendsController < ApplicationController
 
       @title = "Realtime Trending Results for " + params[:type].to_s
 
+      @image = @results.first[:image].to_s
+
       prepare_meta_tags title: @title,
                       description: "Search for up to the minute trends at Pricenometry.com",
                       og: { title: "Realtime Trending Results for " + params[:type],
@@ -16,7 +18,7 @@ class TrendsController < ApplicationController
                       twitter: { description: "Realtime Trending Results for " + params[:type],
                                  image: @results.first[:image],
                                  card: "summary_large_image" },
-                      image: @results.first[:image]
+                      image: @image
 
       @pagination = object.pagination.map do |k,v|
         {k => path_without_page + '?type=' + params[:type] + '&page=' + v.to_s} if v

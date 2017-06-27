@@ -60,14 +60,16 @@ class RecordController < ApplicationController
 
       @title = "Realtime Pricing Trends for " + result[:name].to_s
 
+      @image = result[:image].to_s
+
       prepare_meta_tags title: @title,
                         description: "Get up to the minute " + result[:name].to_s +  " price history and analysis as well as social network popularity, product videos, news trends and more only at Pricenometry.com",
                         og: { title: "Realtime Pricing Trends for " + result[:name].to_s,
-                              image: result[:image] },
+                              image: @image },
                         twitter: { description: "Realtime Pricing Trends for " + result[:name].to_s,
-                                   image: result[:image],
+                                   image: @image,
                                    card: "summary_large_image" },
-                        image: result[:image]
+                        image: @image
     end
   end
 

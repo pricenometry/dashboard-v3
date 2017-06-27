@@ -9,6 +9,8 @@ class SearchController < ApplicationController
 
       @title = "Realtime Pricing Search Results for " + @query.to_s
 
+      @image = @results.first[:image].to_s
+
       prepare_meta_tags title: @title,
                       description: "Search for up to the minute price history and analysis as well as social network popularity, product videos, news trends and more only at Pricenometry.com",
                       og: { title: "Realtime Pricing Search Results for " + @query,
@@ -16,7 +18,7 @@ class SearchController < ApplicationController
                       twitter: { description: "Realtime Pricing Search Results for " + @query,
                                  image: @results.first[:image],
                                  card: "summary_large_image" },
-                      image: @results.first[:image]
+                      image: @image
 
       @pagination = object.pagination.map do |k,v|
         {k => path_without_page + '?query=' + params[:query] + '&page=' + v.to_s} if v

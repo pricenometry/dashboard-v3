@@ -466,7 +466,7 @@
                     %a{:href => "https://twitter.com/intent/tweet?text=#{@title}&url=#{request.original_url}&via=Pricenometry&related=bastosmichael&hashtags=#pricing", :target => "_blank"}
                       %i.fa.fa-twitter{"aria-hidden" => "true"}
                   %li
-                    %a{:href => "https://pinterest.com/pin/create/bookmarklet/?url=#{request.original_url}&is_video=false&description=#{@title}", :target => "_blank"}
+                    %a{:href => "https://pinterest.com/pin/create/bookmarklet/?media=#{@image}url=#{request.original_url}&is_video=false&description=#{@title}", :target => "_blank"}
                       %i.fa.fa-pinterest{"aria-hidden" => "true"}
                   %li
                     %a{:href => "https://plus.google.com/share?url=#{request.original_url}", :target => "_blank"}
@@ -483,9 +483,7 @@
                   %li
                     %a{:href => "http://www.stumbleupon.com/submit?url=#{request.original_url}&title=#{@title}", :target => "_blank"}
                       %i.fa.fa-stumbleupon{"aria-hidden" => "true"}
-                  %li
-                    %a{:href => "https://delicious.com/save?v=5&provider=Pricenometry&noui&jump=close&url=#{request.original_url}&title=#{@title}", :target => "_blank"}
-                      %i.fa.fa-delicious{"aria-hidden" => "true"}
+
     = render 'layouts/messages'
     = yield
 
