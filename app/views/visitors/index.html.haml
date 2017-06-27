@@ -1,27 +1,33 @@
-.container.text-center
-  .full.col-sm-12
-    / content
-    .row
-      / main col left
-      .col-md-12.col-sm-10
-        #welcome.page-header
-          %h1
-            = content_for?(:h1) ? yield(:h1) : "Search #{@total}illion products from #{@count} different sites at once."
-            %br
-            %small
-              = content_for?(:h3) ? yield(:h3) : "Price and social comparison done in realtime and at massive scale..."
+#main-content
+  / Page Main Content Start
+  = render 'visitors/banners_large'
+  .main-content
+    / Blocks with the goods Start
+    .box-1675
+      .container-fluid
         .row
-          - @available.each do |name, count|
-            .col-md-3{align: 'center'}
-              = image_tag "stores/#{name}.png"
-              %p= count
-        .row
-          .col-md-4{align: 'center'}
-            %strong Indexing
-            %p #{@indexing}
-          .col-md-4{align: 'center'}
-            %strong Processing
-            %p #{@processing}
-          .col-md-4{align: 'center'}
-            %strong Pending
-            %p #{@pending}
+          .col-sidebar
+            = render 'trends/trending'
+          / main col left
+          .col-content
+            #welcome.page-header
+              %h1
+                = content_for?(:h1) ? yield(:h1) : "Search #{@total}illion products from #{@count} different sites at once."
+                %br
+                %small
+                  = content_for?(:h3) ? yield(:h3) : "Price and social comparison done in realtime and at massive scale..."
+            .row
+              - @available.each do |name, count|
+                .col-md-3{align: 'center'}
+                  = image_tag "stores/#{name}.png"
+                  %p= count
+            .row
+              .col-md-4{align: 'center'}
+                %strong Indexing
+                %p #{@indexing}
+              .col-md-4{align: 'center'}
+                %strong Processing
+                %p #{@processing}
+              .col-md-4{align: 'center'}
+                %strong Pending
+                %p #{@pending}

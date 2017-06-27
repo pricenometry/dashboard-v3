@@ -1,0 +1,14 @@
+#myCarousel3.carousel.slide
+  %ol.carousel-indicators
+    %li.active{"data-slide-to" => "0", "data-target" => "#myCarousel3"}
+    %li{"data-slide-to" => "1", "data-target" => "#myCarousel3"}
+    %li{"data-slide-to" => "2", "data-target" => "#myCarousel3"}
+  .carousel-inner
+    .item.active
+      = image_tag "banners/ces-small.jpg"
+    .item
+      = image_tag "banners/talk-small.jpg"
+  %a.carousel-control.left{"data-slide" => "prev", :href => "#myCarousel3"}
+    %i.fa.fa-angle-left{"aria-hidden" => "true"}
+  %a.carousel-control.right{"data-slide" => "next", :href => "#myCarousel3"}
+    %i.fa.fa-angle-right{"aria-hidden" => "true"}

@@ -484,8 +484,8 @@
                     %a{:href => "http://www.stumbleupon.com/submit?url=#{request.original_url}&title=#{@title}", :target => "_blank"}
                       %i.fa.fa-stumbleupon{"aria-hidden" => "true"}
 
-    = render 'layouts/messages'
     = yield
+    = render 'layouts/messages'
 
     #footer
       / Page Footer Start
