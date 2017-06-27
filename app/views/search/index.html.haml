@@ -43,19 +43,18 @@
               #unit-three.block-products.unit-three.active
                 - @results.each_with_index do |result, index|
                   .wrap-products-masonry.product-style-rows.js-change-img.js-wrap-products
-                    %a.box-img-products{:href => "/#{result[:container]}/#{result[:id]}"}
+                    .box-img-products
                       - if result[:image].presence
                         %img{:style => "width: 90%;", :alt => "#{result[:name]}", :src => result[:image]}/
                       - else
                         = image_tag "thumbnail.jpg", :style => "width: 90%;", :alt => result[:name]
                     .prod-offer
-                      %a.title-product{:href => "/#{result[:container]}/#{result[:id]}", :title => result[:name]}
-                        = result[:name].presence.truncate(25)
+                      .title-product
+                        = result[:name].presence.truncate(35)
                         %p= image_tag "#{result[:container]}.png"
                       .wrap-info-prod
                         %span.mark-info-prod
-                          %a{:href => "/#{result[:container]}/#{result[:id]}"}
-                            = result[:availability].presence || 'Available'
+                          = result[:availability].presence || 'Available'
                       .square-foot
                         .box-price-prod
                           %span.price-now
@@ -64,6 +63,9 @@
                             - elsif result[:price][:original_price].presence
                               = number_to_currency(result[:price][:original_price])
                     .square-hidden
+                      %a.add-cart-product.add-cart-mob.button-small.waves-effect.waves-circle.waves-float{:href => "/#{result[:container]}/#{result[:id]}"}
+                        Compare Pricing
+                      %br
                       - if result[:container] == 'amazon-offers'
                         = render 'search/amazon_button', result: result
                       - elsif result[:container] == 'walmart-offers'
