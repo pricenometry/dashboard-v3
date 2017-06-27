@@ -16,9 +16,9 @@
           .col-content
             .title
               %h1
-                Search Results with
+                Search Results for
                 = @query.presence
-                for
+                on
                 = (params[:container].split('-').try(:first).try(:capitalize) rescue nil) || 'All Sites'
             .display-unit
               #unit-three.block-products.unit-three.active
