@@ -52,9 +52,6 @@
                       .title-product
                         = result[:name].presence.truncate(35)
                         %p= image_tag "#{result[:container]}.png"
-                      .wrap-info-prod
-                        %span.mark-info-prod
-                          = result[:availability].presence || 'Available'
                       .square-foot
                         .box-price-prod
                           %span.price-now
@@ -63,6 +60,10 @@
                             - elsif result[:price][:original_price].presence
                               = number_to_currency(result[:price][:original_price])
                     .square-hidden
+                      .wrap-info-prod
+                        %span.mark-info-prod
+                          = result[:availability].presence || 'Available'
+                      %br
                       %a.add-cart-product.add-cart-mob.button-small.waves-effect.waves-circle.waves-float{:href => "/#{result[:container]}/#{result[:id]}"}
                         Compare Pricing
                       %br
