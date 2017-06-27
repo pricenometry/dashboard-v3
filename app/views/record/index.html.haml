@@ -100,18 +100,6 @@
                 %img{:alt => "#{@result[:name]}", :src => @result[:image]}
               - else
                 = image_tag "thumbnail.jpg"
-            .box-preview-img-product
-              .soc-wrap
-                %a{:href => "https://twitter.com/intent/tweet?text=Realtime%20Price%20Trending%20for%20#{@result[:name]}&url=https://pricenometry.com/#{@result[:container]}/#{@result[:id]}&via=Pricenometry&related=bastosmichael", :target => "_blank"}
-                  %i.fa.fa-twitter{"aria-hidden" => "true"}
-                %a{:href => "https://facebook.com/sharer.php?u=https://pricenometry.com/#{@result[:container]}/#{@result[:id]}", :target => "_blank"}
-                  %i.fa.fa-facebook{"aria-hidden" => "true"}
-                %a{:href => "https://plus.google.com/share?url=https://pricenometry.com/#{@result[:container]}/#{@result[:id]}", :target => "_blank"}
-                  %i.fa.fa-google-plus{"aria-hidden" => "true"}
-                %a{:href => "https://www.linkedin.com/shareArticle?url=https://pricenometry.com/#{@result[:container]}/#{@result[:id]}&title=Realtime%20Price%20Trending%20for%20#{@result[:name]}", :target => "_blank"}
-                  %i.fa.fa-linkedin{"aria-hidden" => "true"}
-                %a{:href => "https://www.reddit.com/submit?url=https://pricenometry.com/#{@result[:container]}/#{@result[:id]}&title=Realtime%20Price%20Trending%20for%20#{@result[:name]}", :target => "_blank"}
-                  %i.fa.fa-reddit{"aria-hidden" => "true"}
       .col-md-6.col-sm-7.col-xs-12
         .block-decr-product
           .title

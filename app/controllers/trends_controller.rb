@@ -7,7 +7,9 @@ class TrendsController < ApplicationController
 
       @trackers = @trackers + @results.map {|r| r[:tracker] }
 
-      prepare_meta_tags title: "Realtime Trending Results for " + params[:type],
+      @title = "Realtime Trending Results for " + params[:type].to_s
+
+      prepare_meta_tags title: @title,
                       description: "Search for up to the minute trends at Pricenometry.com",
                       og: { title: "Realtime Trending Results for " + params[:type],
                             image: @results.first[:image] },

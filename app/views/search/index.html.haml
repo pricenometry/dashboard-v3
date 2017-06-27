@@ -7,31 +7,11 @@
         .row
           %br
           .col-sidebar
+            .block-sidebar.hidden-768
+              = render 'layouts/responsive_text_ad'
             = render 'trends/trending'
             .block-sidebar.hidden-768
               = render 'layouts/responsive_text_ad'
-            .block-sidebar.hidden-768
-              .title-sidebar
-                Latest Offers
-              .block-special-offers
-                %ul
-                  - @latest.each_with_index do |result, index|
-                    %li
-                      %a{:href => "/#{result[:container]}/#{result[:id]}"}
-                        .spec-offers-img
-                          - if result[:image].presence
-                            %img{:style => "width: 90%;", :alt => "#{result[:name]}", :src => result[:image]}/
-                          - else
-                            = image_tag "thumbnail.jpg", :style => "width: 90%;", :alt => result[:name]
-                        .spec-offers-content
-                          .spec-offers-title{:title => result[:name]}
-                            = result[:name].truncate(25)
-                          - if result[:price][:price].presence
-                            .spec-offers-cost{:title => number_to_currency(result[:price][:price])}
-                              = number_to_currency(result[:price][:price])
-                          - elsif result[:price][:original_price].presence
-                            .spec-offers-cost{:title => number_to_currency(result[:price][:original_price])}
-                              = number_to_currency(result[:price][:original_price])
           .col-content
             .title
               %h1
