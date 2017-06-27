@@ -71,6 +71,7 @@
                     - elsif result[:price][:original_price]
                       = number_to_currency(result[:price][:original_price])
 
+%br
 = render 'layouts/responsive_text_ad'
 
 .main-product.hidden-768
@@ -110,6 +111,7 @@
           .undertitle
             .brand-name
               = @result[:availability].presence || 'Available'
+              = image_tag "#{@result[:container]}.png"
             .wrap-info-product
           .wrap-cost
             .box-price
@@ -144,7 +146,6 @@
             .title
               = icon('line-chart')
               Pricing History
-              = image_tag "#{@result[:container]}.png"
             #context-desdr.description
               = line_chart @history[:price], min: @min_price, max: @max_price
     - if @related.presence
