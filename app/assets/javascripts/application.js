@@ -25,6 +25,8 @@
 //= require owl.carousel
 //= require waves
 //= require modernizr
+//= require Chart.bundle
+//= require chartkick
 //= require_tree .
 
 GaEvents.Event.adapter = function() {

@@ -6,10 +6,6 @@
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
-    - if user_signed_in?
-      = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/highcharts/4.2.3/highcharts.js", "chartkick"
-    - else
-      = javascript_include_tag "//www.google.com/jsapi", "chartkick"
     = csrf_meta_tags
     = analytics_init if GoogleAnalytics.valid_tracker?
     %script{:async => "", :src => "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"}
