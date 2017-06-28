@@ -1,6 +1,7 @@
 Rails.application.configure do
+  config.serve_static_assets = true
   config.static_cache_control = "public, s-maxage=31536000, maxage=15552000"
-  
+
   config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
   config.assets.precompile += %w( .svg .eot .woff .ttf)
   # Settings specified here will take precedence over those in config/application.rb.
