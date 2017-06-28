@@ -8,11 +8,11 @@
         .row
           %br
           .col-sidebar
-            .block-sidebar.hidden-768
+            .block-sidebar
               = render 'layouts/responsive_text_ad'
             = render 'trends/trending'
-            .block-sidebar.hidden-768
-              = render 'layouts/responsive_text_ad'
+            .block-sidebar
+              = render 'layouts/responsive_ad'
           .col-content
             .title
               %h1
@@ -25,12 +25,13 @@
                 - @results.each_with_index do |result, index|
                   .wrap-products-masonry.product-style-rows.js-change-img.js-wrap-products
                     .box-img-products
-                      - if result[:image].presence
-                        %img{:style => "width: 90%;", :alt => "#{result[:name]}", :src => result[:image]}/
-                      - else
-                        = image_tag "thumbnail.jpg", :style => "width: 90%;", :alt => result[:name]
+                      %a.box-img-products{:alt => result[:name], :href => "/#{result[:container]}/#{result[:id]}"}
+                        - if result[:image].presence
+                          %img{:style => "width: 90%;", :alt => "#{result[:name]}", :src => result[:image]}/
+                        - else
+                          = image_tag "thumbnail.jpg", :style => "width: 90%;", :alt => result[:name]
                     .prod-offer
-                      .title-product
+                      %a.title-product{:href => "/#{result[:container]}/#{result[:id]}", :title => result[:name]}
                         = result[:name].presence.truncate(35)
                         %p= image_tag "stores/#{result[:container]}.png"
                       .square-foot
@@ -41,13 +42,11 @@
                             - elsif result[:price][:original_price].presence
                               = number_to_currency(result[:price][:original_price])
                     .square-hidden
+                      %a.add-cart-product.add-cart-mob.button-small.waves-effect.waves-circle.waves-float{:href => "/#{result[:container]}/#{result[:id]}"}
+                        Pricenometry Analysis
                       .wrap-info-prod
                         %span.mark-info-prod
                           = result[:availability].presence || 'Available'
-                      %br
-                      %a.add-cart-product.add-cart-mob.button-small.waves-effect.waves-circle.waves-float{:href => "/#{result[:container]}/#{result[:id]}"}
-                        Compare Pricing
-                      %br
                       - if result[:container] == 'amazon-offers'
                         = render 'search/amazon_button', result: result
                       - elsif result[:container] == 'walmart-offers'

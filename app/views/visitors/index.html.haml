@@ -10,24 +10,27 @@
             = render 'trends/trending'
           / main col left
           .col-content
-            #welcome.page-header
+            .title
               %h1
                 = content_for?(:h1) ? yield(:h1) : "Search #{@total}illion products from #{@count} different sites at once."
                 %br
                 %small
                   = content_for?(:h3) ? yield(:h3) : "Price and social comparison done in realtime and at massive scale..."
-            .row
-              - @available.each do |name, count|
-                .col-md-3{align: 'center'}
-                  = image_tag "stores/#{name}.png"
-                  %p= count
-            .row
-              .col-md-4{align: 'center'}
-                %strong Indexing
-                %p #{@indexing}
-              .col-md-4{align: 'center'}
-                %strong Processing
-                %p #{@processing}
-              .col-md-4{align: 'center'}
-                %strong Pending
-                %p #{@pending}
+            .display-unit
+              #unit-three.block-products.unit-three.active
+                - unless @indexing == '0'
+                  .col-md-1{align: 'center'}
+                    %strong Indexing
+                    %p #{@indexing}
+                - unless @processing == '0'
+                  .col-md-1{align: 'center'}
+                    %strong Processing
+                    %p #{@processing}
+                - unless @pending == '0'
+                  .col-md-1{align: 'center'}
+                    %strong Pending
+                    %p #{@pending}
+                - @available.each do |name, count|
+                  .col-md-1{align: 'center'}
+                    = image_tag "stores/#{name}.png"
+                    %p= count

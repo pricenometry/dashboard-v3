@@ -3,7 +3,7 @@ class SearchController < ApplicationController
     if @query = params[:query].presence
       @results = object.results.compact
 
-      # @latest = Pricenometry::Trends.new('date').results
+      @latest = Pricenometry::Trends.new('date').results
 
       @trackers = @trackers + @results.map {|r| r[:tracker] }
 
