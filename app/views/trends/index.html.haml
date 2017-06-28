@@ -43,7 +43,9 @@
                         = result[:name].truncate(50)
                         %p= image_tag "stores/#{result[:container]}.png"
                       .wrap-info-prod.hidden-768
-                        - if @type != 'date' && result[:social].presence
+                        - if params[:type].include?('price') || params[:type].include?('history')
+                          = bar_chart result[:history].select {|k,v| k != :total_shares }, download: "Pricenometry_#{result[:name].gsub(' ','_')}_Social_Bar_Chart"
+                        - elsif params[:type] != 'date' && result[:social].presence
                           = pie_chart result[:social].select {|k,v| k != :total_shares }, download: "Pricenometry_#{result[:name].gsub(' ','_')}_Social_Pie_Chart"
                       .wrap
                         .box-preview-img.hidden-md
