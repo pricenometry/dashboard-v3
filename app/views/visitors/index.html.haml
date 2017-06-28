@@ -19,18 +19,18 @@
             .display-unit
               #unit-three.block-products.unit-three.active
                 - unless @indexing == '0'
-                  .col-md-1{align: 'center'}
+                  .col-md-2.col-sm-2{align: 'center'}
                     %strong Indexing
                     %p #{@indexing}
                 - unless @processing == '0'
-                  .col-md-1{align: 'center'}
+                  .col-md-2.col-sm-2{align: 'center'}
                     %strong Processing
                     %p #{@processing}
                 - unless @pending == '0'
-                  .col-md-1{align: 'center'}
+                  .col-md-2.col-sm-2{align: 'center'}
                     %strong Pending
                     %p #{@pending}
                 - @available.each do |name, count|
-                  .col-md-1{align: 'center'}
+                  .col-md-2.col-sm-2{align: 'center'}
                     = image_tag "stores/#{name}.png"
                     %p= count
