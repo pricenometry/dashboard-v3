@@ -10,7 +10,7 @@ set :domain, ENV['DOMAIN']
 set :deploy_to, '/home/ubuntu/dashboard-v3'
 set :app_path, lambda { "#{deploy_to}/#{current_path}" }
 set :repository, 'https://github.com/pricenometry/dashboard-v3.git'
-set :branch, 'staging'
+set :branch, 'master'
 set :forward_agent, true
 set :rails_env, 'production'
 set :keep_releases, 5
