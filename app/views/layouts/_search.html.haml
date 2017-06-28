@@ -11,16 +11,16 @@
             %fieldset
               %input#filter.input-search.form-control{:type => "text", :name => 'query', :value => (@query.presence || ' '), :autocomplete => "off", :placeholder => "What Product Are You Looking For?"}
               %span#clear-searh.clear-searh
-    #wrap-allcat.wrap-allcat
-      .select
-        %select#cat-select-menu.cat-select-menu.select-hidden
-          %option All Sites
-          %option Amazon
-          %option Walmart
-          %option NewEgg
-          %option Staples
-          %option Best Buy
-          %option Home Depot
-          %option Target
-          %option Costco
-      %i.fa.fa-angle-down
+    / #wrap-allcat.wrap-allcat
+    /   .select
+    /     %select#cat-select-menu.cat-select-menu.select-hidden
+    /       %option All Sites
+    /       %option Amazon
+    /       %option Walmart
+    /       %option NewEgg
+    /       %option Staples
+    /       %option Best Buy
+    /       %option Home Depot
+    /       %option Target
+    /       %option Costco
+    /   %i.fa.fa-angle-down
