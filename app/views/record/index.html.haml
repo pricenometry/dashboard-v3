@@ -100,6 +100,8 @@
                 %img{:alt => "#{@result[:name]}", :src => @result[:image]}
               - else
                 = image_tag "thumbnail.jpg"
+            %br
+            = render 'layouts/responsive_ad'
       .col-md-6.col-sm-7.col-xs-12
         .block-decr-product
           .title
@@ -177,6 +179,8 @@
                     %span.now
                       = icon('tag')
                       = number_to_currency(result[:price][:original_price])
+    = render 'layouts/responsive_text_ad'
+    %br
     #tabs_cart_product
       %ul
         %li
