@@ -10,9 +10,9 @@ set :domain, ENV['DOMAIN']
 set :deploy_to, '/home/ubuntu/dashboard-v3'
 set :app_path, lambda { "#{deploy_to}/#{current_path}" }
 set :repository, 'https://github.com/pricenometry/dashboard-v3.git'
-set :branch, ENV['BRANCH'].presence || 'master'
+set :branch, ENV['BRANCH'] || 'master'
 set :forward_agent, true
-set :rails_env, ENV['RAILS_ENV'].presence || 'production'
+set :rails_env, ENV['RAILS_ENV'] || 'production'
 set :keep_releases, 5
 # set :sidekiq_log, "#{deploy_to}/#{shared_path}/log/sidekiq.log"
 # set :sidekiq_pid, "#{deploy_to}/#{shared_path}/tmp/pids/sidekiq.pid"
