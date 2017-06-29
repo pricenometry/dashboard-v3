@@ -47,7 +47,7 @@
         .title
           = icon('line-chart')
           Pricing History
-      = line_chart @history[:price], min: @min_price, max: @max_price, download: "Pricenometry_#{@result[:name].gsub(' ','_')}_Price_History"
+      = line_chart @history[:price], min: @min_price, max: @max_price, download: "Pricenometry_#{@result[:name].gsub(' ','_')}_Price_History", label: "Price"
     - if @related.presence
       .block-title-product-mob
         .title
@@ -116,7 +116,7 @@
                 = icon('line-chart')
                 Pricing History
             #context-desdr.description
-              = line_chart @history[:price], min: @min_price, max: @max_price, download: "Pricenometry_#{@result[:name].gsub(' ','_')}_Price_History"
+              = line_chart @history[:price], min: @min_price, max: @max_price, download: "Pricenometry_#{@result[:name].gsub(' ','_')}_Price_History", label: "Price"
           .wrap-cost
             .box-price
               .wrap-price
