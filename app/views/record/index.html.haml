@@ -48,6 +48,8 @@
           = icon('line-chart')
           Pricing History
       = line_chart @history[:price], min: @min_price, max: @max_price, download: "Pricenometry_#{@result[:name].gsub(' ','_')}_Price_History", label: "Price"
+    %br
+    = render 'layouts/responsive_ad'
     - if @related.presence
       .block-title-product-mob
         .title
@@ -70,6 +72,7 @@
                       = number_to_currency(result[:price][:price])
                     - elsif result[:price][:original_price]
                       = number_to_currency(result[:price][:original_price])
+    = render 'layouts/responsive_text_ad'
 .main-product.hidden-768
   .box-1675
     / Bread Сrumbs Start
