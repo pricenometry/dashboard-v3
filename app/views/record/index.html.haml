@@ -103,8 +103,6 @@
                 %img{:alt => "#{@result[:name]}", :src => @result[:image]}
               - else
                 = image_tag "thumbnail.jpg"
-            %br
-            = render 'layouts/responsive_ad'
       .col-md-6.col-sm-7.col-xs-12
         .block-decr-product
           .title
@@ -114,14 +112,6 @@
               = @result[:availability].presence || 'Available'
               = image_tag "stores/#{@result[:container]}.png"
             .wrap-info-product
-          - if @history && @history[:price].presence
-            %br
-            .title
-              %small
-                = icon('line-chart')
-                Pricing History
-            #context-desdr.description
-              = line_chart @history[:price], min: @min_price, max: @max_price, download: "Pricenometry_#{@result[:name].gsub(' ','_')}_Price_History", label: "Price"
           .wrap-cost
             .box-price
               .wrap-price
@@ -151,6 +141,19 @@
                 %a.add-cart-product.button-small.waves-effect.waves-circle.waves-float{:href => @result[:url], target: '_blank'}
                   = icon('shopping-cart')
                   = "Buy at #{@result[:container].split('-').first.capitalize}"
+          %br
+          = render 'layouts/responsive_ad'
+    - if @history && @history[:price].presence
+      .row
+        .related-products
+          .title
+            = icon('line-chart')
+            Pricing History
+          #context-desdr.description
+            = line_chart @history[:price], min: @min_price, max: @max_price, download: "Pricenometry_#{@result[:name].gsub(' ','_')}_Price_History", label: "Price"
+
+        = render 'layouts/responsive_text_ad'
+        %br
     - if @related.presence
       .row
         .related-products
@@ -182,7 +185,7 @@
                     %span.now
                       = icon('tag')
                       = number_to_currency(result[:price][:original_price])
-    = render 'layouts/responsive_text_ad'
+    = render 'layouts/responsive_ad'
     %br
     #tabs_cart_product
       %ul
