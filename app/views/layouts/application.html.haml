@@ -218,15 +218,20 @@
               #top-right.top-right
                 %ul
                   %li
-                    %a{:href => "https://facebook.com/Pricenometry", :target => "_blank"} Facebook
+                    %a{:href => "https://facebook.com/Pricenometry", :target => "_blank"}
+                      %i.fa.fa-facebook{"aria-hidden" => "true"}
                   %li
-                    %a{:href => "https://twitter.com/Pricenometry", :target => "_blank"} Twitter
+                    %a{:href => "https://twitter.com/Pricenometry", :target => "_blank"}
+                      %i.fa.fa-twitter{"aria-hidden" => "true"}
                   %li
-                    %a{:href => "https://instagram.com/Pricenometry", :target => "_blank"} Instagram
+                    %a{:href => "https://instagram.com/Pricenometry", :target => "_blank"}
+                      %i.fa.fa-instagram{"aria-hidden" => "true"}
                   %li
-                    %a{:href => "https://www.linkedin.com/showcase/18125556/", :target => "_blank"} LinkedIn
+                    %a{:href => "https://www.linkedin.com/showcase/18125556/", :target => "_blank"}
+                      %i.fa.fa-linkedin{"aria-hidden" => "true"}
                   %li
-                    %a{:href => "https://github.com/Pricenometry", :target => "_blank"} Github
+                    %a{:href => "https://github.com/Pricenometry", :target => "_blank"}
+                      %i.fa.fa-github{"aria-hidden" => "true"}
       / Top Menu Desktop  End
       .header-center
         / Center Menu Desktop  Start
@@ -248,29 +253,32 @@
               .main-menu
                 %ul.ul-main-menu
                   %li
+                    %a{href: '#'}
+                      Share on:
+                  %li
                     %a{:href => "https://www.facebook.com/dialog/share?app_id=1008307585917302&display=page&href=#{request.original_url}&redirect_uri=#{request.original_url}", :target => "_blank"}
-                      %i.fa.fa-facebook{"aria-hidden" => "true"}
+                      Facebook
                   %li
                     %a{:href => "https://twitter.com/intent/tweet?text=#{@title}&url=#{request.original_url}&via=Pricenometry&related=bastosmichael&hashtags=#pricing", :target => "_blank"}
-                      %i.fa.fa-twitter{"aria-hidden" => "true"}
+                      Twitter
                   %li
                     %a{:href => "https://pinterest.com/pin/create/bookmarklet/?media=#{@image}url=#{request.original_url}&is_video=false&description=#{@title}", :target => "_blank"}
-                      %i.fa.fa-pinterest{"aria-hidden" => "true"}
+                      Pinterest
                   %li
                     %a{:href => "https://plus.google.com/share?url=#{request.original_url}", :target => "_blank"}
-                      %i.fa.fa-google-plus{"aria-hidden" => "true"}
+                      Google+
                   %li
                     %a{:href => "https://www.linkedin.com/shareArticle?url=#{request.original_url}&title=#{@title}", :target => "_blank"}
-                      %i.fa.fa-linkedin{"aria-hidden" => "true"}
+                      LinkedIn
                   %li
                     %a{:href => "http://digg.com/submit?url=#{request.original_url}&title=#{@title}", :target => "_blank"}
-                      %i.fa.fa-digg{"aria-hidden" => "true"}
+                      Digg
                   %li
                     %a{:href => "https://www.reddit.com/submit?url=#{request.original_url}&title=#{@title}", :target => "_blank"}
-                      %i.fa.fa-reddit{"aria-hidden" => "true"}
+                      Reddit
                   %li
                     %a{:href => "http://www.stumbleupon.com/submit?url=#{request.original_url}&title=#{@title}", :target => "_blank"}
-                      %i.fa.fa-stumbleupon{"aria-hidden" => "true"}
+                      StumbleUpon
 
     = yield
     = render 'layouts/messages'
