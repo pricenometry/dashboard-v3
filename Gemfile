@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.2.5'
 gem 'sqlite3'
+gem 'asset_sync'
+gem 'fog-aws'
 
 gem 'loadcss-rails'
 gem 'jquery-rails'

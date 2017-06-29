@@ -1,4 +1,11 @@
 Rails.application.configure do
+  config.action_controller.asset_host = "//pricenometry-assets.s3.amazonaws.com"
+  config.assets.prefix = "/production/assets"
+
+  config.assets.digest = true
+  config.assets.enabled = true
+  config.assets.initialize_on_precompile = true
+
   config.serve_static_assets = true
   config.static_cache_control = "public, s-maxage=31536000, maxage=15552000"
 
