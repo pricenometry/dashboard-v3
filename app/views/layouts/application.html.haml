@@ -4,7 +4,7 @@
     = display_meta_tags
     %meta{name:"msvalidate.01", content: "E343FD8E4D0D68E0349D841AFFFE6EEF"}
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
-    %link{:as => "style", :href => "#{stylesheet_path('application')}", :onload => "this.rel='stylesheet'", :rel => "preload"}/
+    %link{:as => "style", :href => "#{stylesheet_path('application')}", :onload => "this.rel='stylesheet'", :rel => "preload", :media => 'all'}/
     %noscript
       = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application', async: Rails.env.production?
