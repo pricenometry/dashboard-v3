@@ -11,6 +11,8 @@ class TrendsController < ApplicationController
 
       @image = @results.first[:image].to_s
 
+      @ad_query = @results.first[:name].to_s
+
       prepare_meta_tags title: @title,
                       description: "Search for up to the minute trends at Pricenometry.com",
                       og: { title: "Realtime Trending Results for " + params[:type],

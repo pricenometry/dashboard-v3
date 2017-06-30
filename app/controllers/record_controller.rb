@@ -58,6 +58,8 @@ class RecordController < ApplicationController
         end
       end
 
+      @ad_query = @query.presence || result[:name].to_s
+
       @title = "Realtime Pricing Trends for " + result[:name].to_s
 
       @image = result[:image].to_s

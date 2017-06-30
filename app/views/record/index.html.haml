@@ -49,7 +49,7 @@
           Pricing History
       = line_chart @history[:price], min: @min_price, max: @max_price, download: "Pricenometry_#{@result[:name].gsub(' ','_')}_Price_History", label: "Price"
     %br
-    = render 'layouts/responsive_ad'
+    = render 'layouts/search_ads'
     - if @related.presence
       .block-title-product-mob
         .title
@@ -142,7 +142,7 @@
                   = icon('shopping-cart')
                   = "Buy at #{@result[:container].split('-').first.capitalize}"
           %br
-          = render 'layouts/responsive_ad'
+          = render 'layouts/search_ads'
     - if @history && @history[:price].presence
       .row
         .related-products
@@ -151,7 +151,6 @@
             Pricing History
           #context-desdr.description
             = line_chart @history[:price], min: @min_price, max: @max_price, download: "Pricenometry_#{@result[:name].gsub(' ','_')}_Price_History", label: "Price"
-
         = render 'layouts/responsive_text_ad'
         %br
     - if @related.presence

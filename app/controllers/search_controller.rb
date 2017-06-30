@@ -11,6 +11,8 @@ class SearchController < ApplicationController
 
       @image = @results.first[:image].to_s
 
+      @ad_query = @query.presence
+
       prepare_meta_tags title: @title,
                       description: "Search for up to the minute price history and analysis as well as social network popularity, product videos, news trends and more only at Pricenometry.com",
                       og: { title: "Realtime Pricing Search Results for " + @query,
