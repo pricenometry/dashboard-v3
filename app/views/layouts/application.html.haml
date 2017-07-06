@@ -255,8 +255,8 @@
                     %a{:href => "http://www.stumbleupon.com/submit?url=#{request.original_url}&title=#{@title}", :target => "_blank"}
                       StumbleUpon
 
-    = yield
     = render 'layouts/messages'
+    = yield
 
     #footer
       / Page Footer Start
