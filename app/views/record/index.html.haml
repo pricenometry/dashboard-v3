@@ -72,7 +72,27 @@
                       = number_to_currency(result[:price][:price])
                     - elsif result[:price][:original_price]
                       = number_to_currency(result[:price][:original_price])
+    - if @result[:social].presence
+      .block-title-product-mob
+        .title
+          = icon('pie-chart')
+          Social Popularity
+      = pie_chart @result[:social].select {|k,v| k != :total_shares }, download: "Pricenometry_#{@result[:name].gsub(' ','_')}_Social_Pie_Chart", label: "Social Shares"
+      = bar_chart @result[:social].select {|k,v| k != :total_shares }, download: "Pricenometry_#{@result[:name].gsub(' ','_')}_Social_Bar_Chart", label: "Social Shares"
+      - if @social_charts.presence
+        .block-title-product-mob
+          .title
+            = icon('line-chart')
+            Social History
+        = line_chart @social_charts, download: "Pricenometry_#{@result[:name].gsub(' ','_')}_Social_History", label: "Social Shares"
+    - if @result[:history].presence
+      .block-title-product-mob
+        .title
+          = icon('bar-chart')
+          Total History
+      = bar_chart @result[:history].select {|k,v| k != :total_shares }, download: "Pricenometry_#{@result[:name].gsub(' ','_')}_Historical_Bar_Chart", label: "Changes Over Time"
     = render 'layouts/responsive_text_ad'
+    .fb-comments{"data-width" => "100%", "data-href" => "https://pricenometry.com/#{@result[:container]}/#{@result[:id]}", "data-numposts" => "5", "order_by" => "reverse_time"}
 .main-product.hidden-768
   .box-1675
     / Bread Сrumbs Start
@@ -184,37 +204,48 @@
                     %span.now
                       = icon('tag')
                       = number_to_currency(result[:price][:original_price])
-    = render 'layouts/responsive_ad'
-    %br
+        = render 'layouts/responsive_ad'
+        %br
+    - if @result[:social].presence
+      .row
+        .related-products
+          .title
+            = icon('pie-chart')
+            Social Popularity
+          #context-desdr.description
+            .row
+              .col-md-6.col-sm-5.col-xs-12
+                = pie_chart @result[:social].select {|k,v| k != :total_shares }, download: "Pricenometry_#{@result[:name].gsub(' ','_')}_Social_Pie_Chart", label: "Social Shares"
+              .col-md-6.col-sm-5.col-xs-12
+                = bar_chart @result[:social].select {|k,v| k != :total_shares }, download: "Pricenometry_#{@result[:name].gsub(' ','_')}_Social_Bar_Chart", label: "Social Shares"
+          - if @social_charts.presence
+            .title
+              = icon('line-chart')
+              Social History
+            = line_chart @social_charts, download: "Pricenometry_#{@result[:name].gsub(' ','_')}_Social_History", label: "Social Shares"
+          - if @result[:history].presence
+            .title
+              = icon('bar-chart')
+              Total History
+            = bar_chart @result[:history].select {|k,v| k != :total_shares }, download: "Pricenometry_#{@result[:name].gsub(' ','_')}_Historical_Bar_Chart", label: "Changes Over Time"
+    = render 'layouts/responsive_text_ad'
+    .fb-comments{"data-width" => "100%", "data-href" => "https://pricenometry.com/#{@result[:container]}/#{@result[:id]}", "data-numposts" => "5", "order_by" => "reverse_time"}
+
     #tabs_cart_product
       %ul
         %li
           %a{:href => "#tabs-1"}
-            = icon('pie-chart')
-            Social Popularity
+            = icon('info')
+            Description
         %li
           %a{:href => "#tabs-2"}
             = icon('calendar-check-o')
             Specifications
-        %li
-          %a{:href => "#tabs-3"}
-            = icon('info')
-            Description
       #tabs-1
-        - if @result[:social].presence
-          .row
-            .col-md-6.col-sm-5.col-xs-12
-              = pie_chart @result[:social].select {|k,v| k != :total_shares }, download: "Pricenometry_#{@result[:name].gsub(' ','_')}_Social_Pie_Chart", label: "Social Shares"
-            .col-md-6.col-sm-7.col-xs-12
-              = bar_chart @result[:social].select {|k,v| k != :total_shares }, download: "Pricenometry_#{@result[:name].gsub(' ','_')}_Social_Bar_Chart", label: "Social Shares"
-        - if @social_charts.presence
-          .row
-            = line_chart @social_charts, download: "Pricenometry_#{@result[:name].gsub(' ','_')}_Social_History", label: "Social Shares"
-        - if @result[:history].presence
-          .row
-            = bar_chart @result[:history].select {|k,v| k != :total_shares }, download: "Pricenometry_#{@result[:name].gsub(' ','_')}_Historical_Bar_Chart", label: "Changes Over Time"
-        .row
-          .fb-comments{"data-width" => "100%", "data-href" => "https://pricenometry.com/#{@result[:container]}/#{@result[:id]}", "data-numposts" => "5", "order_by" => "reverse_time"}
+        - if @result[:description].presence
+          - @result[:description].split('. ').shuffle.each do |sentence|
+            %p{align: 'left'}
+              #{sentence}.
       #tabs-2
         %table
           %tbody
@@ -223,25 +254,17 @@
                 %tr
                   %td= key.upcase
                   %td= value
-      #tabs-3
-        - if @result[:description].presence
-          - @result[:description].split('. ').shuffle.each do |sentence|
-            %p{align: 'left'}
-              #{sentence}.
 
 #accordion_cart_product_mob.ui-accordion.ui-widget.ui-helper-reset{:role => "tablist"}
-  %h3#ui-id-1.ui-accordion-header.ui-corner-top.ui-state-default.ui-accordion-header-active.ui-state-active.ui-accordion-icons{"aria-controls" => "ui-id-2", "aria-expanded" => "true", "aria-selected" => "true", :role => "tab", :tabindex => "0"}
-    Social Popularity
+  %h3#ui-id-5.ui-accordion-header.ui-corner-top.ui-accordion-header-collapsed.ui-corner-all.ui-state-default.ui-accordion-icons{"aria-controls" => "ui-id-6", "aria-expanded" => "false", "aria-selected" => "false", :role => "tab", :tabindex => "-1"}
+    Description
     %i.fa.fa-angle-down{"aria-hidden" => "true"}
-  #ui-id-2.item.text-description.ui-accordion-content.ui-corner-bottom.ui-helper-reset.ui-widget-content.ui-accordion-content-active{"aria-hidden" => "false", "aria-labelledby" => "ui-id-1", :role => "tabpanel", :style => "display: block;"}
-    - if @result[:social].presence
-      = pie_chart @result[:social].select {|k,v| k != :total_shares }, download: "Pricenometry_#{@result[:name].gsub(' ','_')}_Social_Pie_Chart", label: "Social Shares"
-      = bar_chart @result[:social].select {|k,v| k != :total_shares }, download: "Pricenometry_#{@result[:name].gsub(' ','_')}_Social_Bar_Chart", label: "Social Shares"
-      - if @social_charts.presence
-        = line_chart @social_charts, download: "Pricenometry_#{@result[:name].gsub(' ','_')}_Social_History", label: "Social Shares"
-    - if @result[:history].presence
-      = bar_chart @result[:history].select {|k,v| k != :total_shares }, download: "Pricenometry_#{@result[:name].gsub(' ','_')}_Historical_Bar_Chart", label: "Changes Over Time"
-    .fb-comments{"data-width" => "100%", "data-href" => "https://pricenometry.com/#{@result[:container]}/#{@result[:id]}", "data-numposts" => "5", "order_by" => "reverse_time"}
+  #ui-id-6.reviews.ui-accordion-content.ui-corner-bottom.ui-helper-reset.ui-widget-content{"aria-hidden" => "true", "aria-labelledby" => "ui-id-5", :role => "tabpanel", :style => "display: none;"}
+    - if @result[:description].presence
+      - @result[:description].split('. ').shuffle.each do |sentence|
+        %p{align: 'left'}
+          #{sentence}.
+      %br
   %h3#ui-id-3.ui-accordion-header.ui-corner-top.ui-accordion-header-collapsed.ui-corner-all.ui-state-default.ui-accordion-icons{"aria-controls" => "ui-id-4", "aria-expanded" => "false", "aria-selected" => "false", :role => "tab", :tabindex => "-1"}
     Specifications
     %i.fa.fa-angle-down{"aria-hidden" => "true"}
@@ -253,11 +276,3 @@
             %tr
               %td= key.upcase
               %td= value
-  %h3#ui-id-5.ui-accordion-header.ui-corner-top.ui-accordion-header-collapsed.ui-corner-all.ui-state-default.ui-accordion-icons{"aria-controls" => "ui-id-6", "aria-expanded" => "false", "aria-selected" => "false", :role => "tab", :tabindex => "-1"}
-    Description
-    %i.fa.fa-angle-down{"aria-hidden" => "true"}
-  #ui-id-6.reviews.ui-accordion-content.ui-corner-bottom.ui-helper-reset.ui-widget-content{"aria-hidden" => "true", "aria-labelledby" => "ui-id-5", :role => "tabpanel", :style => "display: none;"}
-    - if @result[:description].presence
-      - @result[:description].split('. ').shuffle.each do |sentence|
-        %p{align: 'left'}
-          #{sentence}.
