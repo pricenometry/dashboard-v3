@@ -48,8 +48,6 @@
           = icon('line-chart')
           Pricing History
       = line_chart @history[:price], min: @min_price, max: @max_price, download: "Pricenometry_#{@result[:name].gsub(' ','_')}_Price_History", label: "Price"
-    %br
-    = render 'layouts/search_ads'
     - if @related.presence
       .block-title-product-mob
         .title
@@ -91,8 +89,9 @@
           = icon('bar-chart')
           Total History
       = bar_chart @result[:history].select {|k,v| k != :total_shares }, download: "Pricenometry_#{@result[:name].gsub(' ','_')}_Historical_Bar_Chart", label: "Changes Over Time"
-    = render 'layouts/responsive_text_ad'
     .fb-comments{"data-width" => "100%", "data-href" => "https://pricenometry.com/#{@result[:container]}/#{@result[:id]}", "data-numposts" => "5", "order_by" => "reverse_time"}
+%br
+= render 'layouts/responsive_ad'
 .main-product.hidden-768
   .box-1675
     / Bread Сrumbs Start
@@ -161,8 +160,6 @@
                 %a.add-cart-product.button-small.waves-effect.waves-circle.waves-float{:href => @result[:url], target: '_blank'}
                   = icon('shopping-cart')
                   = "Buy at #{@result[:container].split('-').first.capitalize}"
-          %br
-          = render 'layouts/search_ads'
     - if @history && @history[:price].presence
       .row
         .related-products
@@ -171,8 +168,6 @@
             Pricing History
           #context-desdr.description
             = line_chart @history[:price], min: @min_price, max: @max_price, download: "Pricenometry_#{@result[:name].gsub(' ','_')}_Price_History", label: "Price"
-        = render 'layouts/responsive_text_ad'
-        %br
     - if @related.presence
       .row
         .related-products
@@ -204,8 +199,6 @@
                     %span.now
                       = icon('tag')
                       = number_to_currency(result[:price][:original_price])
-        = render 'layouts/responsive_ad'
-        %br
     - if @result[:social].presence
       .row
         .related-products
@@ -228,7 +221,6 @@
               = icon('bar-chart')
               Total History
             = bar_chart @result[:history].select {|k,v| k != :total_shares }, download: "Pricenometry_#{@result[:name].gsub(' ','_')}_Historical_Bar_Chart", label: "Changes Over Time"
-    = render 'layouts/responsive_text_ad'
     .fb-comments{"data-width" => "100%", "data-href" => "https://pricenometry.com/#{@result[:container]}/#{@result[:id]}", "data-numposts" => "5", "order_by" => "reverse_time"}
 
     #tabs_cart_product
