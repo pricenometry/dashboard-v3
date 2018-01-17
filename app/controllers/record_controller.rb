@@ -67,11 +67,43 @@ class RecordController < ApplicationController
       prepare_meta_tags title: @title,
                         description: "Get up to the minute " + result[:name].to_s +  " price history and analysis as well as social network popularity, product videos, news trends and more only at Pricenometry.com",
                         og: { title: "Realtime Pricing Trends for " + result[:name].to_s,
-                              image: @image },
-                        twitter: { description: "Realtime Pricing Trends for " + result[:name].to_s,
+                              description: (@result[:description].split('. ').shuffle.join('. ') if @result[:description]),
+                              type: 'product',
+                              image: @image,
+                              site_name: 'Pricenometry.com',
+                              price: {
+                                amount: ("$#{@result[:price][:price]}" if @result[:price]),
+                                currency: 'USD'
+                              } 
+                            },
+                        twitter: { title: "Realtime Pricing Trends for " + result[:name].to_s,
+                                   description: (@result[:description].split('. ').shuffle.join('. ') if @result[:description]),
                                    image: @image,
-                                   card: "summary_large_image" },
+                                   card: "product",
+                                   site: '@pricenometry',
+                                   creator: '@bastosmichael',
+                                   data1: ("$#{@result[:price][:price]}" if @result[:price]),
+                                   label1: 'Price'
+                                  },
                         image: @image
+
+      @jsonld = {
+          '@context': "http://schema.org/",
+          '@type': "Product",
+          name: @result[:name],
+          image: @image,
+          description: (@result[:description].split('. ').shuffle.join('. ') if @result[:description]),
+          mpn: @result[:mpn],
+          brand: {
+            '@type': "Thing",
+            name: @result[:brand]
+          },
+          offers: {
+            '@type': "Offer",
+            priceCurrency: "USD",
+            price: @result[:price][:price]
+          }
+        }
     end
   end
 
